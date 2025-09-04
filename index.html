@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- Versão salva: v2025-09-04-01 | Header branco→transparente; fundo #D4D4D4; logo maior; e-mail só no rodapé; WhatsApp via botão flutuante (Web: 5511968262690); Formspree (ID: mblapded); instruções p/ adicionar imagens no carrossel e autoplay ativo -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RDA Engenharia • Avaliação e Vistorias</title>
+  <meta name="description" content="RD Almeida Engenharia – Avaliações de imóveis urbanos, vistorias técnicas e consultoria em engenharia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #8B0000;   /* vinho (da logo) */
+      --secondary: #444444; /* cinza escuro */
+      --light: #D4D4D4;
+      --header-solid: rgba(68, 68, 68, 0.95);
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* Header sólido ao sair do hero */
+    #site-header.is-solid{ background: var(--header-solid); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+    #site-header.is-solid .nav-link{ color:#fff; }
+
+    /* Header branco que fica progressivamente transparente */
+    #site-header { background: rgba(255,255,255,var(--header-alpha,1)); backdrop-filter: saturate(180%) blur(8px); }
+    #site-header .nav-link{ color: var(--secondary); transition: color .3s ease; }
+    #site-header.on-hero .nav-link{ color:#fff; }
+    #menu-btn .menu-icon{ color: var(--secondary); transition: color .3s ease; }
+    #site-header.on-hero #menu-btn .menu-icon{ color:#fff; }
+  </style>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function(){
+      const header = document.getElementById('site-header');
+      const hero = document.getElementById('home');
+      if(header && hero){
+        const apply = (alpha)=>{
+          const a = Math.max(0, Math.min(1, alpha));
+          header.style.setProperty('--header-alpha', a.toFixed(3));
+        };
+        const update = ()=>{
+          const h = Math.max(hero.offsetHeight || window.innerHeight, 1);
+          const y = window.scrollY || window.pageYOffset || 0;
+          const inHero = y < h;
+
+          if (y <= 0) {
+            apply(1);
+            header.classList.remove('on-hero');
+            return;
+          }
+
+          if (inHero) {
+            if (y <= 20) { apply(0.5); }
+            else {
+              const t = Math.min(Math.max((y - 20) / (h - 20), 0), 1);
+              apply(0.5 * (1 - t));
+            }
+            header.classList.add('on-hero');
+          } else {
+            apply(0);
+            header.classList.remove('on-hero');
+          }
+        };
+        update();
+        window.addEventListener('scroll', update, {passive:true});
+        window.addEventListener('resize', update);
+      }
+
+      // Menu mobile
+      (function(){
+        const btn = document.getElementById('menu-btn');
+        const panel = document.getElementById('mobile-menu');
+        if(!btn || !panel) return;
+        let open=false;
+        const toggle=()=>{
+          open=!open;
+          panel.classList.toggle('opacity-100', open);
+          panel.classList.toggle('opacity-0', !open);
+          panel.classList.toggle('pointer-events-auto', open);
+          panel.classList.toggle('pointer-events-none', !open);
+          btn.setAttribute('aria-expanded', String(open));
+        };
+        btn.addEventListener('click', toggle);
+        panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ if(open) toggle(); }));
+      })();
+    });
+  </script>
+
+  <script>
+    // Submissão do formulário de contato via Formspree (com fallback para mailto)
+    window.addEventListener('DOMContentLoaded', function(){
+      const form = document.getElementById('contact-form');
+      if(!form) return;
+      const btn = document.getElementById('contact-submit');
+      const fb = document.getElementById('contact-feedback');
+      const emailDestino = 'contato@rdalmeida.com.br'; // fallback mailto
+
+      function endpointAtivo(){
+        const epAttr = form.dataset.endpoint || form.getAttribute('action') || '';
+        return { url: epAttr, valido: epAttr && !/XXXXXXXX/i.test(epAttr) };
+      }
+
+      function show(msg, ok=true){
+        if(!fb) return;
+        fb.textContent = msg;
+        fb.classList.remove('hidden');
+        fb.classList.toggle('text-green-700', ok);
+        fb.classList.toggle('text-red-700', !ok);
+      }
+
+      function mailtoFallback(){
+        const nome = (document.getElementById('nome')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const msg = (document.getElementById('mensagem')?.value || '').trim();
+        const subject = encodeURIComponent('Novo contato – RDA Engenharia');
+        const body = encodeURIComponent(`Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${msg}`);
+        window.location.href = `mailto:${emailDestino}?subject=${subject}&body=${body}`;
+        show('Abrindo seu aplicativo de e-mail...', true);
+      }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        if(btn){ btn.disabled = true; btn.textContent = 'Enviando...'; }
+        if(fb){ fb.classList.add('hidden'); }
+
+        const { url, valido } = endpointAtivo();
+
+        try{
+          const data = new FormData(form);
+          data.append('_subject', 'Novo contato – RDA Engenharia');
+
+          if(valido){
+            const resp = await fetch(url, {
+              method:'POST',
+              headers:{ 'Accept':'application/json' },
+              body:data,
+              mode:'cors',
+              redirect:'follow'
+            });
+            if(resp.ok){
+              form.reset();
+              show('Mensagem enviada com sucesso. Retornaremos em até 1 dia útil.');
+            } else {
+              show('Não foi possível enviar agora. Abriremos seu e-mail para envio direto.', false);
+              mailtoFallback();
+            }
+          } else {
+            mailtoFallback();
+          }
+        } catch(err){
+          show('Falha de conexão. Abriremos seu e-mail para envio direto.', false);
+          mailtoFallback();
+        } finally {
+          if(btn){ btn.disabled = false; btn.textContent = 'Enviar'; }
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Carrossel: autoplay + dots
+    window.addEventListener('DOMContentLoaded', function(){
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      const root = document.getElementById('carousel');
+      if (!root || slides.length === 0 || dots.length === 0) return;
+
+      let idx = 0, timer;
+
+      function go(i){
+        slides.forEach((s, k) => s.style.opacity = (k === i ? '1' : '0'));
+        dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === i)));
+        idx = i;
+      }
+
+      function next(){ go((idx + 1) % slides.length); }
+      function play(){ stop(); timer = setInterval(next, 5000); }
+      function stop(){ if (timer) clearInterval(timer); }
+
+      dots.forEach((d, k) => d.addEventListener('click', () => { stop(); go(k); play(); }));
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', play);
+
+      go(0); play();
+    });
+  </script>
+</head>
+
+<body class="antialiased text-slate-800 bg-[var(--light)]">
+  <div class="relative">
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" aria-label="Abrir conversa direta no WhatsApp"
+       class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 h-14 w-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/70 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7" fill="currentColor" aria-hidden="true"><path d="M19.11 17.36c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.56-1.47-1.82-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.83-2.02-.22-.52-.45-.45-.61-.45h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.14.18 1.93 2.95 4.67 4.03.65.27 1.16.43 1.56.55.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.27.23-.63.23-1.16.16-1.27-.07-.11-.25-.18-.52-.32z"/><path d="M16.01 3.2C9.36 3.2 4 8.56 4 15.21c0 2.64.86 5.08 2.31 7.06L4.8 28.8l6.69-1.48c1.92 1.25 4.2 1.99 6.66 1.99 6.65 0 12.01-5.36 12.01-12.01S22.66 3.2 16.01 3.2zm0 21.67c-2.46 0-4.73-.9-6.49-2.38l-.46-.36-3.96.88.85-3.86-.3-.5c-1.06-1.68-1.67-3.66-1.67-5.75 0-5.9 4.8-10.7 10.69-10.7 5.9 0 10.69 4.8 10.69 10.7 0 5.9-4.8 10.7-10.69 10.7z"/></svg>
+    </a>
+
+    <!-- ===== Header ===== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-500 backdrop-blur-sm">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav class="flex h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-3" aria-label="RDA Engenharia – Início">
+            <img src="./assets/img/branding/logo-rda.png" alt="Logo RDA Engenharia" class="h-20 w-auto">
+          </a>
+
+          <!-- Menu Desktop -->
+          <ul class="hidden md:flex items-center gap-8 font-medium">
+            <li><a href="#home" class="nav-link hover:text-[var(--primary)]">Home</a></li>
+            <li><a href="#servicos" class="nav-link hover:text-[var(--primary)]">Serviços</a></li>
+            <li><a href="#blog" class="nav-link hover:text-[var(--primary)]">Blog</a></li>
+            <li><a href="#contato" class="nav-link hover:text-[var(--primary)]">Contato</a></li>
+          </ul>
+
+          <!-- Menu Mobile: botão -->
+          <button id="menu-btn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[var(--secondary)] hover:bg-[var(--primary)]/20 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+            <svg class="menu-icon h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu (overlay) -->
+      <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-x-0 top-24 mx-4 rounded-2xl bg-[var(--secondary)]/95 backdrop-blur shadow-lg">
+          <ul class="p-4 space-y-2">
+            <li><a href="#home" class="block rounded px-3 py-2 text-white hover:bg-[var(--primary)]/40">Home</a></li>
+            <li><a href="#servicos" class="block rounded px-3 py-2 text-white hover:bg-[var(--primary)]/40">Serviços</a></li>
+            <li><a href="#blog" class="block rounded px-3 py-2 text-white hover:bg-[var(--primary)]/40">Blog</a></li>
+            <li><a href="#contato" class="block rounded px-3 py-2 text-white hover:bg-[var(--primary)]/40">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero / Carrossel ===== -->
+    <section id="home" class="relative h-screen">
+      <div id="carousel" class="h-full w-full relative overflow-hidden">
+        <div class="carousel-track h-full w-full">
+          <!-- Slides: mantenha apenas o primeiro como opacity-100 -->
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop" alt="Engenharia – estrutura em aço" class="h-full w-full object-cover" />
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" alt="Canteiro de obras" class="h-full w-full object-cover" />
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="./assets/img/hero/hero-03.png" alt="Descrição da imagem 3" class="h-full w-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="./assets/img/hero/hero-04.webp" alt="Descrição da imagem 4" class="h-full w-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+        </div>
+
+        <!-- Gradiente -->
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/0"></div>
+
+        <!-- CTA sobreposto -->
+        <div class="absolute inset-0 flex items-center">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-white">
+            <div class="max-w-2xl">
+              <h1 class="text-3xl sm:text-5xl font-semibold leading-tight drop-shadow">Obras e reformas, vistorias técnicas e laudos de avaliação de imóveis Urbanos.</h1>
+              <p class="mt-4 text-white/90 drop-shadow">As melhores práticas de engenharia, com foco em organização e eficiência.</p>
+              <div class="mt-6 flex gap-3">
+                <a href="#contato" class="inline-flex items-center justify-center rounded-xl bg-[var(--primary)] px-5 py-3 font-semibold text-white hover:bg-[var(--primary)]/80">Fale com a nossa equipe</a>
+                <a href="#servicos" class="inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 font-semibold text-white ring-1 ring-inset ring-white/30 hover:bg-white/20">Ver serviços</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="absolute inset-x-0 bottom-6 flex items-center justify-center gap-2">
+          <button class="carousel-dot h-2.5 w-2.5 rounded-full bg-[var(--primary)]" aria-label="Ir ao slide 1" aria-selected="true"></button>
+          <button class="carousel-dot h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-[var(--primary)]" aria-label="Ir ao slide 2" aria-selected="false"></button>
+          <button class="carousel-dot h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-[var(--primary)]" aria-label="Ir ao slide 3" aria-selected="false"></button>
+          <button class="carousel-dot h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-[var(--primary)]" aria-label="Ir ao slide 4" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Serviços ===== -->
+    <section id="servicos" class="py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+          <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">Serviços</h2>
+          <p class="mt-2 text-slate-600">Avaliações, vistorias e consultoria com rigor técnico e conformidade normativa.</p>
+        </header>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+            <div class="h-10 w-10 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">A1</div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Avaliação de Imóveis</h3>
+            <p class="mt-1 text-slate-600">Laudos segundo ABNT NBR 14653-1 e 14653-2, com inferência estatística quando aplicável.</p>
+          </a>
+
+          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+            <div class="h-10 w-10 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">V1</div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Vistorias Técnicas</h3>
+            <p class="mt-1 text-slate-600">Recebimento de unidades novas, checklists, identificação de não conformidades e ART.</p>
+          </a>
+
+          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+            <div class="h-10 w-10 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">C1</div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Consultoria</h3>
+            <p class="mt-1 text-slate-600">Pareceres técnicos, análise de projetos e suporte a decisões para agentes financeiros e clientes finais.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Blog ===== -->
+    <section id="blog" class="py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+          <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">No Blog</h2>
+          <p class="mt-2 text-slate-600">Conteúdo técnico sobre avaliações, normas e mercado imobiliário.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="#" class="block">
+              <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Mesa com documentos técnicos"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Normas</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">ABNT NBR 14653: princípios para avaliação</h3>
+              </div>
+            </a>
+          </article>
+          <!-- repetir posts -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Callout ===== -->
+    <section class="py-16 bg-[var(--primary)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-white">
+        <div class="rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <h3 class="text-2xl font-semibold">Precisa de um laudo ou vistoria?</h3>
+            <p class="mt-2 text-white/80">Atendimento em São Paulo e região metropolitana. Retorno em até 1 dia útil.</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="#contato" class="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-semibold text-[var(--secondary)] hover:bg-slate-100">Falar com a equipe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contato ===== -->
+    <section id="contato" class="py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+          <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">Contato</h2>
+        </header>
+
+        <div class="grid grid-cols-1 gap-8">
+          <form id="contact-form" action="https://formspree.io/f/mblapded" method="POST" data-endpoint="https://formspree.io/f/mblapded" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="nome" class="block text-sm font-medium text-[var(--secondary)]">Nome</label>
+                <input id="nome" name="name" required type="text" class="mt-1 block w-full rounded-lg border-slate-300 focus:border-[var(--primary)] focus:ring-[var(--primary)]" placeholder="Seu nome" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-[var(--secondary)]">E-mail</label>
+                <input id="email" name="email" required type="email" class="mt-1 block w-full rounded-lg border-slate-300 focus:border-[var(--primary)] focus:ring-[var(--primary)]" placeholder="voce@exemplo.com" />
+              </div>
+            </div>
+            <div class="mt-4">
+              <label for="mensagem" class="block text-sm font-medium text-[var(--secondary)]">Mensagem</label>
+              <textarea id="mensagem" name="message" required rows="5" class="mt-1 block w-full rounded-lg border-slate-300 focus:border-[var(--primary)] focus:ring-[var(--primary)]" placeholder="Descreva sua necessidade"></textarea>
+            </div>
+            <div class="mt-6">
+              <button id="contact-submit" type="submit" class="inline-flex items-center justify-center rounded-xl bg-[var(--primary)] px-5 py-3 font-semibold text-white hover:bg-[var(--primary)]/80">Enviar</button>
+              <p id="contact-feedback" class="mt-3 text-sm hidden"></p>
+              <input type="text" name="_gotcha" class="hidden" style="display:none!important" tabindex="-1" autocomplete="off">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="border-t border-slate-200 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <img src="./assets/img/branding/logo-rda.png" alt="Logo RDA Engenharia" class="h-24 w-auto">
+            <p class="mt-3 text-slate-600 max-w-md">Avaliações de imóveis urbanos, vistorias e consultoria. Laudos técnicos com conformidade ABNT e foco em qualidade.</p>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-[var(--secondary)]">Navegação</h4>
+            <ul class="mt-3 space-y-2 text-slate-600">
+              <li><a href="#home" class="hover:text-[var(--primary)]">Home</a></li>
+              <li><a href="#servicos" class="hover:text-[var(--primary)]">Serviços</a></li>
+              <li><a href="#blog" class="hover:text-[var(--primary)]">Blog</a></li>
+              <li><a href="#contato" class="hover:text-[var(--primary)]">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-[var(--secondary)]">Contato</h4>
+            <ul class="mt-3 space-y-2 text-slate-600">
+              <li><a href="mailto:contato@rdalmeida.com.br" class="hover:text-[var(--primary)]">contato@rdalmeida.com.br</a></li>
+              <li>São Paulo • SP</li>
+            </ul>
+            <div class="mt-4 text-xs text-slate-500">© <span id="year"></span> RD Almeida Engenharia. Todos os direitos reservados.</div>
+          </div>
+        </div>
+      </div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </div>
+</body>
+</html>
