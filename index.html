@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- Versão salva: v2025-09-06-01 | Header sólido ao sair do carrossel; botão WhatsApp em cápsula (ícone com borda branca, verde #25D366, telefone branco) -->
+<!-- Versão salva: v2025-09-06-02 | Botão WhatsApp flutuante no formato cápsula com ícone em balão verde (borda branca) e texto “Fale com a nossa equipe!”; header inicia 40% e fica sólido ao fim do carrossel -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -235,7 +235,7 @@ window.addEventListener('DOMContentLoaded', function(){
           <ul class="hidden md:flex items-center gap-8 font-medium">
             <li><a href="#home" class="nav-link hover:text-[var(--primary)]">Home</a></li>
             <li><a href="#servicos" class="nav-link hover:text-[var(--primary)]">Serviços</a></li>
-            <li><a href="#blog" class="nav-link hover:text-[var(--primary)]">Blog</a></li>
+            <li><a href="./blog/indexblog.html" class="nav-link hover:text-[var(--primary)]">Blog</a></li>
             <li><a href="#contato" class="nav-link hover:text-[var(--primary)]">Contato</a></li>
           </ul>
 
@@ -334,19 +334,19 @@ window.addEventListener('DOMContentLoaded', function(){
         </header>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+          <a href="./blog/planejamento-de-reforma.html" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
             <div class="h-10 w-100 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">REFORMA</div>
-            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Execução de Obra</h3>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Entrega de Chaves</h3>
             <p class="mt-1 text-slate-600">reforma com planejamento técnico, controle de qualidade e acompanhamento em todas as etapas, assegurando que cada detalhe esteja em conformidade com as normas vigentes e com as expectativas do cliente. Atuamos desde pequenas adequações até reformas completas, sempre priorizando prazos, custos e a excelência na execução, para entregar ambientes funcionais, modernos e de alto padrão.</p>
           </a>
 
-          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+          <a href="./blog/vistoria-entrega-de-chaves.html" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
             <div class="h-10 w-100 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">VISTORIA TÉCNICA</div>
-            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Entrega de Chaves</h3>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Execução de obra</h3>
             <p class="mt-1 text-slate-600">vistorias técnicas em imóveis novos no momento da entrega das chaves, garantindo que a obra esteja em conformidade com os padrões de qualidade, normas técnicas e especificações contratadas. Nossos relatórios apontam eventuais não conformidades, defeitos aparentes ou acabamentos inadequados, oferecendo ao proprietário segurança e respaldo técnico para solicitar os devidos ajustes junto à construtora.</p>
           </a>
 
-          <a href="#" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
+          <a href="./blog/abnt-nbr-14653.html" class="group rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow bg-white">
             <div class="h-10 w-100 rounded-lg bg-[var(--primary)] text-white grid place-items-center font-semibold">AVALIAÇÃO DE IMÓVEIS</div>
             <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Laudos e assistência jurídica</h3>
             <p class="mt-1 text-slate-600">laudos de avaliação de imóveis urbanos conforme as normas ABNT NBR 14653-1 e 14653-2, garantindo precisão e credibilidade. Nossos laudos asseguram o valor de mercado justo do imóvel em situações como compra e venda, financiamentos, inventários, divórcios e desapropriações.</p>
@@ -356,68 +356,57 @@ window.addEventListener('DOMContentLoaded', function(){
     </section>
 
     <!-- ===== Blog ===== -->
-<section id="blog" class="py-16 bg-[var(--light)]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <header class="mb-10 flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">No Blog</h2>
-        <p class="mt-2 text-slate-600">Conteúdo técnico sobre avaliações, normas e mercado imobiliário.</p>
+    <section id="blog" class="py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10 flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">No Blog</h2>
+            <p class="mt-2 text-slate-600">Conteúdo técnico sobre avaliações, normas e mercado imobiliário.</p>
+          </div>
+          <a href="blog/index.html" class="hidden sm:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-white border border-slate-200 hover:bg-slate-50">Ver todos</a>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Post 1 -->
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="blog/abnt-nbr-14653.html" class="block">
+              <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop" alt="Mesa com documentos técnicos"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Normas</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">ABNT NBR 14653: princípios para avaliação</h3>
+              </div>
+            </a>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="blog/vistoria-entrega-de-chaves.html" class="block">
+              <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop" alt="Entrega de chaves e checklist de vistoria"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Vistoria</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">Vistoria na entrega de chaves: o que verificar</h3>
+              </div>
+            </a>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="blog/planejamento-de-reforma.html" class="block">
+              <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1581092580340-6cd3b5d5c045?q=80&w=1600&auto=format&fit=crop" alt="Planejamento de reforma residencial"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Reforma</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">Planejamento de reforma: prazos, custos e qualidade</h3>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <!-- Link ver todos (mobile) -->
+        <div class="mt-8 sm:hidden">
+          <a href="blog/index.html" class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-white border border-slate-200 hover:bg-slate-50">Ver todos</a>
+        </div>
       </div>
-      <a href="blog/index.html"
-         class="hidden sm:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-white border border-slate-200 hover:bg-slate-50">Ver todos</a>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Post 1 -->
-      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
-        <a href="blog/abnt-nbr-14653.html" class="block">
-          <img class="h-40 w-full object-cover"
-               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop"
-               alt="Mesa com documentos técnicos"/>
-          <div class="p-5">
-            <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Normas</span>
-            <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">ABNT NBR 14653: princípios para avaliação</h3>
-          </div>
-        </a>
-      </article>
-
-      <!-- Post 2 (Vistoria) -->
-      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
-        <a href="blog/vistoria-entrega-de-chaves.html" class="block">
-          <img class="h-40 w-full object-cover"
-               src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop"
-               alt="Entrega de chaves e checklist de vistoria"/>
-          <div class="p-5">
-            <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Vistoria</span>
-            <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">
-              Recebimento de chaves: por que contratar um especialista?
-            </h3>
-          </div>
-        </a>
-      </article>
-
-      <!-- Post 3 -->
-      <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
-        <a href="blog/planejamento-de-reforma.html" class="block">
-          <img class="h-40 w-full object-cover"
-               src="https://images.unsplash.com/photo-1581092580340-6cd3b5d5c045?q=80&w=1600&auto=format&fit=crop"
-               alt="Planejamento de reforma residencial"/>
-          <div class="p-5">
-            <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Reforma</span>
-            <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">Planejamento de reforma: prazos, custos e qualidade</h3>
-          </div>
-        </a>
-      </article>
-    </div>
-
-    <!-- Link ver todos (mobile) -->
-    <div class="mt-8 sm:hidden">
-      <a href="blog/index.html"
-         class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-white border border-slate-200 hover:bg-slate-50">Ver todos</a>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- ===== Callout ===== -->
     <section class="py-16 bg-[var(--primary)]">
