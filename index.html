@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- Versão salva: v2025-09-04-01 | Header branco→transparente; fundo #D4D4D4; logo maior; e-mail só no rodapé; WhatsApp apenas via botão flutuante (Web: 5511968262690); formulário via Formspree (ID: mblapded); instruções p/ adicionar imagens no carrossel e autoplay ativo -->
+<!-- Versão salva: v2025-09-06-01 | Header sólido ao sair do carrossel; botão WhatsApp em cápsula (ícone com borda branca, verde #25D366, telefone branco) -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -211,9 +211,16 @@ window.addEventListener('DOMContentLoaded', function(){
 <body class="antialiased text-slate-800 bg-[var(--light)]">
   <div class="relative">
     <!-- Botão flutuante WhatsApp -->
-    <a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" aria-label="Abrir conversa direta no WhatsApp"
-       class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 h-14 w-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/70 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7" fill="currentColor" aria-hidden="true"><path d="M19.11 17.36c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.56-1.47-1.82-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.83-2.02-.22-.52-.45-.45-.61-.45h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.14.18 1.93 2.95 4.67 4.03.65.27 1.16.43 1.56.55.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.27.23-.63.23-1.16.16-1.27-.07-.11-.25-.18-.52-.32z"/><path d="M16.01 3.2C9.36 3.2 4 8.56 4 15.21c0 2.64.86 5.08 2.31 7.06L4.8 28.8l6.69-1.48c1.92 1.25 4.2 1.99 6.66 1.99 6.65 0 12.01-5.36 12.01-12.01S22.66 3.2 16.01 3.2zm0 21.67c-2.46 0-4.73-.9-6.49-2.38l-.46-.36-3.96.88.85-3.86-.3-.5c-1.06-1.68-1.67-3.66-1.67-5.75 0-5.9 4.8-10.7 10.69-10.7 5.9 0 10.69 4.8 10.69 10.7 0 5.9-4.8 10.7-10.69 10.7z"/></svg>
+    <a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl pl-2 pr-4 py-2">
+      <!-- Ícone WhatsApp estilo balão -->
+      <span class="flex items-center justify-center h 12 w-12 rounded-full bg-[#25D366] ring-0 ring-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-15 w-15 fill-white">
+          <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+        </svg>
+      </span>
+      <!-- Texto cápsula -->
+      <span class="ml-2 font-medium text-sm md:text-base">Fale com a nossa equipe!</span>
     </a>
     <!-- ===== Header ===== -->
     <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-500 backdrop-blur-sm">
