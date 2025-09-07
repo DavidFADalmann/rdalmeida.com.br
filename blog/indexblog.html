@@ -3,28 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog • RDA Engenharia</title>
+  <title>Publicações • RDA Engenharia</title>
   <meta name="description" content="Artigos técnicos sobre avaliações de imóveis, vistorias, ABNT e gestão da qualidade em obras." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
+
   <style>
-    :root{ --primary:#8B0000; --secondary:#444444; --light:#D4D4D4; --header-solid:rgba(170,170,170,.95);} 
+    /* Reset de margem e preenchimento para garantir que a página comece no topo */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%; /* Importante para que a imagem possa ocupar 100% da altura se necessário */
+    }
+    
+    :root{ --primary:#8B0000; --secondary:#444444; --light:#D4D4D4; --header-solid:rgba(300,300,300,.4);}
     body{ font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-    header.site{ background:var(--header-solid); backdrop-filter:saturate(180%) blur(8px);} 
+    /* Estilo do cabeçalho agora com position: fixed para garantir que ele esteja sempre no topo */
+    header.site{
+      background:var(--header-solid);
+      backdrop-filter:saturate(180%) blur(8px);
+      position: fixed; /* Mudei de sticky para fixed */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50; /* Mantenha um z-index alto */
+    }
     header.site a{ color:#fff; }
+
+    /* Estilo da seção da imagem Hero para iniciar no topo absoluto e ir para trás */
+    .hero-section {
+        position: absolute; /* Mudei para absolute */
+        top: 0; /* Inicia no topo absoluto da tela */
+        left: 0;
+        width: 100%;
+        z-index: -10; /* Garante que ela fique por trás do cabeçalho */
+        /* height: 100vh; Adicione se quiser que a imagem ocupe 100% da altura da viewport */
+    }
   </style>
 </head>
 <body class="antialiased text-slate-800 bg-[var(--light)]">
-  <!-- Salvar como: /blog/indexblog.html -->
-  <header class="site sticky top-0 z-50">
+
+  <header class="site">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="flex h-20 items-center justify-between" aria-label="Navegação principal">
+      <nav class="flex h-24 items-center justify-between" aria-label="Navegação principal">
         <a href="../index.html" class="flex items-center gap-3" aria-label="Voltar para a Home">
-          <img src="../assets/img/branding/logo-rda.png" alt="Logo RDA" class="h-14 w-auto">
+          <img src="../assets/img/branding/logo-rda.png" alt="Logo RDA" class="h-20 w-auto">
         </a>
-        <!-- Regra 2: apenas HOME no cabeçalho do blog -->
         <ul class="hidden md:flex items-center gap-8 font-medium">
           <li><a href="../index.html" class="hover:text-white/80">Home</a></li>
         </ul>
@@ -32,18 +59,20 @@
     </div>
   </header>
 
-  <section class="bg-gradient-to-b from-black/40 to-black/10 relative overflow-hidden">
+
+  <section class="relative overflow-hidden  pt-20 md:pt-20 "bg-gradient-to-b from-black/40 to-black/20">
     <div class="absolute inset-0 -z-10">
-      <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop" alt="Cantoneiras e projeto" class="h-full w-full object-cover opacity-60"/>
+      <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop" alt="Relatórios e normas técnicas" class="h-full w-full object-cover opacity-50"/>
+
+
     </div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white">
-      <nav class="text-white/80 text-sm"><a href="../index.html" class="hover:text-white">Home</a> <span class="mx-2">/</span> Blog</nav>
-      <h1 class="mt-3 text-3xl md:text-5xl font-semibold leading-tight">Blog técnico</h1>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white relative z-10"> <nav class="text-white/80 text-sm"><a href="../index.html" class="hover:text-white">Home</a> <span class="mx-2">/</span> Publicações</nav>
+      <h1 class="mt-3 text-3xl md:text-5xl font-semibold leading-tight">Publicações técnicas</h1>
       <p class="mt-2 max-w-3xl text-white/90">Análises sobre avaliação de imóveis, vistorias de recebimento, desempenho (NBR 15575) e melhores práticas em engenharia.</p>
     </div>
   </section>
 
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" style="padding-top: 40px;">
     <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <article class="post-card rounded-2xl overflow-hidden border border-slate-200 bg-white">
         <a href="./vistoria-entrega-de-chaves.html" class="block">
@@ -80,9 +109,9 @@
     </div>
   </main>
 
-  <!-- Botão flutuante padrão do site -->
+
   <a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
-     class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl pl-2 pr-4 py-2">
+      class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl pl-0 pr-4 py-0">
     
 
 <span class="flex items-center justify-center h-12 w-12 rounded-full bg-[#25D366] ring-0 ring-white">
