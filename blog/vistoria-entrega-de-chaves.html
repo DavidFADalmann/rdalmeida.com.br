@@ -3,79 +3,160 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recebimento de chaves: por que contratar um especialista? • RDA Engenharia</title>
-  <meta name="description" content="Entenda por que a vistoria de recebimento realizada por engenheiro civil protege seu investimento e sua segurança. Normas ABNT, garantias legais e passo a passo." />
+  <title>Importância do Engenheiro — Vistoria de Entrega de Chaves</title>
+  <meta name="description" content="Entenda por que ter um engenheiro na vistoria de entrega de chaves traz segurança, documentação robusta e economia a longo prazo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --primary:#8B0000; --secondary:#444444; --light:#D4D4D4; --header-solid:rgba(170,170,170,.95); }
+    /* RESET BÁSICO E CONFIGURAÇÕES GERAIS */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%; /* Importante para que a imagem possa usar alturas relativas */
+    }
+    html,body{ scroll-behavior:smooth; }
     body{ font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-    .prose-custom h2{ @apply text-2xl md:text-3xl font-semibold text-[var(--secondary)] mt-10; }
-    .prose-custom h3{ @apply text-xl md:text-2xl font-semibold text-[var(--secondary)] mt-8; }
-    .prose-custom p { @apply leading-7 text-slate-800; }
-    .prose-custom ul{ @apply list-disc pl-5 space-y-1; }
-    .prose-custom ol{ @apply list-decimal pl-5 space-y-1; }
-    .prose-custom blockquote{ @apply border-l-4 border-[var(--primary)] pl-4 italic text-slate-700 bg-white/60 rounded-md; }
-    header.site { background: var(--header-solid); backdrop-filter: saturate(180%) blur(8px); }
-    header.site a{ color: #fff; }
+
+    /* VARIÁVEIS DE CORES */
+    :root{ --primary:#0f172a; --accent:#1d4ed8; --muted:#e5e7eb; --brand:#0ea5e9; --header-solid:rgba(200,200,200,.60); }
+
+    /* ESTILO DO CABEÇALHO */
+    header.site{
+      background:linear-gradient(to top, var(--header-solid), rgba(100,100,100,.4));
+      backdrop-filter:saturate(160%) blur(8px);
+      position: fixed; /* Fixa o cabeçalho no topo da viewport */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50; /* Garante que o cabeçalho fique por cima */
+    }
+    header.site a{ color:#fff; }
+
+    /* ESTILO DA IMAGEM DE FUNDO DO HERO */
+    .hero-background-image {
+        position: absolute; /* Posição absoluta em relação ao body/viewport */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Ajuste a altura conforme necessário, 100% ou um valor fixo */
+        z-index: -10; /* Envia a imagem para trás do cabeçalho e do conteúdo do hero */
+    }
+    /* Certifica que o conteúdo do hero (texto) esteja acima da imagem de fundo */
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        /* Adicione padding-top aqui para afastar o conteúdo do cabeçalho fixo */
+        /* A altura do seu header é h-24 (96px), então vamos adicionar um padding */
+        padding-top: calc(theme('spacing.24') + theme('spacing.16')); /* Altura do header (h-24 = 96px) + py-16 (64px) = 160px */
+    }
+
+
+    /* ESTILOS DE PROSA (CONTEÚDO DO ARTIGO) */
+    .prose-custom h2{ font-size:clamp(1.25rem,2vw,1.875rem); font-weight:600; color:#0f172a; margin-top:2.25rem; }
+    .prose-custom h3{ font-size:clamp(1.125rem,1.6vw,1.5rem); font-weight:600; color:#0f172a; margin-top:2rem; }
+    .prose-custom p{ line-height:1.8; color:#334155; }
+    .prose-custom ul,.prose-custom ol{ margin-left:1.25rem; }
+    figure{ margin:1.5rem 0; }
+    figcaption{ font-size:.9rem; color:#475569; margin-top:.5rem; }
+    blockquote{ border-left:4px solid #0ea5e9; padding-left:1rem; font-style:italic; color:#334155; background:#f0f9ff; border-radius:.5rem; }
   </style>
 </head>
-<body class="antialiased bg-[var(--light)] text-slate-800">
-  <header class="site sticky top-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="flex h-20 items-center justify-between" aria-label="Navegação principal">
+<body class="antialiased text-slate-800 bg-white">
+  <header class="site"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex h-24 md:h-24 items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3" aria-label="Voltar para a Home">
-          <img src="../assets/img/branding/logo-rda.png" alt="Logo RDA" class="h-14 w-auto">
+          <img src="../assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-10 md:h-20 w-auto">
+          <span class="sr-only">RD Almeida Engenharia</span>
         </a>
         <ul class="hidden md:flex items-center gap-8 font-medium">
           <li><a href="../index.html" class="hover:text-white/80">Home</a></li>
-          <li><a href="indexblog.html" class="hover:text-white/80">Blog</a></li>
+          <li><a href="./indexblog.html" class="hover:text-white/80">Publicações</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <section class="relative overflow-hidden bg-gradient-to-b from-black/40 to-black/20">
-    <div class="absolute inset-0 -z-10">
-      <img src="https://images.pexels.com/photos/8292771/pexels-photo-8292771.jpeg" alt="Vistoria técnica em apartamento novo" class="h-full w-full object-cover opacity-60"/>
+
+  <section class="relative overflow-hidden pt-24 md:pt-24"> <div class="absolute inset-0 hero-background-image"> <img src="./img/imagem01.png" alt="Equipe realizando vistoria de entrega de chaves" class="h-full w-full object-cover">
+      <div class="absolute inset-0 bg-black/50"></div>
     </div>
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-white">
-      <nav class="text-white/80 text-sm"><a href="../index.html" class="hover:text-white">Home</a> <span class="mx-2">/</span> <a href="./index.html" class="hover:text-white">Blog</a> <span class="mx-2">/</span> Reportagem</nav>
-      <h1 class="mt-3 text-3xl md:text-5xl font-semibold leading-tight">Recebimento de chaves: por que contratar um especialista?</h1>
-      <p class="mt-3 text-white/90 max-w-3xl">A vistoria técnica de entrega protege seu patrimônio, antecipa correções e dá base objetiva para dialogar com a construtora, em conformidade com normas ABNT e garantias legais.</p>
-      <div class="mt-4 text-white/80 text-sm">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 6–8 min</div>
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-white relative z-10"> <nav class="text-white/80 text-sm"><a href="../index.html" class="hover:text-white">Home</a> <span class="mx-2">/</span> <a href="./indexblog.html" class="hover:text-white">Publicações</a> <span class="mx-2">/</span> Reportagem</nav>
+      <h1 class="mt-3 text-3xl md:text-5xl font-semibold leading-tight">importância do engenheiro na vistoria de entrega de chaves</h1>
+      <p class="mt-3 text-white/90 max-w-3xl">Conheça os benefícios de ter um engenheiro ao seu lado nesse momento decisivo — mais segurança, conformidade e economia para o seu patrimônio.</p>
+      <div class="mt-4 text-white/80 text-sm">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 5–7 min</div>
     </div>
   </section>
-  <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-    <article class="prose-custom space-y-5">
-      <p><strong>Resumo.</strong> O recebimento de um imóvel novo é um marco importante — e também o momento mais estratégico para identificar não conformidades de acabamento, funcionamento e desempenho. A presença de um <strong>engenheiro civil</strong> garante método, instrumentos adequados, referência às normas e um <em>relatório técnico</em> com evidências que facilitam o atendimento pela construtora.</p>
-      <h2>O que é a vistoria de recebimento</h2>
-      <p>Trata-se de uma inspeção técnica detalhada realizada no ato da entrega ou pré-entrega das chaves, com checagem de itens aparentes e funcionais do imóvel, conferência documental e orientação ao proprietário.</p>
-      <h3>Principais itens verificados</h3>
-      <ul><li>Vedações e esquadrias; Revestimentos; Hidrossanitário; Elétrica; Desempenho; Segurança de uso; Documentação.</li></ul>
-      <h2>Por que um engenheiro civil faz diferença</h2>
-      <ol><li>Metodologia e rastreabilidade.</li><li>Base normativa.</li><li>Relatório com ART.</li><li>Interlocução técnica.</li></ol>
-      <h2>Normas aplicáveis</h2>
-      <ul><li>NBR 15575; NBR 14037; NBR 5674; NBR 16747; NBR 16280; NBR 5410; NBR 5626/8160; NBR 9050.</li></ul>
+
+  <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12"> <article class="prose-custom space-y-5">
+
+      <h2>Por que a vistoria de entrega é essencial</h2>
+      <p>Ao receber as chaves do seu novo lar, um misto de alegria e expectativa toma conta. No entanto, antes de se instalar completamente, um passo crucial garante a tranquilidade e a segurança do seu investimento: a <strong>vistoria de entrega de chaves</strong>.</p>
+      <p>Essa <em>análise visual detalhada</em> é mais do que um simples protocolo; é a sua oportunidade de documentar o estado real do imóvel no momento da entrega. Ao verificar minuciosamente cada cômodo, parede, piso, teto, portas, janelas e instalações aparentes, você garante que o que está sendo entregue corresponde ao que foi acordado no contrato, na planta e no <strong>memorial descritivo</strong>.</p>
+      <p>A importância da vistoria reside em <strong>prevenir futuras dores de cabeça</strong>. Ao identificar e registrar quaisquer desgastes, defeitos ou inconformidades antes de assinar o recebimento, você protege seus direitos como consumidor e evita que esses problemas sejam imputados a você posteriormente.</p>
+      <p>Em suma, a vistoria de entrega de chaves é um <strong>ato de responsabilidade e prevenção</strong>, essencial para que você possa desfrutar do seu novo espaço com a paz de espírito que ele merece.</p>
+
+      <figure>
+        <img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="w-full h-64 object-cover rounded-lg" />
+        <figcaption><strong>Figura 1 – Trincas e fissuras:</strong> inspeções e registros fotográficos ajudam a qualificar a manifestação e orientar a correção pela construtora.</figcaption>
+      </figure>
+
+      <h2>Por que contratar um engenheiro para a vistoria</h2>
+      <p>A vistoria de um apartamento novo, embora essencialmente visual, <strong>ganha uma dimensão de segurança e confiança quando conduzida por um engenheiro</strong>. A expertise técnica vai além do que o olhar leigo consegue perceber, garantindo que você receba um imóvel realmente em conformidade e seguro.</p>
+
+      <h3>Conhecimento técnico aprofundado</h3>
+      <p>Um engenheiro possui base para identificar <strong>problemas estruturais</strong>, falhas em instalações elétricas e hidráulicas, não conformidades de acabamento que podem indicar questões mais sérias e <strong>irregularidades frente às normas técnicas</strong> e ao memorial descritivo.</p>
+
+      <h3>Identificação de defeitos ocultos</h3>
+      <p>A análise conduzida por profissional sabe onde e como procurar por <strong>infiltrações</strong>, fissuras em pontos não aparentes, falhas de isolamento térmico ou acústico e outros vícios construtivos que comprometem conforto e durabilidade.</p>
+
+      <h3>Verificação de conformidade com normas</h3>
+      <p>O engenheiro atesta se a construção e os acabamentos estão de acordo com as normas vigentes (ex.: <strong>ABNT NBR 15575 — Desempenho</strong>) e com o memorial descritivo, assegurando <strong>qualidade e segurança</strong>.</p>
+
+      <h3>Documentação robusta e confiável</h3>
+      <p>Um <strong>laudo de vistoria</strong> elaborado por engenheiro tem peso técnico e jurídico superior. Ele consolida evidências (fotos, medições, testes) e fundamenta eventuais solicitações de correção junto à construtora. Quando aplicável, a <strong>ART — Anotação de Responsabilidade Técnica</strong> dá ainda mais formalidade às tratativas.</p>
+
+      <h3>Segurança, tranquilidade e economia</h3>
+      <p>Ter um profissional qualificado inspecionando seu futuro lar traz <strong>tranquilidade</strong> e evita gastos inesperados. A <strong>identificação precoce</strong> de problemas reduz retrabalhos e custos corretivos após a mudança — um investimento que se paga no médio e longo prazo.</p>
+
+      <figure>
+        <img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="w-full h-64 object-cover rounded-lg" />
+        <figcaption><strong>Figura 2 – Vazamentos:</strong> testes de estanqueidade e inspeção de conexões evitam infiltrações e danos a revestimentos e mobiliário.</figcaption>
+      </figure>
+
       <h2>Conclusão</h2>
-      <p>Contratar engenheiro para a vistoria protege tecnicamente seu patrimônio.</p>
+      <p>Contratar um <strong>engenheiro para a vistoria de entrega</strong> não é um custo extra, mas um <strong>investimento na qualidade, segurança e valor</strong> do seu patrimônio. Você recebe um imóvel em conformidade com o contratado — e, se houver pendências, elas estarão <strong>formalmente documentadas</strong> para correção.</p>
+
       <div class="mt-10 flex flex-wrap items-center gap-3">
-        <a href="../index.html#contato" class="inline-flex items-center rounded-xl bg-[var(--primary)] px-5 py-3 font-semibold text-white hover:bg-[var(--primary)]/85">Falar com nossa equipe</a>
-        <a href="./index.html" class="inline-flex items-center rounded-xl bg-white px-5 py-3 font-semibold text-[var(--secondary)] border border-slate-200 hover:bg-slate-50">Voltar ao Blog</a>
+        <a href="../index.html#contato" class="inline-flex items-center rounded-xl bg-[var(--accent)] px-5 py-3 font-semibold text-white hover:bg-[var(--accent)]/90">Solicitar vistoria técnica</a>
+        <a href="./indexblog.html" class="inline-flex items-center rounded-xl bg-white px-5 py-3 font-semibold text-slate-700 border border-slate-200 hover:bg-slate-50">Voltar para Publicações</a>
       </div>
+
+      <hr class="my-12 border-slate-200">
+      <section aria-labelledby="refs" class="text-sm text-slate-700">
+        <h3 id="refs" class="text-base font-semibold text-slate-800">Referências (ABNT simplificado)</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>ABNT. <strong>NBR 15575 — Edificações habitacionais: Desempenho</strong>. Rio de Janeiro: ABNT, s.d.</li>
+          <li>ABNT. <strong>NBR 14037 — Manual de operação, uso e manutenção das edificações</strong>. Rio de Janeiro: ABNT, s.d.</li>
+          <li>ABNT. <strong>NBR 5671 — Condomínios</strong>. Rio de Janeiro: ABNT, s.d.</li>
+        </ul>
+      </section>
     </article>
   </main>
-  <a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20vistoria%20de%20recebimento." target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
-     class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl pl-2 pr-4 py-2">
-    <span class="flex items-center justify-center h-9 w-9 rounded-full bg-[#25D366] ring-2 ring-white">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-5 w-5 fill-white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6 .17-.79 .17-.17 .39-.46 .58-.69 .2-.23 .26-.39 .39-.65 .13-.26 .07-.49 -.03-.69 -.1-.2 -.89-2.14 -1.22-2.93 -.32-.79 -.65-.68 -.89-.69 h-.76 c-.26 0 -.69 .1 -1.05 .49 -.36 .39 -1.38 1.35 -1.38 3.29 s1.42 3.82 1.62 4.08 c.2 .26 2.8 4.26 6.77 5.97 .95 .41 1.69 .66 2.27 .85 .95 .3 1.82 .26 2.51 .16 .77 -.12 2.3 -.94 2.62 -1.85 .32 -.91 .32 -1.69 .23 -1.85 -.1 -.16 -.36 -.26 -.76 -.46 z"/></svg>
-    </span>
-    <span class="ml-2 font-medium text-sm md:text-base">Fale com a nossa equipe!</span>
-  </a>
-  <footer class="mt-16 border-t border-slate-200 bg-[var(--light)]">
+
+<a href="https://web.whatsapp.com/send?phone=5511968262690&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl pl-0 pr-4 py-0">
+      <span class="flex items-center justify-center h-12 w-12 rounded-full bg-[#25D366] ring-0 ring-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-15 w-15 fill-white">
+          <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+        </svg>
+      </span>
+      <span class="ml-2 font-medium text-sm md:text-base">Fale com a nossa equipe!</span>
+    </a>
+
+  <footer class="mt-16 border-t border-slate-200 bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">
-      © <span id="year"></span> RD Almeida Engenharia — Conteúdo técnico. <a href="../index.html#contato" class="underline hover:text-[var(--primary)]">Contato</a>
+      © <span id="year"></span> RD Almeida Engenharia — Conteúdo técnico. <a href="../index.html#contato" class="underline hover:text-[var(--accent)]">Contato</a>
     </div>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
