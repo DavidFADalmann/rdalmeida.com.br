@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RDA Engenharia • Avaliação e Vistorias</title>
+  <title>RD Almeida Engenharia • Avaliação e Vistorias</title>
   <meta name="description" content="RD Almeida Engenharia – Avaliações de imóveis urbanos, vistorias técnicas e consultoria em engenharia." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function(){
       const nome = (document.getElementById('nome')?.value || '').trim();
       const email = (document.getElementById('email')?.value || '').trim();
       const msg = (document.getElementById('mensagem')?.value || '').trim();
-      const subject = encodeURIComponent('Novo contato – RDA Engenharia');
+      const subject = encodeURIComponent('Novo contato – RD Almeida Engenharia');
       const body = encodeURIComponent(`Nome: ${nome}
 E-mail: ${email}
 
@@ -142,7 +142,7 @@ ${msg}`);
 
       try{
         const data = new FormData(form);
-        data.append('_subject', 'Novo contato – RDA Engenharia');
+        data.append('_subject', 'Novo contato – RD Almeida Engenharia');
 
         if(valido){
           const resp = await fetch(url, {
@@ -227,8 +227,8 @@ window.addEventListener('DOMContentLoaded', function(){
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav class="flex h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
           <!-- Logo -->
-          <a href="#home" class="flex items-center gap-3" aria-label="RDA Engenharia – Início">
-            <img src="./assets/img/branding/logo-rda.png" alt="Logo RDA Engenharia" class="h-20 w-auto" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo-02.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo 02.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
+          <a href="#home" class="flex items-center gap-3" aria-label="RD Almeida Engenharia – Início">
+            <img src="./assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-20 w-auto" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo-02.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo 02.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
           </a>
 
           <!-- Menu Desktop -->
@@ -463,7 +463,7 @@ window.addEventListener('DOMContentLoaded', function(){
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-2">
-            <img src="./assets/img/branding/logo-rda.png" alt="Logo RDA Engenharia" class="h-24 w-auto" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo-02.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo 02.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
+            <img src="./assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-24 w-auto" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo-02.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo 02.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
             <p class="mt-3 text-slate-600 max-w-md">Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos.Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto..</p>
           </div>
           <div>
