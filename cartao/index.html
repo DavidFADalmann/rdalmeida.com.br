@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1f1f1f">
 <title>Cartão de Visita | David F. Almeida - RD Almeida Engenharia</title>
 <meta name="description" content="Cartão de visita profissional de David F. Almeida, Engenheiro Civil e Responsável Técnico da RD Almeida Engenharia.">
 <style>
 :root{--wine:#860000;--wine-dark:#650000;--graphite:#292929;--dark:#171717;--panel:#202020;--paper:#f5f4f1;--muted:#b8b8b8;--line:rgba(255,255,255,.10)}
-*{box-sizing:border-box}html{background:var(--dark)}body{margin:0;width:100%;min-width:100%;min-height:100vh;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--paper);background:var(--dark);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}html{background:var(--dark);width:100%;overflow-x:hidden}body{margin:0;width:100%;min-width:100%;min-height:100vh;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--paper);background:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .page{width:100%;max-width:none;margin:0;min-height:100dvh;background:var(--panel);box-shadow:none}
 .hero{position:relative;padding:34px 24px 29px;text-align:center;background:linear-gradient(155deg,#353535 0%,#282828 60%,#222 100%);border-bottom:1px solid var(--line)}
 .hero:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--wine)}
@@ -73,20 +73,4 @@ h1{margin:0;font-size:clamp(30px,8vw,39px);line-height:1.05;font-weight:300;lett
 </section>
 </main>
 
-<script>
-(function(){
-  function fixDesktopViewportOnPhone(){
-    var sw = Math.min(screen.width || 9999, screen.height || 9999);
-    var iw = window.innerWidth || document.documentElement.clientWidth;
-    if (sw <= 600 && iw > 700) {
-      var ratio = iw / sw;
-      document.documentElement.style.width = (100 / ratio) + '%';
-      document.body.style.width = '100%';
-      document.documentElement.style.zoom = ratio;
-    }
-  }
-  fixDesktopViewportOnPhone();
-  window.addEventListener('orientationchange', function(){ setTimeout(fixDesktopViewportOnPhone, 150); });
-})();
-</script>
 </body></html>
