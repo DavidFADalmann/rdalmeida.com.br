@@ -20,6 +20,28 @@ h1{margin:0;font-size:clamp(30px,8vw,39px);line-height:1.05;font-weight:300;lett
 .details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:25px}.detail{display:flex;align-items:center;gap:13px;min-height:53px;padding:5px 3px;color:var(--paper);text-decoration:none}.detail+.detail{border-top:1px solid rgba(255,255,255,.055)}.ico{flex:0 0 34px;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#2d2d2d;color:#fff;font-size:14px;font-weight:800}.detail.primary .ico{background:var(--wine)}.detail small{display:block;color:#777;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}.detail span.value{font-size:14px;overflow-wrap:anywhere}
 .services{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:25px}.service{min-height:48px;padding:10px 11px;border-radius:10px;background:#262626;border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;font-size:11px;line-height:1.3;letter-spacing:.7px;text-transform:uppercase;color:#d5d5d5}.service:before{content:"";width:5px;height:5px;flex:0 0 5px;background:var(--wine);margin-right:9px}
 .site{display:flex;align-items:center;justify-content:center;min-height:51px;border-radius:11px;border:1px solid #4a4a4a;color:#eee;text-decoration:none;font-size:13px;font-weight:700}.footer{text-align:center;margin:22px 0 0;color:#666;font-size:9px;letter-spacing:1.4px;text-transform:uppercase}
+
+/* Ajustes de legibilidade e escala para celular */
+@media(max-width:699px){
+  .hero{padding:42px 22px 34px}
+  .logo{width:min(250px,68vw);margin-bottom:28px}
+  h1{font-size:clamp(32px,9vw,42px)}
+  .role{font-size:17px;margin-top:11px}
+  .summary{font-size:15px;line-height:1.55;max-width:390px}
+  .content{padding:30px 20px 36px}
+  .section-label{font-size:11px;margin-bottom:14px}
+  .quick{gap:12px;margin-bottom:31px}
+  .quick a{min-height:60px;font-size:15px}
+  .detail{min-height:61px;gap:14px}
+  .ico{width:38px;height:38px;flex-basis:38px;font-size:15px}
+  .detail small{font-size:10px}
+  .detail span.value{font-size:15px}
+  .services{gap:10px;margin-bottom:28px}
+  .service{min-height:54px;font-size:12px;padding:12px}
+  .site{min-height:56px;font-size:14px}
+  .footer{margin-top:25px;font-size:9px}
+}
+
 @media(min-width:700px){body{margin:0;padding:0;display:block}.page{width:100%;max-width:none;min-height:100vh;min-height:100dvh;border-radius:0;border:0;box-shadow:none}.hero{padding-top:46px}.content{width:min(760px,100%);margin:0 auto;padding:32px 28px 40px}}
 </style>
 </head>
@@ -50,4 +72,21 @@ h1{margin:0;font-size:clamp(30px,8vw,39px);line-height:1.05;font-weight:300;lett
 <p class="footer">RD Almeida Engenharia · Cartão de Visita</p>
 </section>
 </main>
+
+<script>
+(function(){
+  function fixDesktopViewportOnPhone(){
+    var sw = Math.min(screen.width || 9999, screen.height || 9999);
+    var iw = window.innerWidth || document.documentElement.clientWidth;
+    if (sw <= 600 && iw > 700) {
+      var ratio = iw / sw;
+      document.documentElement.style.width = (100 / ratio) + '%';
+      document.body.style.width = '100%';
+      document.documentElement.style.zoom = ratio;
+    }
+  }
+  fixDesktopViewportOnPhone();
+  window.addEventListener('orientationchange', function(){ setTimeout(fixDesktopViewportOnPhone, 150); });
+})();
+</script>
 </body></html>
