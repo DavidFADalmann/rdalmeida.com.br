@@ -234,6 +234,28 @@ body { padding:0; }
 }
 </style>
 
+
+<style id="cartao-virtual-sizing-v2">
+/* Mantém a proporção/largura aprovada, mas deixa a altura acompanhar todo o conteúdo. */
+.card {
+    width: 90% !important;
+    max-width: 400px !important;
+    min-width: 300px !important;
+    min-height: 100svh !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+}
+
+@media (max-width: 333px) {
+    .card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+</style>
+
 </head>
 <body>
 <main class="card">
