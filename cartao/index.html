@@ -156,32 +156,80 @@ body { padding:0; }
 </style>
 
 
-<style id="proportional-width-v3">
+<style id="content-width-by-identity">
 /*
-  Referência visual:
-  - conteúdo principal = 80% da largura da tela;
-  - margem lateral = 10% de cada lado;
-  - logo e nome servem como referência visual para a largura do conjunto.
+  Fundo em largura total; conteúdo dimensionado pela identidade visual.
+  A largura útil acompanha aproximadamente o conjunto logo + nome.
 */
 @media (max-width:699px){
   .hero{
-    padding-left:10vw;
-    padding-right:10vw;
+    padding-left:0;
+    padding-right:0;
   }
+
+  .hero > *{
+    width:min(86vw, 430px);
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero .logo{
+    width:min(62vw, 245px);
+  }
+
+  .hero h1{
+    width:min(86vw, 430px);
+    font-size:clamp(31px, 8.5vw, 39px);
+  }
+
+  .hero .accent{
+    width:52px;
+  }
+
+  .hero .summary{
+    width:min(82vw, 410px);
+  }
+
   .content{
-    padding-left:10vw;
-    padding-right:10vw;
+    width:min(86vw, 430px);
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:0;
+    padding-right:0;
   }
-  .logo{
+
+  .quick,
+  .details,
+  .services,
+  .save,
+  .site{
     width:100%;
-    max-width:250px;
   }
-  h1{
-    width:100%;
-    font-size:clamp(28px,8vw,39px);
+
+  .btn{
+    font-size:15px;
   }
-  .summary{
-    width:100%;
+
+  .value{
+    font-size:clamp(14px, 3.8vw, 16px);
+  }
+
+  .service{
+    font-size:clamp(11px, 3vw, 13px);
+  }
+}
+
+@media (max-width:380px){
+  .hero > *,
+  .hero h1,
+  .content{
+    width:90vw;
+  }
+  .hero .logo{
+    width:64vw;
+  }
+  .hero .summary{
+    width:86vw;
   }
 }
 </style>
