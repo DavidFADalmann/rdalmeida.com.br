@@ -235,24 +235,21 @@ body { padding:0; }
 </style>
 
 
-<style id="cartao-virtual-sizing-v2">
-/* Mantém a proporção/largura aprovada, mas deixa a altura acompanhar todo o conteúdo. */
-.card {
-    width: 90% !important;
-    max-width: 400px !important;
-    min-width: 300px !important;
-    min-height: 100svh !important;
-    height: auto !important;
-    aspect-ratio: auto !important;
-    margin: 0 auto !important;
-    overflow: visible !important;
-}
-
-@media (max-width: 333px) {
-    .card {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
+<style id="viewport-diagnostic-style">
+#viewportDiagnostic{
+  position:fixed;
+  top:8px;
+  left:8px;
+  right:8px;
+  z-index:999999;
+  padding:10px 12px;
+  background:#fff;
+  color:#111;
+  border:2px solid #860000;
+  border-radius:8px;
+  font:700 13px/1.35 Arial,sans-serif;
+  box-shadow:0 3px 12px rgba(0,0,0,.35);
+  text-align:left;
 }
 </style>
 
@@ -316,5 +313,31 @@ document.getElementById('saveContact').addEventListener('click', function(){
  setTimeout(()=>URL.revokeObjectURL(url),1500);
 });
 </script>
+
+<script id="viewport-diagnostic-script">
+(function(){
+  function showViewport(){
+    var vv = window.visualViewport;
+    var box = document.getElementById('viewportDiagnostic');
+    if(!box){
+      box = document.createElement('div');
+      box.id = 'viewportDiagnostic';
+      document.body.appendChild(box);
+    }
+    box.innerHTML =
+      'TESTE DE VIEWPORT<br>' +
+      'innerWidth: ' + window.innerWidth + ' px<br>' +
+      'clientWidth: ' + document.documentElement.clientWidth + ' px<br>' +
+      'screen.width: ' + screen.width + ' px<br>' +
+      'visualViewport: ' + (vv ? Math.round(vv.width) + ' px' : 'indisponível') + '<br>' +
+      'devicePixelRatio: ' + window.devicePixelRatio + '<br>' +
+      'userAgent: ' + navigator.userAgent;
+  }
+  window.addEventListener('load', showViewport);
+  window.addEventListener('resize', showViewport);
+  if(window.visualViewport) window.visualViewport.addEventListener('resize', showViewport);
+})();
+</script>
+
 </body>
 </html>
