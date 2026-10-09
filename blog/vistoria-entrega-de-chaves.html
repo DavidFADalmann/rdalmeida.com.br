@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!-- Versão: v2026-10-09 | página de vistoria no mesmo estilo do index v10: tema escuro, dourado, tons por seção e fade ao rolar -->
 <head>
   <meta charset="utf-8" />
   <!-- viewport-fit=cover permite usar as áreas seguras (notch / barra de gestos) -->
@@ -35,88 +36,146 @@
 
   <!-- Manifesto (Android/PWA) -->
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#09090a">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
-    body { margin: 0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-
-    /* VARIÁVEIS DE CORES (--accent = vermelho da logomarca) */
-    :root{
-      --primary:#0f172a; --accent:#700000; --accent-dark:#4a0000; --accent-soft:#f8f0f0; --muted:#e5e7eb;
-      --header-solid:rgba(200,200,200,.60);
-      --light:#D4D4D4; --secondary:#2e0505;
+    :root {
+      --bg: #09090a;
+      --bg2: #0f0f11;
+      --panel: #131316;
+      --line: rgba(255,255,255,.09);
+      --gold: #b99a68;
+      --gold-soft: rgba(185,154,104,.35);
+      --red: #a3121a;
+      --text: #ececee;
+      --muted: #9b9ba3;
+      --header-h: 4.5rem;
+      /* Tons de fundo por seção (diferença discreta para segmentar) */
+      --tone-trust: #111114;
+      --tone-b: #151416;
+      --tone-c: #121114;
+      --tone-d: #0a0a0c;
     }
+    @media (min-width: 768px) { :root { --header-h: 6rem; } }
 
-    /* CABEÇALHO */
-    header.site{
-      background:rgba(255,255,255,.94);
-      border-bottom:1px solid #e2e8f0;
-      box-shadow:0 2px 12px rgba(15,23,42,.06);
-      backdrop-filter:saturate(160%) blur(8px);
-      -webkit-backdrop-filter:saturate(160%) blur(8px);
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      padding-top: env(safe-area-inset-top);
-    }
-    header.site a{ color:#0f172a; }
-    header.site a:hover{ color:var(--accent); }
-    header.site .mobile-link, header.site .mobile-link:hover{ color:#fff; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; font-weight: 300; overflow-x: hidden; background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; letter-spacing: .005em; margin: 0; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 500; }
+    strong { font-weight: 500; color: #fff; }
 
-    /* Menu mobile */
-    .mobile-panel { background:#700000; border:1px solid rgba(255,255,255,.15); }
-    .mobile-panel li + li { border-top:1px solid rgba(255,255,255,.12); }
-    .mobile-link { color:#fff; }
-    .mobile-link:active, .mobile-link:hover { background:var(--accent); }
+    .label { font-size: .72rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); }
+    .rule { height: 1px; width: 64px; background: linear-gradient(90deg, var(--gold), transparent); }
 
-    /* BOTÕES */
-    .btn-accent { background: var(--accent); color:#fff; }
-    .btn-accent:hover, .btn-accent:active { background:var(--accent-dark); }
+    /* Malha técnica */
+    .blueprint { background-image:
+        linear-gradient(rgba(185,154,104,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185,154,104,.06) 1px, transparent 1px);
+      background-size: 56px 56px; }
 
-    /* ÍCONES */
-    .ico{ width:1.6rem; height:1.6rem; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .ico-tile{ height:3rem; width:3rem; flex:0 0 3rem; display:grid; place-items:center; border-radius:.85rem; background:var(--accent); color:#fff; }
+    /* Header */
+    #site-header { background: rgba(9,9,10,.78); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); padding-top: env(safe-area-inset-top); }
+    .nav-link { color: rgba(236,236,238,.82); font-size: .78rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; position: relative; padding: .5rem 0; transition: color .2s; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background: var(--gold); transition: width .3s; }
+    .nav-link:hover { color:#fff; }
+    .nav-link:hover::after { width:100%; }
+    .cta-small { border: 1px solid var(--gold-soft); color: var(--gold); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; font-weight:500; padding:.7rem 1.4rem; transition: all .25s; }
+    .cta-small:hover { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
 
-    /* TÍTULOS DE SEÇÃO */
-    .kicker{ font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .4rem; }
-    .sec-title{ font-size:clamp(1.5rem,2.2vw + .8rem,2.1rem); line-height:1.2; font-weight:800; color:#0f172a; margin:0 0 .6rem; letter-spacing:-.01em; }
-    .sec-lead{ font-size:1.0625rem; line-height:1.7; color:#334155; margin:0 0 1.75rem; max-width:44rem; }
+    .mobile-panel { background: rgba(15,15,17,.98); border: 1px solid var(--line); }
+    .mobile-link { color: var(--text); font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
+    .mobile-panel li + li { border-top: 1px solid var(--line); }
+    .mobile-link:active, .mobile-link:hover { color: var(--gold); }
 
-    /* CAIXAS */
-    .box{ background:#fff; border:1px solid #e2e8f0; border-radius:1rem; padding:1.25rem; transition:transform .18s ease, box-shadow .18s ease; }
-    .box:hover{ transform:translateY(-3px); box-shadow:0 12px 28px rgba(15,23,42,.10); }
-    .box h3{ font-size:1.05rem; font-weight:700; color:#0f172a; margin:.9rem 0 .3rem; }
-    .box p{ font-size:.95rem; line-height:1.6; color:#475569; margin:0; }
+    /* Hero */
+    .hero-img { filter: grayscale(.55) contrast(1.08) brightness(.72); }
+    .hero-shade { position:absolute; inset:0; pointer-events:none;
+      background: linear-gradient(95deg, rgba(9,9,10,.96) 0%, rgba(9,9,10,.82) 42%, rgba(9,9,10,.3) 80%, rgba(9,9,10,.15) 100%),
+                  linear-gradient(to top, rgba(9,9,10,.95), transparent 32%); }
+    .hero-grid { position:absolute; inset:0; pointer-events:none; opacity:.9;
+      -webkit-mask-image: linear-gradient(95deg, #000 0%, transparent 70%); mask-image: linear-gradient(95deg, #000 0%, transparent 70%); }
+    .hero-fade { position:absolute; left:0; right:0; bottom:0; height:10rem; pointer-events:none;
+      background: linear-gradient(to bottom, transparent 0%, rgba(17,17,20,.65) 55%, var(--tone-trust) 100%); }
 
-    /* Faixa vinho (por que contratar) */
-    .band-dark{ background:linear-gradient(135deg,#2e0505 0%,#4a0000 100%); color:#fff; }
-    .band-dark .kicker{ color:#f1b5b5; }
-    .band-dark .sec-title{ color:#fff; }
-    .band-dark .sec-lead{ color:#e5d5d5; }
-    .box-dark{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); border-radius:1rem; padding:1.25rem; }
-    .box-dark h3{ font-size:1.05rem; font-weight:700; color:#fff; margin:.9rem 0 .3rem; }
-    .box-dark p{ font-size:.95rem; line-height:1.6; color:#e5d5d5; margin:0; }
-    .box-dark .ico-tile{ background:#fff; color:var(--accent); }
+    .btn-solid { background: linear-gradient(180deg, #cdb184 0%, #a98a58 100%); color:#0a0a0a; font-size:.75rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: background .25s; }
+    .btn-solid:hover, .btn-solid:active { background: linear-gradient(180deg, #dcc093 0%, #b99a68 100%); }
+    .btn-line { color:#fff; font-size:.75rem; font-weight:500; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; border:1px solid rgba(255,255,255,.28); display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: border-color .25s, color .25s; }
+    .btn-line:hover, .btn-line:active { border-color: var(--gold); color: var(--gold); }
 
-    .band-alt{ background:#f1f5f9; }
+    /* Divisão entre seções: fio dourado central (a transição é o fade ao rolar) */
+    .sec { position:relative; }
+    .sec > * { position:relative; z-index:1; }
+    .sec::after { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(70%, 720px); height:1px; pointer-events:none;
+      background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+
+    /* Títulos */
+    .section-title { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.07; color:#fff; letter-spacing: -.005em; margin: 1rem 0 0; }
+    .section-title em { font-style: italic; color: var(--gold); font-weight: 500; }
+    .sec-lead { margin-top: 1.25rem; max-width: 44rem; color: var(--muted); line-height: 1.8; font-size: 1.02rem; }
+
+    /* Faixa de destaques */
+    .trust { background: var(--tone-trust); border-bottom: 1px solid var(--line); }
+    .trust-item { display:flex; align-items:center; gap:1rem; }
+    .trust-item svg { height:2rem; width:2rem; color: var(--gold); flex-shrink:0; }
+    .trust-item span { font-size:.72rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:#fff; line-height:1.5; }
+    @media (min-width:1024px){ .trust-item + .trust-item { border-left:1px solid var(--line); padding-left:2rem; } }
+
+    /* Ícones */
+    .ico { width:1.6rem; height:1.6rem; fill:none; stroke:currentColor; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+    .ico-tile { height:3.25rem; width:3.25rem; flex:0 0 3.25rem; display:grid; place-items:center; border:1px solid var(--gold-soft); color: var(--gold); }
+
+    /* Cartões */
+    .box { position:relative; background: var(--panel); border:1px solid var(--line); padding: 1.75rem 1.5rem; transition: border-color .35s, transform .35s, background .35s; }
+    .box::before { content:''; position:absolute; top:0; left:0; height:2px; width:0; background: var(--gold); transition: width .5s; }
+    .box:hover { border-color: var(--gold-soft); transform: translateY(-4px); background:#17171b; }
+    .box:hover::before { width:100%; }
+    .box h3 { font-size:1.55rem; line-height:1.15; color:#fff; margin:1.25rem 0 .6rem; }
+    .box p { font-size:.93rem; line-height:1.75; color: var(--muted); margin:0; }
+
+    /* Cartões sobre fundo mais claro */
+    .box-soft { background: rgba(255,255,255,.025); }
 
     /* Chips de problemas */
-    .chip{ display:flex; align-items:center; gap:.75rem; background:#fff; border:1px solid #e2e8f0; border-left:4px solid var(--accent); border-radius:.75rem; padding:.85rem 1rem; font-weight:600; color:#0f172a; font-size:.95rem; }
-    .chip .ico{ color:var(--accent); width:1.4rem; height:1.4rem; flex:0 0 1.4rem; }
+    .chip { display:flex; align-items:center; gap:.9rem; background: var(--panel); border:1px solid var(--line); border-left:2px solid var(--gold); padding:1rem 1.1rem; font-weight:400; color:#fff; font-size:.95rem; }
+    .chip .ico { color: var(--gold); width:1.4rem; height:1.4rem; flex:0 0 1.4rem; }
 
-    .step-num{ height:2.5rem; width:2.5rem; flex:0 0 2.5rem; display:grid; place-items:center; border-radius:9999px; background:var(--accent); color:#fff; font-weight:800; }
-    figure{ margin:0; }
-    figcaption{ font-size:.9rem; line-height:1.5; color:#475569; margin-top:.5rem; }
+    /* Aviso */
+    .note { border-left:2px solid var(--gold); background: rgba(185,154,104,.07); padding:1.25rem 1.4rem; color:#cfcfd4; font-size:.95rem; line-height:1.8; }
+
+    /* Passos */
+    .step { display:flex; gap:1.25rem; align-items:flex-start; background: var(--panel); border:1px solid var(--line); padding:1.5rem; transition: border-color .3s; }
+    .step:hover { border-color: var(--gold-soft); }
+    .step-num { height:2.75rem; width:2.75rem; flex:0 0 2.75rem; display:grid; place-items:center; border:1px solid var(--gold-soft); color: var(--gold); font-family:'Cormorant Garamond',serif; font-size:1.5rem; line-height:1; }
+    .step h3 { font-size:1.45rem; line-height:1.15; color:#fff; margin:0; }
+    .step p { margin:.5rem 0 0; font-size:.93rem; line-height:1.75; color: var(--muted); }
+
+    /* Figuras */
+    figure { margin:0; }
+    .fig-img { filter: grayscale(.45) brightness(.85); transition: filter .5s; }
+    figure:hover .fig-img { filter: grayscale(.1) brightness(.95); }
+    figcaption { font-size:.9rem; line-height:1.7; color: var(--muted); margin-top:.9rem; }
 
     /* FAQ */
-    .faq{ border-top:1px solid #cbd5e1; padding:1.1rem 0; }
-    .faq h3{ font-size:1.0625rem; font-weight:700; color:#0f172a; margin:0 0 .35rem; }
-    .faq p{ margin:0; color:#334155; line-height:1.7; }
+    .faq { border-top:1px solid var(--line); padding:1.5rem 0; }
+    .faq:last-child { border-bottom:1px solid var(--line); }
+    .faq h3 { font-size:1.55rem; line-height:1.2; color:#fff; margin:0 0 .6rem; }
+    .faq p { margin:0; color: var(--muted); line-height:1.8; font-size:.97rem; }
 
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .box{ transition:none; } .box:hover{ transform:none; } }
+    /* Faixa de chamada final */
+    .cta-band { position:relative; background: linear-gradient(100deg, #1a0507 0%, #0d0d0f 70%); border-top:1px solid var(--gold-soft); }
+
+    /* Fade ao rolar entre seções (ativado só quando o JS roda) */
+    .js-fade .fade-sec { opacity: var(--fo, 1); transform: translate3d(0, calc((1 - var(--fo, 1)) * 28px), 0); will-change: opacity, transform; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .box, .step, .fig-img, .btn-solid { transition: none !important; }
+      .box:hover { transform: none; }
+    }
   </style>
 
   <!-- Dados estruturados do serviço -->
@@ -182,7 +241,7 @@
   }
   </script>
 </head>
-<body class="antialiased text-slate-800 bg-white">
+<body class="antialiased">
 
   <!-- ===== Ícones (sprite) ===== -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -208,333 +267,374 @@
     <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 4v6M9 6v4M15 6v4"/></symbol>
   </svg>
 
-  <!-- ===== Header ===== -->
-  <header class="site">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="flex h-16 md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
-        <a href="../index.html" class="flex items-center gap-3" aria-label="Voltar para a Home">
-          <img src="../assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-12 md:h-20 w-auto">
-          <span class="sr-only">RD Almeida Engenharia</span>
-        </a>
+  <div class="relative">
 
-        <!-- Menu desktop -->
-        <ul class="hidden md:flex items-center gap-8 font-medium">
-          <li><a href="../index.html" class="">Home</a></li>
-          <li><a href="../index.html#servicos" class="">Serviços</a></li>
-          <li><a href="./indexblog.html" class="">Publicações</a></li>
-        </ul>
-
-        <!-- Menu mobile: botão -->
-        <button id="menu-btn" type="button"
-                class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-lg text-slate-900 focus:outline-none"
-                aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
-          <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- Menu mobile (painel) -->
-    <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
-      <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 rounded-2xl shadow-2xl">
-        <ul class="p-2">
-          <li><a href="../index.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Home</a></li>
-          <li><a href="../index.html#servicos" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Serviços</a></li>
-          <li><a href="./indexblog.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Publicações</a></li>
-          <li><a href="../index.html#contato" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Contato</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Hero ===== -->
-  <section class="relative overflow-hidden pt-16 md:pt-24">
-    <div class="absolute inset-0 z-0">
-      <img src="./img/imagem01.png" alt="Engenheiro realizando vistoria de entrega de chaves em apartamento novo" class="h-full w-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
-    </div>
-    <div class="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-10 md:py-16 text-white">
-      <p class="text-xs sm:text-sm font-bold uppercase tracking-[.18em] text-white/80">Vistoria de imóvel novo</p>
-      <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl">Evite problemas na entrega das chaves</h1>
-      <p class="mt-4 text-base sm:text-lg md:text-xl text-white/90 max-w-2xl">Um engenheiro confere o seu apartamento e entrega um laudo com fotos antes de você assinar o recebimento.</p>
-
-      <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
-        <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento%20novo." target="_blank" rel="noopener noreferrer" class="btn-accent inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold uppercase tracking-wide">Solicite um orçamento</a>
-        <a href="#verificamos" class="inline-flex items-center justify-center rounded-xl border border-white/60 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10 active:bg-white/10">Ver o que verificamos</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Faixa de destaques ===== -->
-  <section class="bg-white border-b border-slate-200">
-    <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-hardhat"/></svg></span><span class="font-semibold text-slate-800 text-sm">Vistoria conduzida por engenheiro</span></div>
-      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-camera"/></svg></span><span class="font-semibold text-slate-800 text-sm">Laudo com registro fotográfico</span></div>
-      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-pin"/></svg></span><span class="font-semibold text-slate-800 text-sm">São Paulo e Grande São Paulo</span></div>
-    </div>
-  </section>
-
-  <main>
-
-    <!-- ===== O que é ===== -->
-    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-      <p class="kicker">O serviço</p>
-      <h2 class="sec-title">Vistoria de imóvel novo</h2>
-      <p class="sec-lead !mb-0">É uma avaliação técnica feita no momento da entrega do apartamento. Qualquer divergência ou defeito é registrado em laudo, que serve de base para você <strong>solicitar os reparos à construtora antes de assinar o recebimento</strong>.</p>
-    </section>
-
-    <!-- ===== Por que contratar ===== -->
-    <section class="band-dark">
-      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-        <p class="kicker">Por que contratar</p>
-        <h2 class="sec-title">Um imóvel é um dos maiores investimentos da vida</h2>
-        <p class="sec-lead">Receber com cuidado evita que você pague caro por algo que não está em boas condições.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="box-dark">
-            <span class="ico-tile"><svg class="ico"><use href="#i-search"/></svg></span>
-            <h3>Olhar técnico</h3>
-            <p>Pequenos defeitos passam despercebidos para quem não é da área. O engenheiro sabe onde olhar e confronta o imóvel com o memorial descritivo e com normas como a ABNT NBR 15575.</p>
-          </div>
-          <div class="box-dark">
-            <span class="ico-tile"><svg class="ico"><use href="#i-shield"/></svg></span>
-            <h3>Proteção do investimento</h3>
-            <p>Identificar pendências antes da mudança reduz retrabalho e custos de correção depois.</p>
-          </div>
-          <div class="box-dark">
-            <span class="ico-tile"><svg class="ico"><use href="#i-clip"/></svg></span>
-            <h3>Reparos antes de assinar</h3>
-            <p>Com o laudo em mãos, você tem respaldo técnico para pedir a correção do que não foi entregue corretamente. Quando aplicável, o serviço conta com ART.</p>
-          </div>
-          <div class="box-dark">
-            <span class="ico-tile"><svg class="ico"><use href="#i-home"/></svg></span>
-            <h3>Tranquilidade na mudança</h3>
-            <p>Você entra no imóvel sabendo o que foi conferido e o que ficou registrado para correção.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== O que verificamos ===== -->
-    <section id="verificamos" class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-      <p class="kicker">Checklist técnico</p>
-      <h2 class="sec-title">O que verificamos no seu apartamento</h2>
-      <p class="sec-lead">Percorremos cada ambiente com método, comparando com o contrato e o memorial descritivo.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-bolt"/></svg></span><h3>Instalações elétricas</h3><p>Tomadas, interruptores, luminárias e funcionamento geral, quando há energia e condições seguras.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-grid"/></svg></span><h3>Acabamentos e revestimentos</h3><p>Manchas, falhas de pintura, peças soltas, pisos ocos, nivelamento e trincas.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-drop"/></svg></span><h3>Instalações hidráulicas</h3><p>Torneiras, chuveiros, descargas, vazão da água e sinais de vazamento ou umidade.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-monitor"/></svg></span><h3>Equipamentos instalados</h3><p>Ar-condicionado, interfone, campainha e demais itens previstos no memorial descritivo.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-door"/></svg></span><h3>Portas e janelas</h3><p>Alinhamento, vedação, fechaduras e abertura e fechamento adequados.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-sun"/></svg></span><h3>Conforto e áreas externas</h3><p>Ventilação e iluminação natural, além de sacada e demais áreas externas.</p></div>
-      </div>
-      <div class="mt-6 border-l-4 border-[var(--accent)] bg-[var(--accent-soft)] rounded-lg p-4 text-slate-700 text-[.95rem] leading-relaxed"><strong>Até onde vai a vistoria?</strong><br>Conferimos todos os itens acessíveis do imóvel dentro do que foi contratado, com registro fotográfico e laudo. Por ser uma inspeção visual e funcional, ela não inclui testes de laboratório nem investigações que exijam abrir paredes ou pisos. Quando o engenheiro vê indícios que justifiquem uma análise mais aprofundada, ele indica essa avaliação complementar.</div>
-    </section>
-
-    <!-- ===== Problemas ===== -->
-    <section class="band-alt">
-      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-        <p class="kicker">Fique atento</p>
-        <h2 class="sec-title">Não receba seu imóvel com estes problemas</h2>
-        <p class="sec-lead">Os mais comuns em apartamentos novos e que passam batido na entrega.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          <div class="chip"><svg class="ico"><use href="#i-crack"/></svg>Trincas e fissuras</div>
-          <div class="chip"><svg class="ico"><use href="#i-wave"/></svg>Infiltrações e manchas de umidade</div>
-          <div class="chip"><svg class="ico"><use href="#i-drop"/></svg>Vazamentos</div>
-          <div class="chip"><svg class="ico"><use href="#i-floor"/></svg>Pisos soltos ou ocos</div>
-          <div class="chip"><svg class="ico"><use href="#i-door"/></svg>Portas e janelas desalinhadas</div>
-          <div class="chip"><svg class="ico"><use href="#i-alert"/></svg>Falhas em tomadas e instalações</div>
-        </div>
-
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <figure>
-            <img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="w-full h-52 sm:h-56 object-cover rounded-xl" loading="lazy" decoding="async" />
-            <figcaption><strong>Trincas e fissuras:</strong> inspeção e registro fotográfico ajudam a entender a gravidade do problema e a orientar a correção pela construtora.</figcaption>
-          </figure>
-          <figure>
-            <img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="w-full h-52 sm:h-56 object-cover rounded-xl" loading="lazy" decoding="async" />
-            <figcaption><strong>Vazamentos:</strong> testes e inspeção das conexões ajudam a evitar infiltrações e danos a revestimentos e móveis.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== O que você recebe ===== -->
-    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-      <p class="kicker">Entregáveis</p>
-      <h2 class="sec-title">O que você recebe</h2>
-      <p class="sec-lead">Material pronto para apoiar a conversa com a construtora.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-file"/></svg></span><h3>Laudo técnico</h3><p>Constatações organizadas por ambiente, conforme o serviço contratado.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-camera"/></svg></span><h3>Registro fotográfico</h3><p>Cada ocorrência documentada para fácil localização.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span><h3>Lista de pendências</h3><p>Pontos observados descritos de forma objetiva, prontos para envio.</p></div>
-        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-chat"/></svg></span><h3>Orientação do engenheiro</h3><p>Dúvidas esclarecidas antes de você assinar o recebimento.</p></div>
-      </div>
-      <!-- INSERIR AQUI o prazo de entrega do laudo, se quiser divulgar (ex.: "Laudo entregue em até X dias úteis") -->
-    </section>
-
-    <!-- ===== Como funciona ===== -->
-    <section class="band-alt">
-      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-        <p class="kicker">Passo a passo</p>
-        <h2 class="sec-title">Como funciona</h2>
-        <ol class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">1</span><div><h3 class="font-bold text-slate-900">Você entra em contato</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Pelo WhatsApp, informe o endereço, a área aproximada e a data prevista da entrega das chaves.</p></div></li>
-          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">2</span><div><h3 class="font-bold text-slate-900">Enviamos a proposta</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Você recebe uma proposta com o que será feito e as condições, sem compromisso.</p></div></li>
-          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">3</span><div><h3 class="font-bold text-slate-900">Realizamos a vistoria</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">O engenheiro percorre o apartamento, confere os itens combinados e registra tudo com fotos.</p></div></li>
-          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">4</span><div><h3 class="font-bold text-slate-900">Você recebe o laudo</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Com o laudo e a lista de pendências, você encaminha as solicitações à construtora com segurança.</p></div></li>
-        </ol>
-        <p class="mt-5 text-sm text-slate-600 max-w-3xl"><strong>Dica:</strong> chame a gente antes da data da entrega. Confirme com a construtora as regras de acesso, o tempo da inspeção e se água e energia estarão ligadas.</p>
-      </div>
-    </section>
-
-    <!-- ===== Onde atendemos + Quanto custa ===== -->
-    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div class="box">
-          <span class="ico-tile"><svg class="ico"><use href="#i-pin"/></svg></span>
-          <h3>Onde atendemos</h3>
-          <p>Cidade de São Paulo e toda a região metropolitana, incluindo Guarulhos, Osasco, Santo André, São Bernardo do Campo, São Caetano do Sul e Barueri, entre outras. Informe o endereço e confirmamos a disponibilidade.</p>
-        </div>
-        <div class="box">
-          <span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span>
-          <h3>Quanto custa</h3>
-          <p>O valor depende da área do imóvel, da localização, das condições de acesso e do tamanho da inspeção. Informe os dados do apartamento e receba uma proposta sem compromisso.</p>
-          <!-- INSERIR AQUI uma faixa de preço ou "a partir de R$ X", se a empresa quiser divulgar -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Perguntas frequentes ===== -->
-    <section id="faq" class="band-alt">
-      <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
-        <p class="kicker">Dúvidas</p>
-        <h2 class="sec-title">Perguntas frequentes</h2>
-        <div class="mt-4">
-          <div class="faq">
-            <h3>A construtora já faz uma vistoria. Ainda vale contratar a minha?</h3>
-            <p>A visita da construtora faz parte do processo de entrega dela. A vistoria que você contrata é feita por um engenheiro que olha o imóvel do seu lado e entrega um laudo com fotos e lista de pendências para você usar.</p>
-          </div>
-          <div class="faq">
-            <h3>Preciso acompanhar a vistoria?</h3>
-            <p>Você pode acompanhar para tirar dúvidas na hora, quando o acesso ao imóvel permitir. Combinamos os detalhes com você na contratação.</p>
-          </div>
-          <div class="faq">
-            <h3>Posso contratar quando a entrega das chaves já está marcada?</h3>
-            <p>Sim. Quanto antes você nos chamar, mais fácil é alinhar a agenda. Informe a data prevista e verificamos a disponibilidade.</p>
-          </div>
-          <div class="faq">
-            <h3>Vocês atendem na minha cidade?</h3>
-            <p>Atendemos a cidade de São Paulo e toda a região metropolitana. Informe o endereço do imóvel ao pedir o orçamento e confirmamos a disponibilidade.</p>
-          </div>
-          <div class="faq">
-            <h3>O que acontece se forem encontradas pendências?</h3>
-            <p>Elas entram no laudo com foto e descrição. Com esse material, você encaminha a solicitação pelo canal oficial da construtora e guarda os protocolos. A análise e os reparos seguem os procedimentos da construtora.</p>
-          </div>
-          <div class="faq">
-            <h3>Como solicitar um orçamento?</h3>
-            <p>Entre em contato pelo WhatsApp e informe o endereço do imóvel, a área aproximada do apartamento e a data prevista para a entrega das chaves.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Chamada final ===== -->
-    <section class="band-dark">
-      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16 text-center">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">Você investiu muito nesse imóvel.<br class="hidden sm:block"> Receba do jeito certo.</h2>
-        <p class="mt-4 text-[#e5d5d5] max-w-xl mx-auto leading-relaxed">Fale com um engenheiro da RD Almeida e receba uma proposta para o seu apartamento, sem compromisso.</p>
-        <!-- Botões: empilhados e em largura total no celular -->
-        <div class="mt-7 flex flex-col sm:flex-row sm:justify-center gap-3">
-          <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 font-bold uppercase tracking-wide" style="color:var(--accent)">Solicitar vistoria técnica</a>
-          <a href="../index.html#contato" class="inline-flex items-center justify-center rounded-xl border border-white/50 px-6 py-3.5 font-semibold text-white hover:bg-white/10 active:bg-white/10">Outras formas de contato</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Botão flutuante WhatsApp: círculo no celular, cápsula com texto no desktop -->
-  <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia" target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
-     class="fixed z-40 right-4 md:right-6 flex items-center rounded-full bg-[#25D366] md:bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl active:scale-95 transition-transform md:pr-4"
-     style="bottom: calc(1rem + env(safe-area-inset-bottom));">
-    <span class="flex items-center justify-center h-14 w-14 md:h-12 md:w-12 rounded-full bg-[#25D366]">
+    <!-- WhatsApp flutuante -->
+    <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia"
+       target="_blank" rel="noopener noreferrer" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 md:right-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg active:scale-95 transition-transform"
+       style="bottom: calc(1rem + env(safe-area-inset-bottom));">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white" aria-hidden="true">
         <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
       </svg>
-    </span>
-    <span class="hidden md:inline ml-2 font-medium text-base">Fale com a nossa equipe!</span>
-  </a>
+    </a>
 
-  <!-- ===== Footer ===== -->
-  <footer class="border-t border-slate-200 bg-[var(--light)]" style="padding-bottom: env(safe-area-inset-bottom);">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- ===== Header ===== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <nav class="flex h-[4.5rem] md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+          <a href="../index.html" class="flex items-center" aria-label="RD Almeida Engenharia – Voltar para a Home">
+            <img src="../assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-12 md:h-[4.5rem] w-auto"
+                 onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-2xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          </a>
 
-        <!-- Logo + texto: empilhados no celular, lado a lado no desktop -->
-        <div class="md:col-span-2">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <img src="../assets/img/branding/logo_rodape.png"
-                 alt="Logo RD Almeida Engenharia"
-                 class="h-24 md:h-40 w-auto shrink-0"
-                 onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo_rodape.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
-
-            <p class="text-slate-600 max-w-md leading-relaxed">
-              Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos.
-              Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente
-              as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
-            </p>
-          </div>
-        </div>
-
-        <!-- Navegação -->
-        <div class="md:ml-auto">
-          <h4 class="text-sm font-semibold text-[var(--secondary)]">Navegação</h4>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li><a href="../index.html" class="block py-2 hover:text-[var(--primary)]">Home</a></li>
-            <li><a href="../index.html#servicos" class="block py-2 hover:text-[var(--primary)]">Serviços</a></li>
-            <li><a href="./indexblog.html" class="block py-2 hover:text-[var(--primary)]">Publicações</a></li>
-            <li><a href="../index.html#contato" class="block py-2 hover:text-[var(--primary)]">Contato</a></li>
+          <ul class="hidden md:flex items-center gap-10">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../index.html#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="./indexblog.html" class="nav-link">Publicações</a></li>
+            <li><a href="../index.html#contato" class="nav-link">Contato</a></li>
+            <li><a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento%20novo." target="_blank" rel="noopener noreferrer" class="cta-small">Orçamento</a></li>
           </ul>
-        </div>
 
-        <!-- Contato -->
-        <div class="md:ml-auto">
-          <h4 class="text-sm font-semibold text-[var(--secondary)]">Contato</h4>
-          <ul class="mt-3 space-y-1 text-slate-600 text-sm">
-            <li class="py-1">São Paulo e região metropolitana</li>
-            <li><a href="mailto:contato@rdalmeida.com.br" class="block py-1 hover:text-[var(--primary)] break-all">contato@rdalmeida.com.br</a></li>
-            <li><a href="https://wa.me/5511939249310" target="_blank" rel="noopener noreferrer" class="block py-1 hover:text-[var(--primary)]">(11) 93924-9310 · WhatsApp</a></li>
-          </ul>
-        </div>
-
+          <button id="menu-btn" type="button"
+                  class="md:hidden inline-flex h-12 w-12 items-center justify-center text-white focus:outline-none"
+                  aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-width="1.5" d="M4 8h16M4 16h10" />
+            </svg>
+          </button>
+        </nav>
       </div>
 
-      <p class="mt-8 pt-6 border-t border-slate-400/40 text-xs text-slate-600 max-w-3xl">
+      <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 shadow-2xl">
+          <ul class="p-2">
+            <li><a href="../index.html" class="mobile-link block px-4 py-4">Home</a></li>
+            <li><a href="../index.html#servicos" class="mobile-link block px-4 py-4">Serviços</a></li>
+            <li><a href="./indexblog.html" class="mobile-link block px-4 py-4">Publicações</a></li>
+            <li><a href="../index.html#contato" class="mobile-link block px-4 py-4">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="relative overflow-hidden pt-[4.5rem] md:pt-24">
+      <div class="absolute inset-0 z-0">
+        <img src="./img/imagem01.png" alt="Engenheiro realizando vistoria de entrega de chaves em apartamento novo" class="hero-img h-full w-full object-cover">
+        <div class="hero-shade"></div>
+        <div class="hero-grid blueprint"></div>
+        <div class="hero-fade"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 md:py-28 text-white">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-4">
+            <span class="rule"></span>
+            <span class="label">Vistoria de imóvel novo</span>
+          </div>
+          <h1 class="mt-6 text-[2.6rem] sm:text-6xl lg:text-7xl leading-[1.04] font-medium">Evite problemas na <em class="italic text-[var(--gold)]">entrega das chaves</em></h1>
+          <p class="mt-6 text-base sm:text-lg text-white/75 max-w-xl leading-relaxed">Um engenheiro confere o seu apartamento e entrega um laudo com fotos antes de você assinar o recebimento.</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento%20novo." target="_blank" rel="noopener noreferrer" class="btn-solid">Solicite um orçamento</a>
+            <a href="#verificamos" class="btn-line">Ver o que verificamos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Faixa de destaques ===== -->
+    <section class="trust" aria-label="Destaques">
+      <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-0">
+        <div class="trust-item"><svg class="ico"><use href="#i-hardhat"/></svg><span>Vistoria conduzida por engenheiro</span></div>
+        <div class="trust-item"><svg class="ico"><use href="#i-camera"/></svg><span>Laudo com registro fotográfico</span></div>
+        <div class="trust-item"><svg class="ico"><use href="#i-pin"/></svg><span>São Paulo e Grande São Paulo</span></div>
+      </div>
+    </section>
+
+    <main>
+
+      <!-- ===== O que é ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">O serviço</span>
+          <h2 class="section-title">Vistoria de <em>imóvel novo</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">É uma avaliação técnica feita no momento da entrega do apartamento. Qualquer divergência ou defeito é registrado em laudo, que serve de base para você <strong>solicitar os reparos à construtora antes de assinar o recebimento</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===== Por que contratar ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-b)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Por que contratar</span>
+          <h2 class="section-title">Um imóvel é um dos <em>maiores investimentos</em> da vida</h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Receber com cuidado evita que você pague caro por algo que não está em boas condições.</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-search"/></svg></span>
+              <h3>Olhar técnico</h3>
+              <p>Pequenos defeitos passam despercebidos para quem não é da área. O engenheiro sabe onde olhar e confronta o imóvel com o memorial descritivo e com normas como a ABNT NBR 15575.</p>
+            </div>
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-shield"/></svg></span>
+              <h3>Proteção do investimento</h3>
+              <p>Identificar pendências antes da mudança reduz retrabalho e custos de correção depois.</p>
+            </div>
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-clip"/></svg></span>
+              <h3>Reparos antes de assinar</h3>
+              <p>Com o laudo em mãos, você tem respaldo técnico para pedir a correção do que não foi entregue corretamente. Quando aplicável, o serviço conta com ART.</p>
+            </div>
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-home"/></svg></span>
+              <h3>Tranquilidade na mudança</h3>
+              <p>Você entra no imóvel sabendo o que foi conferido e o que ficou registrado para correção.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== O que verificamos ===== -->
+      <section id="verificamos" class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Checklist técnico</span>
+          <h2 class="section-title">O que verificamos no <em>seu apartamento</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Percorremos cada ambiente com método, comparando com o contrato e o memorial descritivo.</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-bolt"/></svg></span><h3>Instalações elétricas</h3><p>Tomadas, interruptores, luminárias e funcionamento geral, quando há energia e condições seguras.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-grid"/></svg></span><h3>Acabamentos e revestimentos</h3><p>Manchas, falhas de pintura, peças soltas, pisos ocos, nivelamento e trincas.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-drop"/></svg></span><h3>Instalações hidráulicas</h3><p>Torneiras, chuveiros, descargas, vazão da água e sinais de vazamento ou umidade.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-monitor"/></svg></span><h3>Equipamentos instalados</h3><p>Ar-condicionado, interfone, campainha e demais itens previstos no memorial descritivo.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-door"/></svg></span><h3>Portas e janelas</h3><p>Alinhamento, vedação, fechaduras e abertura e fechamento adequados.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-sun"/></svg></span><h3>Conforto e áreas externas</h3><p>Ventilação e iluminação natural, além de sacada e demais áreas externas.</p></div>
+          </div>
+          <div class="note mt-8"><strong>Até onde vai a vistoria?</strong><br>Conferimos todos os itens acessíveis do imóvel dentro do que foi contratado, com registro fotográfico e laudo. Por ser uma inspeção visual e funcional, ela não inclui testes de laboratório nem investigações que exijam abrir paredes ou pisos. Quando o engenheiro vê indícios que justifiquem uma análise mais aprofundada, ele indica essa avaliação complementar.</div>
+        </div>
+      </section>
+
+      <!-- ===== Problemas ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-c)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Fique atento</span>
+          <h2 class="section-title">Não receba seu imóvel <em>com estes problemas</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Os mais comuns em apartamentos novos e que passam batido na entrega.</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="chip"><svg class="ico"><use href="#i-crack"/></svg>Trincas e fissuras</div>
+            <div class="chip"><svg class="ico"><use href="#i-wave"/></svg>Infiltrações e manchas de umidade</div>
+            <div class="chip"><svg class="ico"><use href="#i-drop"/></svg>Vazamentos</div>
+            <div class="chip"><svg class="ico"><use href="#i-floor"/></svg>Pisos soltos ou ocos</div>
+            <div class="chip"><svg class="ico"><use href="#i-door"/></svg>Portas e janelas desalinhadas</div>
+            <div class="chip"><svg class="ico"><use href="#i-alert"/></svg>Falhas em tomadas e instalações</div>
+          </div>
+
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <figure>
+              <div class="overflow-hidden"><img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="fig-img w-full h-56 sm:h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Trincas e fissuras:</strong> inspeção e registro fotográfico ajudam a entender a gravidade do problema e a orientar a correção pela construtora.</figcaption>
+            </figure>
+            <figure>
+              <div class="overflow-hidden"><img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="fig-img w-full h-56 sm:h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Vazamentos:</strong> testes e inspeção das conexões ajudam a evitar infiltrações e danos a revestimentos e móveis.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== O que você recebe ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Entregáveis</span>
+          <h2 class="section-title">O que <em>você recebe</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Material pronto para apoiar a conversa com a construtora.</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-file"/></svg></span><h3>Laudo técnico</h3><p>Constatações organizadas por ambiente, conforme o serviço contratado.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-camera"/></svg></span><h3>Registro fotográfico</h3><p>Cada ocorrência documentada para fácil localização.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span><h3>Lista de pendências</h3><p>Pontos observados descritos de forma objetiva, prontos para envio.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-chat"/></svg></span><h3>Orientação do engenheiro</h3><p>Dúvidas esclarecidas antes de você assinar o recebimento.</p></div>
+          </div>
+          <!-- INSERIR AQUI o prazo de entrega do laudo, se quiser divulgar (ex.: "Laudo entregue em até X dias úteis") -->
+        </div>
+      </section>
+
+      <!-- ===== Como funciona ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-b)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Passo a passo</span>
+          <h2 class="section-title">Como <em>funciona</em></h2>
+          <div class="rule mt-6"></div>
+          <ol class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
+            <li class="step"><span class="step-num">1</span><div><h3>Você entra em contato</h3><p>Pelo WhatsApp, informe o endereço, a área aproximada e a data prevista da entrega das chaves.</p></div></li>
+            <li class="step"><span class="step-num">2</span><div><h3>Enviamos a proposta</h3><p>Você recebe uma proposta com o que será feito e as condições, sem compromisso.</p></div></li>
+            <li class="step"><span class="step-num">3</span><div><h3>Realizamos a vistoria</h3><p>O engenheiro percorre o apartamento, confere os itens combinados e registra tudo com fotos.</p></div></li>
+            <li class="step"><span class="step-num">4</span><div><h3>Você recebe o laudo</h3><p>Com o laudo e a lista de pendências, você encaminha as solicitações à construtora com segurança.</p></div></li>
+          </ol>
+          <p class="mt-8 text-sm text-[var(--muted)] max-w-3xl leading-relaxed"><strong>Dica:</strong> chame a gente antes da data da entrega. Confirme com a construtora as regras de acesso, o tempo da inspeção e se água e energia estarão ligadas.</p>
+        </div>
+      </section>
+
+      <!-- ===== Onde atendemos + Quanto custa ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-d)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="box">
+              <span class="ico-tile"><svg class="ico"><use href="#i-pin"/></svg></span>
+              <h3>Onde atendemos</h3>
+              <p>Cidade de São Paulo e toda a região metropolitana, incluindo Guarulhos, Osasco, Santo André, São Bernardo do Campo, São Caetano do Sul e Barueri, entre outras. Informe o endereço e confirmamos a disponibilidade.</p>
+            </div>
+            <div class="box">
+              <span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span>
+              <h3>Quanto custa</h3>
+              <p>O valor depende da área do imóvel, da localização, das condições de acesso e do tamanho da inspeção. Informe os dados do apartamento e receba uma proposta sem compromisso.</p>
+              <!-- INSERIR AQUI uma faixa de preço ou "a partir de R$ X", se a empresa quiser divulgar -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Perguntas frequentes ===== -->
+      <section id="faq" class="sec py-20 md:py-28 bg-[var(--tone-c)]">
+        <div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Dúvidas</span>
+          <h2 class="section-title">Perguntas <em>frequentes</em></h2>
+          <div class="rule mt-6"></div>
+          <div class="mt-10">
+            <div class="faq">
+              <h3>A construtora já faz uma vistoria. Ainda vale contratar a minha?</h3>
+              <p>A visita da construtora faz parte do processo de entrega dela. A vistoria que você contrata é feita por um engenheiro que olha o imóvel do seu lado e entrega um laudo com fotos e lista de pendências para você usar.</p>
+            </div>
+            <div class="faq">
+              <h3>Preciso acompanhar a vistoria?</h3>
+              <p>Você pode acompanhar para tirar dúvidas na hora, quando o acesso ao imóvel permitir. Combinamos os detalhes com você na contratação.</p>
+            </div>
+            <div class="faq">
+              <h3>Posso contratar quando a entrega das chaves já está marcada?</h3>
+              <p>Sim. Quanto antes você nos chamar, mais fácil é alinhar a agenda. Informe a data prevista e verificamos a disponibilidade.</p>
+            </div>
+            <div class="faq">
+              <h3>Vocês atendem na minha cidade?</h3>
+              <p>Atendemos a cidade de São Paulo e toda a região metropolitana. Informe o endereço do imóvel ao pedir o orçamento e confirmamos a disponibilidade.</p>
+            </div>
+            <div class="faq">
+              <h3>O que acontece se forem encontradas pendências?</h3>
+              <p>Elas entram no laudo com foto e descrição. Com esse material, você encaminha a solicitação pelo canal oficial da construtora e guarda os protocolos. A análise e os reparos seguem os procedimentos da construtora.</p>
+            </div>
+            <div class="faq">
+              <h3>Como solicitar um orçamento?</h3>
+              <p>Entre em contato pelo WhatsApp e informe o endereço do imóvel, a área aproximada do apartamento e a data prevista para a entrega das chaves.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Chamada final ===== -->
+      <section class="sec cta-band py-16 md:py-20">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10 text-center">
+          <h2 class="serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">Você investiu muito nesse imóvel.<br class="hidden sm:block"> <em class="italic text-[var(--gold)]">Receba do jeito certo.</em></h2>
+          <p class="mt-5 text-[var(--muted)] max-w-xl mx-auto leading-relaxed">Fale com um engenheiro da RD Almeida e receba uma proposta para o seu apartamento, sem compromisso.</p>
+          <div class="mt-9 flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4">
+            <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento." target="_blank" rel="noopener noreferrer" class="btn-solid">Solicitar vistoria técnica</a>
+            <a href="../index.html#contato" class="btn-line">Outras formas de contato</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="sec bg-[#060607]" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+        <div class="md:col-span-6">
+          <img src="../assets/img/branding/logo_rodape.png" alt="Logo RD Almeida Engenharia" class="h-24 md:h-28 w-auto"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-3xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          <p class="mt-6 text-[var(--muted)] max-w-md leading-relaxed text-[.95rem]">
+            Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos. Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
+          </p>
+        </div>
+
+        <div class="md:col-span-2 md:col-start-8">
+          <h4 class="label">Navegação</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li><a href="../index.html" class="block py-1.5 hover:text-white">Home</a></li>
+            <li><a href="../index.html#servicos" class="block py-1.5 hover:text-white">Serviços</a></li>
+            <li><a href="./indexblog.html" class="block py-1.5 hover:text-white">Publicações</a></li>
+            <li><a href="../index.html#contato" class="block py-1.5 hover:text-white">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3">
+          <h4 class="label">Contato</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li class="py-1.5">São Paulo e região metropolitana</li>
+            <li><a href="mailto:contato@rdalmeida.com.br" class="block py-1.5 hover:text-white break-words">contato@rdalmeida.com.br</a></li>
+            <li><a href="https://wa.me/5511939249310" target="_blank" rel="noopener noreferrer" class="block py-1.5 hover:text-white">(11) 93924-9310 · WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-[var(--line)] text-xs tracking-wide text-[var(--muted)] leading-relaxed max-w-3xl">
         A vistoria não substitui testes específicos, investigações destrutivas ou avaliação técnica complementar quando necessários. O que será feito em cada vistoria é definido na contratação.
-      </p>
+      </div>
     </div>
   </footer>
 
   <script>
   window.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('menu-btn');
-    const panel = document.getElementById('mobile-menu');
-    if (!btn || !panel) return;
-    let open = false;
-    const set = (state) => {
-      open = state;
-      panel.classList.toggle('opacity-100', open);
-      panel.classList.toggle('opacity-0', !open);
-      panel.classList.toggle('pointer-events-auto', open);
-      panel.classList.toggle('pointer-events-none', !open);
-      btn.setAttribute('aria-expanded', String(open));
-    };
-    btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
-    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
-    document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
-    window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+
+    /* ===== Menu mobile ===== */
+    (function () {
+      const btn = document.getElementById('menu-btn');
+      const panel = document.getElementById('mobile-menu');
+      if (!btn || !panel) return;
+      let open = false;
+      const set = (state) => {
+        open = state;
+        panel.classList.toggle('opacity-100', open);
+        panel.classList.toggle('opacity-0', !open);
+        panel.classList.toggle('pointer-events-auto', open);
+        panel.classList.toggle('pointer-events-none', !open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+      document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+    })();
+
+    /* ===== Fade ao rolar entre seções ===== */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const els = Array.from(document.querySelectorAll('.sec > *, .trust > *'));
+      if (!els.length) return;
+      document.documentElement.classList.add('js-fade');
+      els.forEach(el => el.classList.add('fade-sec'));
+      const clamp = (v) => Math.min(1, Math.max(0, v));
+      const ease = (t) => t * t * (3 - 2 * t);
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        els.forEach(el => {
+          const r = el.getBoundingClientRect();
+          const fin = clamp((vh * 0.95 - r.top) / (vh * 0.35));
+          const fout = clamp((r.bottom - vh * 0.05) / (vh * 0.30));
+          el.style.setProperty('--fo', ease(Math.min(fin, fout)).toFixed(3));
+        });
+      };
+      const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', req, { passive: true });
+      window.addEventListener('resize', req);
+      window.addEventListener('load', req);
+      update();
+    })();
+
   });
   </script>
 </body>
