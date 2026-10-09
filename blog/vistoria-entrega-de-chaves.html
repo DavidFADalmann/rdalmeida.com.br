@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <!-- viewport-fit=cover permite usar as áreas seguras (notch / barra de gestos) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Importância do Engenheiro — Vistoria de Entrega de Chaves</title>
+  <meta name="description" content="Entenda por que ter um engenheiro na vistoria de entrega de chaves traz segurança, documentação robusta e economia a longo prazo.">
+
+  <!-- Favicon padrão -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Ícones em PNG para navegadores modernos -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo_16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo_32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo_48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/logo_64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/logo_128x128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/logo_256x256.png">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo_180x180.png">
+
+  <!-- Manifesto (Android/PWA) -->
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+
+    /* VARIÁVEIS DE CORES (--light e --secondary eram usadas no rodapé mas não estavam definidas) */
+    :root{
+      --primary:#0f172a; --accent:#1d4ed8; --muted:#e5e7eb; --brand:#0ea5e9;
+      --header-solid:rgba(200,200,200,.60);
+      --light:#D4D4D4; --secondary:#2e0505;
+    }
+
+    /* CABEÇALHO */
+    header.site{
+      background:linear-gradient(to top, var(--header-solid), rgba(100,100,100,.4));
+      backdrop-filter:saturate(160%) blur(8px);
+      -webkit-backdrop-filter:saturate(160%) blur(8px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      padding-top: env(safe-area-inset-top);
+    }
+    header.site a{ color:#fff; }
+
+    /* Menu mobile: fundo sólido e texto de alto contraste */
+    .mobile-panel { background:#0f172a; border:1px solid rgba(255,255,255,.15); }
+    .mobile-panel li + li { border-top:1px solid rgba(255,255,255,.12); }
+    .mobile-link { color:#fff; }
+    .mobile-link:active, .mobile-link:hover { background:#1d4ed8; }
+
+    /* BOTÕES (cores com variável não aceitam /opacidade no Tailwind, então ficam aqui) */
+    .btn-accent { background: var(--accent); color:#fff; }
+    .btn-accent:hover, .btn-accent:active { background:#1e40af; }
+
+    /* ESTILOS DE PROSA (CONTEÚDO DO ARTIGO) */
+    .prose-custom { overflow-wrap: anywhere; }
+    .prose-custom h2{ font-size:clamp(1.375rem,2vw + .75rem,1.875rem); line-height:1.25; font-weight:600; color:#0f172a; margin-top:2.25rem; }
+    .prose-custom h3{ font-size:clamp(1.125rem,1.6vw + .6rem,1.5rem); line-height:1.3; font-weight:600; color:#0f172a; margin-top:2rem; }
+    .prose-custom p{ font-size:1.0625rem; line-height:1.75; color:#334155; }
+    .prose-custom ul,.prose-custom ol{ margin-left:1.25rem; }
+    figure{ margin:1.5rem 0; }
+    figcaption{ font-size:.9rem; line-height:1.5; color:#475569; margin-top:.5rem; }
+    blockquote{ border-left:4px solid #0ea5e9; padding-left:1rem; font-style:italic; color:#334155; background:#f0f9ff; border-radius:.5rem; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+
+  <!-- ===== Header ===== -->
+  <header class="site">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex h-16 md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+        <a href="../index.html" class="flex items-center gap-3" aria-label="Voltar para a Home">
+          <img src="../assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-12 md:h-20 w-auto">
+          <span class="sr-only">RD Almeida Engenharia</span>
+        </a>
+
+        <!-- Menu desktop -->
+        <ul class="hidden md:flex items-center gap-8 font-medium">
+          <li><a href="../index.html" class="hover:text-white/80">Home</a></li>
+          <li><a href="./indexblog.html" class="hover:text-white/80">Publicações</a></li>
+        </ul>
+
+        <!-- Menu mobile: botão (antes não havia nenhum menu no celular) -->
+        <button id="menu-btn" type="button"
+                class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-lg text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+          <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Menu mobile (painel) -->
+    <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+      <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 rounded-2xl shadow-2xl">
+        <ul class="p-2">
+          <li><a href="../index.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Home</a></li>
+          <li><a href="./indexblog.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Publicações</a></li>
+          <li><a href="../index.html#contato" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="relative overflow-hidden pt-16 md:pt-24">
+    <div class="absolute inset-0 z-0">
+      <img src="./img/imagem01.png" alt="Equipe realizando vistoria de entrega de chaves" class="h-full w-full object-cover">
+      <div class="absolute inset-0 bg-black/55"></div>
+    </div>
+    <div class="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-10 md:py-24 text-white">
+      <nav class="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/80 text-sm" aria-label="Trilha de navegação">
+        <a href="../index.html" class="py-1 hover:text-white">Home</a> <span>/</span>
+        <a href="./indexblog.html" class="py-1 hover:text-white">Publicações</a> <span>/</span>
+        <span>Reportagem</span>
+      </nav>
+      <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl font-semibold leading-tight">Importância do engenheiro na vistoria de entrega de chaves</h1>
+      <p class="mt-3 text-base sm:text-lg text-white/90 max-w-3xl">Conheça os benefícios de ter um engenheiro ao seu lado nesse momento decisivo — mais segurança, conformidade e economia para o seu patrimônio.</p>
+      <div class="mt-4 text-white/80 text-sm">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 5–7 min</div>
+    </div>
+  </section>
+
+  <!-- ===== Artigo ===== -->
+  <main class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-10 md:py-12">
+    <article class="prose-custom space-y-5">
+
+      <h2>Por que a vistoria de entrega é essencial</h2>
+      <p>Ao receber as chaves do seu novo lar, um misto de alegria e expectativa toma conta. No entanto, antes de se instalar completamente, um passo crucial garante a tranquilidade e a segurança do seu investimento: a <strong>vistoria de entrega de chaves</strong>.</p>
+      <p>Essa <em>análise visual detalhada</em> é mais do que um simples protocolo; é a sua oportunidade de documentar o estado real do imóvel no momento da entrega. Ao verificar minuciosamente cada cômodo, parede, piso, teto, portas, janelas e instalações aparentes, você garante que o que está sendo entregue corresponde ao que foi acordado no contrato, na planta e no <strong>memorial descritivo</strong>.</p>
+      <p>A importância da vistoria reside em <strong>prevenir futuras dores de cabeça</strong>. Ao identificar e registrar quaisquer desgastes, defeitos ou inconformidades antes de assinar o recebimento, você protege seus direitos como consumidor e evita que esses problemas sejam imputados a você posteriormente.</p>
+      <p>Em suma, a vistoria de entrega de chaves é um <strong>ato de responsabilidade e prevenção</strong>, essencial para que você possa desfrutar do seu novo espaço com a paz de espírito que ele merece.</p>
+
+      <figure>
+        <img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="w-full h-56 sm:h-64 object-cover rounded-lg" loading="lazy" decoding="async" />
+        <figcaption><strong>Figura 1 – Trincas e fissuras:</strong> inspeções e registros fotográficos ajudam a qualificar a manifestação e orientar a correção pela construtora.</figcaption>
+      </figure>
+
+      <h2>Por que contratar um engenheiro para a vistoria</h2>
+      <p>A vistoria de um apartamento novo, embora essencialmente visual, <strong>ganha uma dimensão de segurança e confiança quando conduzida por um engenheiro</strong>. A expertise técnica vai além do que o olhar leigo consegue perceber, garantindo que você receba um imóvel realmente em conformidade e seguro.</p>
+
+      <h3>Conhecimento técnico aprofundado</h3>
+      <p>Um engenheiro possui base para identificar <strong>problemas estruturais</strong>, falhas em instalações elétricas e hidráulicas, não conformidades de acabamento que podem indicar questões mais sérias e <strong>irregularidades frente às normas técnicas</strong> e ao memorial descritivo.</p>
+
+      <h3>Identificação de defeitos ocultos</h3>
+      <p>A análise conduzida por profissional sabe onde e como procurar por <strong>infiltrações</strong>, fissuras em pontos não aparentes, falhas de isolamento térmico ou acústico e outros vícios construtivos que comprometem conforto e durabilidade.</p>
+
+      <h3>Verificação de conformidade com normas</h3>
+      <p>O engenheiro atesta se a construção e os acabamentos estão de acordo com as normas vigentes (ex.: <strong>ABNT NBR 15575 — Desempenho</strong>) e com o memorial descritivo, assegurando <strong>qualidade e segurança</strong>.</p>
+
+      <h3>Documentação robusta e confiável</h3>
+      <p>Um <strong>laudo de vistoria</strong> elaborado por engenheiro tem peso técnico e jurídico superior. Ele consolida evidências (fotos, medições, testes) e fundamenta eventuais solicitações de correção junto à construtora. Quando aplicável, a <strong>ART — Anotação de Responsabilidade Técnica</strong> dá ainda mais formalidade às tratativas.</p>
+
+      <h3>Segurança, tranquilidade e economia</h3>
+      <p>Ter um profissional qualificado inspecionando seu futuro lar traz <strong>tranquilidade</strong> e evita gastos inesperados. A <strong>identificação precoce</strong> de problemas reduz retrabalhos e custos corretivos após a mudança — um investimento que se paga no médio e longo prazo.</p>
+
+      <figure>
+        <img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="w-full h-56 sm:h-64 object-cover rounded-lg" loading="lazy" decoding="async" />
+        <figcaption><strong>Figura 2 – Vazamentos:</strong> testes de estanqueidade e inspeção de conexões evitam infiltrações e danos a revestimentos e mobiliário.</figcaption>
+      </figure>
+
+      <h2>Conclusão</h2>
+      <p>Contratar um <strong>engenheiro para a vistoria de entrega</strong> não é um custo extra, mas um <strong>investimento na qualidade, segurança e valor</strong> do seu patrimônio. Você recebe um imóvel em conformidade com o contratado — e, se houver pendências, elas estarão <strong>formalmente documentadas</strong> para correção.</p>
+
+      <!-- Botões: empilhados e em largura total no celular -->
+      <div class="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+        <a href="../index.html#contato" class="btn-accent inline-flex items-center justify-center rounded-xl px-5 py-3.5 font-semibold">Solicitar vistoria técnica</a>
+        <a href="./indexblog.html" class="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3.5 font-semibold text-slate-700 border border-slate-200 active:bg-slate-50 hover:bg-slate-50">Voltar para Publicações</a>
+      </div>
+
+      <hr class="my-10 md:my-12 border-slate-200">
+      <section aria-labelledby="refs" class="text-sm text-slate-700">
+        <h3 id="refs" class="text-base font-semibold text-slate-800">Referências (ABNT simplificado)</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-2">
+          <li>ABNT. <strong>NBR 15575 — Edificações habitacionais: Desempenho</strong>. Rio de Janeiro: ABNT, s.d.</li>
+          <li>ABNT. <strong>NBR 14037 — Manual de operação, uso e manutenção das edificações</strong>. Rio de Janeiro: ABNT, s.d.</li>
+          <li>ABNT. <strong>NBR 5671 — Condomínios</strong>. Rio de Janeiro: ABNT, s.d.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <!-- Botão flutuante WhatsApp: círculo no celular, cápsula com texto no desktop -->
+  <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia" target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
+     class="fixed z-40 right-4 md:right-6 flex items-center rounded-full bg-[#25D366] md:bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl active:scale-95 transition-transform md:pr-4"
+     style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+    <span class="flex items-center justify-center h-14 w-14 md:h-12 md:w-12 rounded-full bg-[#25D366]">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white" aria-hidden="true">
+        <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+      </svg>
+    </span>
+    <span class="hidden md:inline ml-2 font-medium text-base">Fale com a nossa equipe!</span>
+  </a>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-slate-200 bg-[var(--light)]" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Logo + texto: empilhados no celular, lado a lado no desktop -->
+        <div class="md:col-span-2">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <img src="../assets/img/branding/logo_rodape.png"
+                 alt="Logo RD Almeida Engenharia"
+                 class="h-24 md:h-40 w-auto shrink-0"
+                 onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo_rodape.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
+
+            <p class="text-slate-600 max-w-md leading-relaxed">
+              Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos.
+              Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente
+              as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Navegação -->
+        <div class="md:ml-auto">
+          <h4 class="text-sm font-semibold text-[var(--secondary)]">Navegação</h4>
+          <ul class="mt-3 space-y-1 text-slate-600">
+            <li><a href="../index.html" class="block py-2 hover:text-[var(--primary)]">Home</a></li>
+            <li><a href="../index.html#servicos" class="block py-2 hover:text-[var(--primary)]">Serviços</a></li>
+            <li><a href="./indexblog.html" class="block py-2 hover:text-[var(--primary)]">Publicações</a></li>
+            <li><a href="../index.html#contato" class="block py-2 hover:text-[var(--primary)]">Contato</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('menu-btn');
+    const panel = document.getElementById('mobile-menu');
+    if (!btn || !panel) return;
+    let open = false;
+    const set = (state) => {
+      open = state;
+      panel.classList.toggle('opacity-100', open);
+      panel.classList.toggle('opacity-0', !open);
+      panel.classList.toggle('pointer-events-auto', open);
+      panel.classList.toggle('pointer-events-none', !open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+    document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+  });
+  </script>
+</body>
+</html>
