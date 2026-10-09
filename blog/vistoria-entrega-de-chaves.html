@@ -4,8 +4,19 @@
   <meta charset="utf-8" />
   <!-- viewport-fit=cover permite usar as áreas seguras (notch / barra de gestos) -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Importância do Engenheiro — Vistoria de Entrega de Chaves</title>
-  <meta name="description" content="Entenda por que ter um engenheiro na vistoria de entrega de chaves traz segurança, documentação robusta e economia a longo prazo.">
+  <title>Vistoria de Entrega de Chaves em São Paulo e Grande SP | RD Almeida</title>
+  <meta name="description" content="Vistoria de entrega de chaves com engenheiro em São Paulo e região metropolitana. Laudo com fotos e lista de pendências antes de você assinar o recebimento. Solicite orçamento.">
+  <meta name="robots" content="index, follow">
+  <!-- AJUSTAR: confirme o endereço final desta página -->
+  <link rel="canonical" href="https://www.rdalmeida.com.br/blog/vistoria-entrega-de-chaves.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="RD Almeida Engenharia e Serviços">
+  <meta property="og:title" content="Vistoria de Entrega de Chaves com Engenheiro | São Paulo e Grande SP">
+  <meta property="og:description" content="Receba seu apartamento sem pendências escondidas. Laudo com fotos e lista de pendências antes de assinar o recebimento.">
+  <meta property="og:url" content="https://www.rdalmeida.com.br/blog/vistoria-entrega-de-chaves.html">
 
   <!-- Favicon padrão -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -28,15 +39,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
     body { margin: 0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
 
-    /* VARIÁVEIS DE CORES (--light e --secondary eram usadas no rodapé mas não estavam definidas) */
+    /* VARIÁVEIS DE CORES (--accent = vermelho da logomarca) */
     :root{
-      --primary:#0f172a; --accent:#1d4ed8; --muted:#e5e7eb; --brand:#0ea5e9;
+      --primary:#0f172a; --accent:#700000; --accent-dark:#4a0000; --accent-soft:#f8f0f0; --muted:#e5e7eb;
       --header-solid:rgba(200,200,200,.60);
       --light:#D4D4D4; --secondary:#2e0505;
     }
@@ -51,30 +62,147 @@
     }
     header.site a{ color:#fff; }
 
-    /* Menu mobile: fundo sólido e texto de alto contraste */
+    /* Menu mobile */
     .mobile-panel { background:#0f172a; border:1px solid rgba(255,255,255,.15); }
     .mobile-panel li + li { border-top:1px solid rgba(255,255,255,.12); }
     .mobile-link { color:#fff; }
-    .mobile-link:active, .mobile-link:hover { background:#1d4ed8; }
+    .mobile-link:active, .mobile-link:hover { background:var(--accent); }
 
-    /* BOTÕES (cores com variável não aceitam /opacidade no Tailwind, então ficam aqui) */
+    /* BOTÕES */
     .btn-accent { background: var(--accent); color:#fff; }
-    .btn-accent:hover, .btn-accent:active { background:#1e40af; }
+    .btn-accent:hover, .btn-accent:active { background:var(--accent-dark); }
 
-    /* ESTILOS DE PROSA (CONTEÚDO DO ARTIGO) */
-    .prose-custom { overflow-wrap: anywhere; }
-    .prose-custom h2{ font-size:clamp(1.375rem,2vw + .75rem,1.875rem); line-height:1.25; font-weight:600; color:#0f172a; margin-top:2.25rem; }
-    .prose-custom h3{ font-size:clamp(1.125rem,1.6vw + .6rem,1.5rem); line-height:1.3; font-weight:600; color:#0f172a; margin-top:2rem; }
-    .prose-custom p{ font-size:1.0625rem; line-height:1.75; color:#334155; }
-    .prose-custom ul,.prose-custom ol{ margin-left:1.25rem; }
-    figure{ margin:1.5rem 0; }
+    /* ÍCONES */
+    .ico{ width:1.6rem; height:1.6rem; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .ico-tile{ height:3rem; width:3rem; flex:0 0 3rem; display:grid; place-items:center; border-radius:.85rem; background:var(--accent); color:#fff; }
+
+    /* TÍTULOS DE SEÇÃO */
+    .kicker{ font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .4rem; }
+    .sec-title{ font-size:clamp(1.5rem,2.2vw + .8rem,2.1rem); line-height:1.2; font-weight:800; color:#0f172a; margin:0 0 .6rem; letter-spacing:-.01em; }
+    .sec-lead{ font-size:1.0625rem; line-height:1.7; color:#334155; margin:0 0 1.75rem; max-width:44rem; }
+
+    /* CAIXAS */
+    .box{ background:#fff; border:1px solid #e2e8f0; border-radius:1rem; padding:1.25rem; transition:transform .18s ease, box-shadow .18s ease; }
+    .box:hover{ transform:translateY(-3px); box-shadow:0 12px 28px rgba(15,23,42,.10); }
+    .box h3{ font-size:1.05rem; font-weight:700; color:#0f172a; margin:.9rem 0 .3rem; }
+    .box p{ font-size:.95rem; line-height:1.6; color:#475569; margin:0; }
+
+    /* Faixa vinho (por que contratar) */
+    .band-dark{ background:linear-gradient(135deg,#2e0505 0%,#4a0000 100%); color:#fff; }
+    .band-dark .kicker{ color:#f1b5b5; }
+    .band-dark .sec-title{ color:#fff; }
+    .band-dark .sec-lead{ color:#e5d5d5; }
+    .box-dark{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); border-radius:1rem; padding:1.25rem; }
+    .box-dark h3{ font-size:1.05rem; font-weight:700; color:#fff; margin:.9rem 0 .3rem; }
+    .box-dark p{ font-size:.95rem; line-height:1.6; color:#e5d5d5; margin:0; }
+    .box-dark .ico-tile{ background:#fff; color:var(--accent); }
+
+    .band-alt{ background:#f1f5f9; }
+
+    /* Chips de problemas */
+    .chip{ display:flex; align-items:center; gap:.75rem; background:#fff; border:1px solid #e2e8f0; border-left:4px solid var(--accent); border-radius:.75rem; padding:.85rem 1rem; font-weight:600; color:#0f172a; font-size:.95rem; }
+    .chip .ico{ color:var(--accent); width:1.4rem; height:1.4rem; flex:0 0 1.4rem; }
+
+    .step-num{ height:2.5rem; width:2.5rem; flex:0 0 2.5rem; display:grid; place-items:center; border-radius:9999px; background:var(--accent); color:#fff; font-weight:800; }
+    figure{ margin:0; }
     figcaption{ font-size:.9rem; line-height:1.5; color:#475569; margin-top:.5rem; }
-    blockquote{ border-left:4px solid #0ea5e9; padding-left:1rem; font-style:italic; color:#334155; background:#f0f9ff; border-radius:.5rem; }
 
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    /* FAQ */
+    .faq{ border-top:1px solid #cbd5e1; padding:1.1rem 0; }
+    .faq h3{ font-size:1.0625rem; font-weight:700; color:#0f172a; margin:0 0 .35rem; }
+    .faq p{ margin:0; color:#334155; line-height:1.7; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .box{ transition:none; } .box:hover{ transform:none; } }
   </style>
+
+  <!-- Dados estruturados do serviço -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Vistoria de entrega de chaves de imóvel novo",
+    "name": "Vistoria de entrega de chaves com engenheiro",
+    "description": "Vistoria técnica de recebimento de apartamento novo conduzida por engenheiro, com laudo, registro fotográfico e lista de pendências.",
+    "provider": {
+      "@type": "Organization",
+      "name": "RD Almeida Engenharia e Serviços",
+      "url": "https://www.rdalmeida.com.br/",
+      "telephone": "+55 11 93924-9310",
+      "email": "contato@rdalmeida.com.br"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "São Paulo" },
+      { "@type": "AdministrativeArea", "name": "Região Metropolitana de São Paulo" }
+    ],
+    "inLanguage": "pt-BR"
+  }
+  </script>
+
+  <!-- FAQPage: o texto abaixo deve ser idêntico ao da seção "Perguntas frequentes" -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "A construtora já faz uma vistoria. Ainda vale contratar a minha?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A visita da construtora faz parte do processo de entrega dela. A vistoria que você contrata é feita por um engenheiro que olha o imóvel do seu lado e entrega um laudo com fotos e lista de pendências para você usar." }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso acompanhar a vistoria?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Você pode acompanhar para tirar dúvidas na hora, quando o acesso ao imóvel permitir. Combinamos os detalhes com você na contratação." }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso contratar quando a entrega das chaves já está marcada?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. Quanto antes você nos chamar, mais fácil é alinhar a agenda. Informe a data prevista e verificamos a disponibilidade." }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês atendem na minha cidade?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Atendemos a cidade de São Paulo e toda a região metropolitana. Informe o endereço do imóvel ao pedir o orçamento e confirmamos a disponibilidade." }
+      },
+      {
+        "@type": "Question",
+        "name": "O que acontece se forem encontradas pendências?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Elas entram no laudo com foto e descrição. Com esse material, você encaminha a solicitação pelo canal oficial da construtora e guarda os protocolos. A análise e os reparos seguem os procedimentos da construtora." }
+      },
+      {
+        "@type": "Question",
+        "name": "Como solicitar um orçamento?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Entre em contato pelo WhatsApp e informe o endereço do imóvel, a área aproximada do apartamento e a data prevista para a entrega das chaves." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="antialiased text-slate-800 bg-white">
+
+  <!-- ===== Ícones (sprite) ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s7 7.2 7 12a7 7 0 0 1-14 0c0-4.8 7-12 7-12z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM8 20h8M12 16v4"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M15 12h.01"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><path d="M9 3h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3zM9 21v-6h6v6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6v20h12V8zM14 2v6h6M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h3l2-3h6l2 3h3v13H4zM12 10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M3 6l1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-crack" viewBox="0 0 24 24"><path d="M13 2l-3 7 4 3-3 5 3 5"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 8c2-2 4 2 6 0s4 2 6 0 4 2 6 0M3 14c2-2 4 2 6 0s4 2 6 0 4 2 6 0"/></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><path d="M3 17l9 4 9-4M3 12l9 4 9-4M12 3L3 7l9 4 9-4z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 21h20zM12 10v5M12 18h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12zM12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></symbol>
+    <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 4v6M9 6v4M15 6v4"/></symbol>
+  </svg>
 
   <!-- ===== Header ===== -->
   <header class="site">
@@ -88,10 +216,11 @@
         <!-- Menu desktop -->
         <ul class="hidden md:flex items-center gap-8 font-medium">
           <li><a href="../index.html" class="hover:text-white/80">Home</a></li>
+          <li><a href="../index.html#servicos" class="hover:text-white/80">Serviços</a></li>
           <li><a href="./indexblog.html" class="hover:text-white/80">Publicações</a></li>
         </ul>
 
-        <!-- Menu mobile: botão (antes não havia nenhum menu no celular) -->
+        <!-- Menu mobile: botão -->
         <button id="menu-btn" type="button"
                 class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-lg text-white focus:outline-none"
                 aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
@@ -107,6 +236,7 @@
       <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 rounded-2xl shadow-2xl">
         <ul class="p-2">
           <li><a href="../index.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Home</a></li>
+          <li><a href="../index.html#servicos" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Serviços</a></li>
           <li><a href="./indexblog.html" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Publicações</a></li>
           <li><a href="../index.html#contato" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Contato</a></li>
         </ul>
@@ -117,78 +247,207 @@
   <!-- ===== Hero ===== -->
   <section class="relative overflow-hidden pt-16 md:pt-24">
     <div class="absolute inset-0 z-0">
-      <img src="./img/imagem01.png" alt="Equipe realizando vistoria de entrega de chaves" class="h-full w-full object-cover">
-      <div class="absolute inset-0 bg-black/55"></div>
+      <img src="./img/imagem01.png" alt="Engenheiro realizando vistoria de entrega de chaves em apartamento novo" class="h-full w-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
     </div>
-    <div class="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-10 md:py-24 text-white">
-      <nav class="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/80 text-sm" aria-label="Trilha de navegação">
-        <a href="../index.html" class="py-1 hover:text-white">Home</a> <span>/</span>
-        <a href="./indexblog.html" class="py-1 hover:text-white">Publicações</a> <span>/</span>
-        <span>Reportagem</span>
-      </nav>
-      <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl font-semibold leading-tight">Importância do engenheiro na vistoria de entrega de chaves</h1>
-      <p class="mt-3 text-base sm:text-lg text-white/90 max-w-3xl">Conheça os benefícios de ter um engenheiro ao seu lado nesse momento decisivo — mais segurança, conformidade e economia para o seu patrimônio.</p>
-      <div class="mt-4 text-white/80 text-sm">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 5–7 min</div>
+    <div class="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-10 md:py-16 text-white">
+      <p class="text-xs sm:text-sm font-bold uppercase tracking-[.18em] text-white/80">Vistoria de imóvel novo</p>
+      <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl">Evite problemas na entrega das chaves</h1>
+      <p class="mt-4 text-base sm:text-lg md:text-xl text-white/90 max-w-2xl">Um engenheiro confere o seu apartamento e entrega um laudo com fotos antes de você assinar o recebimento.</p>
+
+      <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+        <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento%20novo." target="_blank" rel="noopener noreferrer" class="btn-accent inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold uppercase tracking-wide">Solicite um orçamento</a>
+        <a href="#verificamos" class="inline-flex items-center justify-center rounded-xl border border-white/60 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10 active:bg-white/10">Ver o que verificamos</a>
+      </div>
     </div>
   </section>
 
-  <!-- ===== Artigo ===== -->
-  <main class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-10 md:py-12">
-    <article class="prose-custom space-y-5">
+  <!-- ===== Faixa de destaques ===== -->
+  <section class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-hardhat"/></svg></span><span class="font-semibold text-slate-800 text-sm">Vistoria conduzida por engenheiro</span></div>
+      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-camera"/></svg></span><span class="font-semibold text-slate-800 text-sm">Laudo com registro fotográfico</span></div>
+      <div class="flex items-center gap-3"><span class="ico-tile !h-10 !w-10 !flex-none !rounded-lg"><svg class="ico !h-5 !w-5"><use href="#i-pin"/></svg></span><span class="font-semibold text-slate-800 text-sm">São Paulo e Grande São Paulo</span></div>
+    </div>
+  </section>
 
-      <h2>Por que a vistoria de entrega é essencial</h2>
-      <p>Ao receber as chaves do seu novo lar, um misto de alegria e expectativa toma conta. No entanto, antes de se instalar completamente, um passo crucial garante a tranquilidade e a segurança do seu investimento: a <strong>vistoria de entrega de chaves</strong>.</p>
-      <p>Essa <em>análise visual detalhada</em> é mais do que um simples protocolo; é a sua oportunidade de documentar o estado real do imóvel no momento da entrega. Ao verificar minuciosamente cada cômodo, parede, piso, teto, portas, janelas e instalações aparentes, você garante que o que está sendo entregue corresponde ao que foi acordado no contrato, na planta e no <strong>memorial descritivo</strong>.</p>
-      <p>A importância da vistoria reside em <strong>prevenir futuras dores de cabeça</strong>. Ao identificar e registrar quaisquer desgastes, defeitos ou inconformidades antes de assinar o recebimento, você protege seus direitos como consumidor e evita que esses problemas sejam imputados a você posteriormente.</p>
-      <p>Em suma, a vistoria de entrega de chaves é um <strong>ato de responsabilidade e prevenção</strong>, essencial para que você possa desfrutar do seu novo espaço com a paz de espírito que ele merece.</p>
+  <main>
 
-      <figure>
-        <img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="w-full h-56 sm:h-64 object-cover rounded-lg" loading="lazy" decoding="async" />
-        <figcaption><strong>Figura 1 – Trincas e fissuras:</strong> inspeções e registros fotográficos ajudam a qualificar a manifestação e orientar a correção pela construtora.</figcaption>
-      </figure>
+    <!-- ===== O que é ===== -->
+    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+      <p class="kicker">O serviço</p>
+      <h2 class="sec-title">Vistoria de imóvel novo</h2>
+      <p class="sec-lead !mb-0">É uma avaliação técnica feita no momento da entrega do apartamento. Qualquer divergência ou defeito é registrado em laudo, que serve de base para você <strong>solicitar os reparos à construtora antes de assinar o recebimento</strong>.</p>
+    </section>
 
-      <h2>Por que contratar um engenheiro para a vistoria</h2>
-      <p>A vistoria de um apartamento novo, embora essencialmente visual, <strong>ganha uma dimensão de segurança e confiança quando conduzida por um engenheiro</strong>. A expertise técnica vai além do que o olhar leigo consegue perceber, garantindo que você receba um imóvel realmente em conformidade e seguro.</p>
-
-      <h3>Conhecimento técnico aprofundado</h3>
-      <p>Um engenheiro possui base para identificar <strong>problemas estruturais</strong>, falhas em instalações elétricas e hidráulicas, não conformidades de acabamento que podem indicar questões mais sérias e <strong>irregularidades frente às normas técnicas</strong> e ao memorial descritivo.</p>
-
-      <h3>Identificação de defeitos ocultos</h3>
-      <p>A análise conduzida por profissional sabe onde e como procurar por <strong>infiltrações</strong>, fissuras em pontos não aparentes, falhas de isolamento térmico ou acústico e outros vícios construtivos que comprometem conforto e durabilidade.</p>
-
-      <h3>Verificação de conformidade com normas</h3>
-      <p>O engenheiro atesta se a construção e os acabamentos estão de acordo com as normas vigentes (ex.: <strong>ABNT NBR 15575 — Desempenho</strong>) e com o memorial descritivo, assegurando <strong>qualidade e segurança</strong>.</p>
-
-      <h3>Documentação robusta e confiável</h3>
-      <p>Um <strong>laudo de vistoria</strong> elaborado por engenheiro tem peso técnico e jurídico superior. Ele consolida evidências (fotos, medições, testes) e fundamenta eventuais solicitações de correção junto à construtora. Quando aplicável, a <strong>ART — Anotação de Responsabilidade Técnica</strong> dá ainda mais formalidade às tratativas.</p>
-
-      <h3>Segurança, tranquilidade e economia</h3>
-      <p>Ter um profissional qualificado inspecionando seu futuro lar traz <strong>tranquilidade</strong> e evita gastos inesperados. A <strong>identificação precoce</strong> de problemas reduz retrabalhos e custos corretivos após a mudança — um investimento que se paga no médio e longo prazo.</p>
-
-      <figure>
-        <img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="w-full h-56 sm:h-64 object-cover rounded-lg" loading="lazy" decoding="async" />
-        <figcaption><strong>Figura 2 – Vazamentos:</strong> testes de estanqueidade e inspeção de conexões evitam infiltrações e danos a revestimentos e mobiliário.</figcaption>
-      </figure>
-
-      <h2>Conclusão</h2>
-      <p>Contratar um <strong>engenheiro para a vistoria de entrega</strong> não é um custo extra, mas um <strong>investimento na qualidade, segurança e valor</strong> do seu patrimônio. Você recebe um imóvel em conformidade com o contratado — e, se houver pendências, elas estarão <strong>formalmente documentadas</strong> para correção.</p>
-
-      <!-- Botões: empilhados e em largura total no celular -->
-      <div class="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
-        <a href="../index.html#contato" class="btn-accent inline-flex items-center justify-center rounded-xl px-5 py-3.5 font-semibold">Solicitar vistoria técnica</a>
-        <a href="./indexblog.html" class="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3.5 font-semibold text-slate-700 border border-slate-200 active:bg-slate-50 hover:bg-slate-50">Voltar para Publicações</a>
+    <!-- ===== Por que contratar ===== -->
+    <section class="band-dark">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+        <p class="kicker">Por que contratar</p>
+        <h2 class="sec-title">Um imóvel é um dos maiores investimentos da vida</h2>
+        <p class="sec-lead">Receber com cuidado evita que você pague caro por algo que não está em boas condições.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="box-dark">
+            <span class="ico-tile"><svg class="ico"><use href="#i-search"/></svg></span>
+            <h3>Olhar técnico</h3>
+            <p>Pequenos defeitos passam despercebidos para quem não é da área. O engenheiro sabe onde olhar e confronta o imóvel com o memorial descritivo e com normas como a ABNT NBR 15575.</p>
+          </div>
+          <div class="box-dark">
+            <span class="ico-tile"><svg class="ico"><use href="#i-shield"/></svg></span>
+            <h3>Proteção do investimento</h3>
+            <p>Identificar pendências antes da mudança reduz retrabalho e custos de correção depois.</p>
+          </div>
+          <div class="box-dark">
+            <span class="ico-tile"><svg class="ico"><use href="#i-clip"/></svg></span>
+            <h3>Reparos antes de assinar</h3>
+            <p>Com o laudo em mãos, você tem respaldo técnico para pedir a correção do que não foi entregue corretamente. Quando aplicável, o serviço conta com ART.</p>
+          </div>
+          <div class="box-dark">
+            <span class="ico-tile"><svg class="ico"><use href="#i-home"/></svg></span>
+            <h3>Tranquilidade na mudança</h3>
+            <p>Você entra no imóvel sabendo o que foi conferido e o que ficou registrado para correção.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <hr class="my-10 md:my-12 border-slate-200">
-      <section aria-labelledby="refs" class="text-sm text-slate-700">
-        <h3 id="refs" class="text-base font-semibold text-slate-800">Referências (ABNT simplificado)</h3>
-        <ul class="list-disc pl-5 mt-2 space-y-2">
-          <li>ABNT. <strong>NBR 15575 — Edificações habitacionais: Desempenho</strong>. Rio de Janeiro: ABNT, s.d.</li>
-          <li>ABNT. <strong>NBR 14037 — Manual de operação, uso e manutenção das edificações</strong>. Rio de Janeiro: ABNT, s.d.</li>
-          <li>ABNT. <strong>NBR 5671 — Condomínios</strong>. Rio de Janeiro: ABNT, s.d.</li>
-        </ul>
-      </section>
-    </article>
+    <!-- ===== O que verificamos ===== -->
+    <section id="verificamos" class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+      <p class="kicker">Checklist técnico</p>
+      <h2 class="sec-title">O que verificamos no seu apartamento</h2>
+      <p class="sec-lead">Percorremos cada ambiente com método, comparando com o contrato e o memorial descritivo.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-bolt"/></svg></span><h3>Instalações elétricas</h3><p>Tomadas, interruptores, luminárias e funcionamento geral, quando há energia e condições seguras.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-grid"/></svg></span><h3>Acabamentos e revestimentos</h3><p>Manchas, falhas de pintura, peças soltas, pisos ocos, nivelamento e trincas.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-drop"/></svg></span><h3>Instalações hidráulicas</h3><p>Torneiras, chuveiros, descargas, vazão da água e sinais de vazamento ou umidade.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-monitor"/></svg></span><h3>Equipamentos instalados</h3><p>Ar-condicionado, interfone, campainha e demais itens previstos no memorial descritivo.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-door"/></svg></span><h3>Portas e janelas</h3><p>Alinhamento, vedação, fechaduras e abertura e fechamento adequados.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-sun"/></svg></span><h3>Conforto e áreas externas</h3><p>Ventilação e iluminação natural, além de sacada e demais áreas externas.</p></div>
+      </div>
+      <div class="mt-6 border-l-4 border-[var(--accent)] bg-[var(--accent-soft)] rounded-lg p-4 text-slate-700 text-[.95rem] leading-relaxed"><strong>Até onde vai a vistoria?</strong><br>Conferimos todos os itens acessíveis do imóvel dentro do que foi contratado, com registro fotográfico e laudo. Por ser uma inspeção visual e funcional, ela não inclui testes de laboratório nem investigações que exijam abrir paredes ou pisos. Quando o engenheiro vê indícios que justifiquem uma análise mais aprofundada, ele indica essa avaliação complementar.</div>
+    </section>
+
+    <!-- ===== Problemas ===== -->
+    <section class="band-alt">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+        <p class="kicker">Fique atento</p>
+        <h2 class="sec-title">Não receba seu imóvel com estes problemas</h2>
+        <p class="sec-lead">Os mais comuns em apartamentos novos e que passam batido na entrega.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div class="chip"><svg class="ico"><use href="#i-crack"/></svg>Trincas e fissuras</div>
+          <div class="chip"><svg class="ico"><use href="#i-wave"/></svg>Infiltrações e manchas de umidade</div>
+          <div class="chip"><svg class="ico"><use href="#i-drop"/></svg>Vazamentos</div>
+          <div class="chip"><svg class="ico"><use href="#i-floor"/></svg>Pisos soltos ou ocos</div>
+          <div class="chip"><svg class="ico"><use href="#i-door"/></svg>Portas e janelas desalinhadas</div>
+          <div class="chip"><svg class="ico"><use href="#i-alert"/></svg>Falhas em tomadas e instalações</div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <figure>
+            <img src="./img/imagem02.png" alt="Engenheiro identificando trincas e fissuras em parede durante vistoria" class="w-full h-52 sm:h-56 object-cover rounded-xl" loading="lazy" decoding="async" />
+            <figcaption><strong>Trincas e fissuras:</strong> inspeção e registro fotográfico ajudam a entender a gravidade do problema e a orientar a correção pela construtora.</figcaption>
+          </figure>
+          <figure>
+            <img src="./img/imagem03.png" alt="Técnico verificando vazamento sob pia da cozinha durante vistoria" class="w-full h-52 sm:h-56 object-cover rounded-xl" loading="lazy" decoding="async" />
+            <figcaption><strong>Vazamentos:</strong> testes e inspeção das conexões ajudam a evitar infiltrações e danos a revestimentos e móveis.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== O que você recebe ===== -->
+    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+      <p class="kicker">Entregáveis</p>
+      <h2 class="sec-title">O que você recebe</h2>
+      <p class="sec-lead">Material pronto para apoiar a conversa com a construtora.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-file"/></svg></span><h3>Laudo técnico</h3><p>Constatações organizadas por ambiente, conforme o serviço contratado.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-camera"/></svg></span><h3>Registro fotográfico</h3><p>Cada ocorrência documentada para fácil localização.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span><h3>Lista de pendências</h3><p>Pontos observados descritos de forma objetiva, prontos para envio.</p></div>
+        <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-chat"/></svg></span><h3>Orientação do engenheiro</h3><p>Dúvidas esclarecidas antes de você assinar o recebimento.</p></div>
+      </div>
+      <!-- INSERIR AQUI o prazo de entrega do laudo, se quiser divulgar (ex.: "Laudo entregue em até X dias úteis") -->
+    </section>
+
+    <!-- ===== Como funciona ===== -->
+    <section class="band-alt">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+        <p class="kicker">Passo a passo</p>
+        <h2 class="sec-title">Como funciona</h2>
+        <ol class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">1</span><div><h3 class="font-bold text-slate-900">Você entra em contato</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Pelo WhatsApp, informe o endereço, a área aproximada e a data prevista da entrega das chaves.</p></div></li>
+          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">2</span><div><h3 class="font-bold text-slate-900">Enviamos a proposta</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Você recebe uma proposta com o que será feito e as condições, sem compromisso.</p></div></li>
+          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">3</span><div><h3 class="font-bold text-slate-900">Realizamos a vistoria</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">O engenheiro percorre o apartamento, confere os itens combinados e registra tudo com fotos.</p></div></li>
+          <li class="flex gap-4 items-start bg-white border border-slate-200 rounded-2xl p-5"><span class="step-num">4</span><div><h3 class="font-bold text-slate-900">Você recebe o laudo</h3><p class="text-slate-600 leading-relaxed text-[.95rem]">Com o laudo e a lista de pendências, você encaminha as solicitações à construtora com segurança.</p></div></li>
+        </ol>
+        <p class="mt-5 text-sm text-slate-600 max-w-3xl"><strong>Dica:</strong> chame a gente antes da data da entrega. Confirme com a construtora as regras de acesso, o tempo da inspeção e se água e energia estarão ligadas.</p>
+      </div>
+    </section>
+
+    <!-- ===== Onde atendemos + Quanto custa ===== -->
+    <section class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="box">
+          <span class="ico-tile"><svg class="ico"><use href="#i-pin"/></svg></span>
+          <h3>Onde atendemos</h3>
+          <p>Cidade de São Paulo e toda a região metropolitana, incluindo Guarulhos, Osasco, Santo André, São Bernardo do Campo, São Caetano do Sul e Barueri, entre outras. Informe o endereço e confirmamos a disponibilidade.</p>
+        </div>
+        <div class="box">
+          <span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span>
+          <h3>Quanto custa</h3>
+          <p>O valor depende da área do imóvel, da localização, das condições de acesso e do tamanho da inspeção. Informe os dados do apartamento e receba uma proposta sem compromisso.</p>
+          <!-- INSERIR AQUI uma faixa de preço ou "a partir de R$ X", se a empresa quiser divulgar -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Perguntas frequentes ===== -->
+    <section id="faq" class="band-alt">
+      <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+        <p class="kicker">Dúvidas</p>
+        <h2 class="sec-title">Perguntas frequentes</h2>
+        <div class="mt-4">
+          <div class="faq">
+            <h3>A construtora já faz uma vistoria. Ainda vale contratar a minha?</h3>
+            <p>A visita da construtora faz parte do processo de entrega dela. A vistoria que você contrata é feita por um engenheiro que olha o imóvel do seu lado e entrega um laudo com fotos e lista de pendências para você usar.</p>
+          </div>
+          <div class="faq">
+            <h3>Preciso acompanhar a vistoria?</h3>
+            <p>Você pode acompanhar para tirar dúvidas na hora, quando o acesso ao imóvel permitir. Combinamos os detalhes com você na contratação.</p>
+          </div>
+          <div class="faq">
+            <h3>Posso contratar quando a entrega das chaves já está marcada?</h3>
+            <p>Sim. Quanto antes você nos chamar, mais fácil é alinhar a agenda. Informe a data prevista e verificamos a disponibilidade.</p>
+          </div>
+          <div class="faq">
+            <h3>Vocês atendem na minha cidade?</h3>
+            <p>Atendemos a cidade de São Paulo e toda a região metropolitana. Informe o endereço do imóvel ao pedir o orçamento e confirmamos a disponibilidade.</p>
+          </div>
+          <div class="faq">
+            <h3>O que acontece se forem encontradas pendências?</h3>
+            <p>Elas entram no laudo com foto e descrição. Com esse material, você encaminha a solicitação pelo canal oficial da construtora e guarda os protocolos. A análise e os reparos seguem os procedimentos da construtora.</p>
+          </div>
+          <div class="faq">
+            <h3>Como solicitar um orçamento?</h3>
+            <p>Entre em contato pelo WhatsApp e informe o endereço do imóvel, a área aproximada do apartamento e a data prevista para a entrega das chaves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Chamada final ===== -->
+    <section class="band-dark">
+      <div class="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-12 md:py-16 text-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">Você investiu muito nesse imóvel.<br class="hidden sm:block"> Receba do jeito certo.</h2>
+        <p class="mt-4 text-[#e5d5d5] max-w-xl mx-auto leading-relaxed">Fale com um engenheiro da RD Almeida e receba uma proposta para o seu apartamento, sem compromisso.</p>
+        <!-- Botões: empilhados e em largura total no celular -->
+        <div class="mt-7 flex flex-col sm:flex-row sm:justify-center gap-3">
+          <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20vistoria%20de%20entrega%20de%20apartamento." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 font-bold uppercase tracking-wide" style="color:var(--accent)">Solicitar vistoria técnica</a>
+          <a href="../index.html#contato" class="inline-flex items-center justify-center rounded-xl border border-white/50 px-6 py-3.5 font-semibold text-white hover:bg-white/10 active:bg-white/10">Outras formas de contato</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Botão flutuante WhatsApp: círculo no celular, cápsula com texto no desktop -->
@@ -235,7 +494,21 @@
           </ul>
         </div>
 
+        <!-- Contato -->
+        <div class="md:ml-auto">
+          <h4 class="text-sm font-semibold text-[var(--secondary)]">Contato</h4>
+          <ul class="mt-3 space-y-1 text-slate-600 text-sm">
+            <li class="py-1">São Paulo e região metropolitana</li>
+            <li><a href="mailto:contato@rdalmeida.com.br" class="block py-1 hover:text-[var(--primary)] break-all">contato@rdalmeida.com.br</a></li>
+            <li><a href="https://wa.me/5511939249310" target="_blank" rel="noopener noreferrer" class="block py-1 hover:text-[var(--primary)]">(11) 93924-9310 · WhatsApp</a></li>
+          </ul>
+        </div>
+
       </div>
+
+      <p class="mt-8 pt-6 border-t border-slate-400/40 text-xs text-slate-600 max-w-3xl">
+        A vistoria não substitui testes específicos, investigações destrutivas ou avaliação técnica complementar quando necessários. O que será feito em cada vistoria é definido na contratação.
+      </p>
     </div>
   </footer>
 
