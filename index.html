@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- Versão: v2025-09-06-02-mobile | Otimizada para celular em orientação vertical (retrato) -->
+<!-- Versão: v2025-09-06-02-mobile | Otimizada para celular em orientação vertical (retrato) | Cabeçalho e menu mobile claros -->
 <head>
   <meta charset="utf-8" />
   <!-- viewport-fit=cover permite usar as áreas seguras (notch / barra de gestos) -->
@@ -54,19 +54,24 @@
     }
     h2 { font-family: "Times New Roman", Times, serif; }
 
-    /* === Header branco que fica progressivamente transparente === */
-    #site-header { background: rgba(255,255,255,var(--header-alpha,1)); backdrop-filter: saturate(180%) blur(8px); -webkit-backdrop-filter: saturate(180%) blur(8px); padding-top: env(safe-area-inset-top); }
-    #site-header .nav-link { color: var(--secondary); transition: color .3s ease; }
-    #site-header.on-hero .nav-link { color:#fff; }
-    #menu-btn .menu-icon { color: var(--secondary); transition: color .3s ease; }
-    #site-header.on-hero #menu-btn .menu-icon { color:#fff; }
+    /* === Header quase branco (fixo, sempre legível) === */
+    #site-header {
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 12px rgba(15,23,42,.06);
+      backdrop-filter: saturate(180%) blur(8px);
+      -webkit-backdrop-filter: saturate(180%) blur(8px);
+      padding-top: env(safe-area-inset-top);
+    }
+    #site-header .nav-link { color: var(--secondary); }
+    #menu-btn .menu-icon { color: var(--secondary); }
 
-    /* Menu mobile: fundo sólido e texto de alto contraste */
-    .mobile-panel { background: #2e0505; border: 1px solid rgba(255,255,255,.15); }
+    /* Menu mobile: painel claro com texto escuro */
+    .mobile-panel { background: #fff; border: 1px solid #e2e8f0; }
     .mobile-panel ul { padding: .5rem; }
-    .mobile-panel li + li { border-top: 1px solid rgba(255,255,255,.12); }
-    .mobile-link { color: #fff; }
-    .mobile-link:active, .mobile-link:hover { background: #8B0000; }
+    .mobile-panel li + li { border-top: 1px solid #e2e8f0; }
+    .mobile-link { color: var(--secondary); }
+    .mobile-link:active, .mobile-link:hover { background: #f8f0f0; color: var(--primary); }
 
     /* Hero ocupa a tela toda, considerando a barra dinâmica do navegador móvel */
     #home { height: 100vh; height: 100svh; min-height: 520px; }
@@ -101,7 +106,7 @@
     </a>
 
     <!-- ===== Header ===== -->
-    <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-colors duration-500">
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav class="flex h-16 md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
           <!-- Logo -->
@@ -396,33 +401,7 @@
   <script>
   window.addEventListener('DOMContentLoaded', function () {
 
-    /* ===== Header: 40% de opacidade no início, fica sólido ao fim do hero ===== */
-    const header = document.getElementById('site-header');
-    const hero = document.getElementById('home');
-    if (header && hero) {
-      const apply = (alpha) => {
-        const a = Math.max(0, Math.min(1, alpha));
-        header.style.setProperty('--header-alpha', a.toFixed(3));
-      };
-      const update = () => {
-        const h = Math.max(hero.offsetHeight || window.innerHeight, 1);
-        const y = window.scrollY || window.pageYOffset || 0;
-        const threshold = Math.max(h - 1, 1);
-        if (y < threshold) {
-          const t = Math.min(Math.max(y / threshold, 0), 1);
-          header.classList.remove('is-solid');
-          header.classList.add('on-hero');
-          apply(0.4 * (1 - t));
-        } else {
-          header.classList.add('is-solid');
-          header.classList.remove('on-hero');
-          apply(0);
-        }
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-    }
+    /* (O efeito de transparência progressiva do header foi removido: o header agora é sempre quase branco.) */
 
     /* ===== Menu mobile ===== */
     (function () {
