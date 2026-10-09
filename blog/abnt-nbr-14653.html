@@ -1,215 +1,398 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!-- Versão: v2026-10-09 | artigo NBR 14653 no mesmo estilo do index v10: tema escuro, dourado, tons por seção e fade ao rolar -->
 <head>
-
-<!-- Favicon padrão -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-<!-- Ícones em PNG para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="16x16" href="/logo_16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/logo_32x32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/logo_48x48.png">
-<link rel="icon" type="image/png" sizes="64x64" href="/logo_64x64.png">
-<link rel="icon" type="image/png" sizes="128x128" href="/logo_128x128.png">
-<link rel="icon" type="image/png" sizes="256x256" href="/logo_256x256.png">
-
-<!-- Apple Touch Icon (para iPhone/iPad quando salva na tela inicial) -->
-<link rel="apple-touch-icon" sizes="180x180" href="/logo_180x180.png">
-
-<!-- Manifesto (para Android/PWA) -->
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0a0a0a">
-  
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ABNT NBR 14653: princípios para avaliação de imóveis urbanos • RDA Engenharia</title>
   <meta name="description" content="Como a NBR 14653 orienta laudos e pareceres de avaliação de imóveis urbanos: princípios, métodos e boas práticas, com linguagem comercial e estrutura conforme ABNT." />
+
+  <!-- Favicon padrão -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Ícones em PNG para navegadores modernos -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo_16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo_32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo_48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/logo_64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/logo_128x128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/logo_256x256.png">
+
+  <!-- Apple Touch Icon (para iPhone/iPad quando salva na tela inicial) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo_180x180.png">
+
+  <!-- Manifesto (para Android/PWA) -->
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#09090a">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    /* Reset de margem e preenchimento para garantir que a página comece no topo */
-    body, html {
-        margin: 0;
-        padding: 0;
+    :root {
+      --bg: #09090a;
+      --bg2: #0f0f11;
+      --panel: #131316;
+      --line: rgba(255,255,255,.09);
+      --gold: #b99a68;
+      --gold-soft: rgba(185,154,104,.35);
+      --red: #a3121a;
+      --text: #ececee;
+      --muted: #9b9ba3;
+      --header-h: 4.5rem;
+      /* Tons de fundo por seção (diferença discreta para segmentar) */
+      --tone-trust: #111114;
+      --tone-b: #151416;
+      --tone-c: #121114;
+      --tone-d: #0a0a0c;
     }
-    /* VARIÁVEIS DE CORES */
-    :root{ --primary:#0f172a; --accent:#1d4ed8; --muted:#e5e7eb; --brand:#0ea5e9; --header-solid:rgba(200,200,200,.60); }
+    @media (min-width: 768px) { :root { --header-h: 6rem; } }
 
-    /* ESTILO DO CABEÇALHO */
-    header.site{
-      background:linear-gradient(to top, var(--header-solid), rgba(100,100,100,.4));
-      backdrop-filter:saturate(160%) blur(8px);
-      position: fixed; /* Fixa o cabeçalho no topo da viewport */
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50; /* Garante que o cabeçalho fique por cima */
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; font-weight: 300; overflow-x: hidden; background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; letter-spacing: .005em; margin: 0; padding: 0; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 500; }
+
+    .label { font-size: .72rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); }
+    .rule { height: 1px; width: 64px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+    /* Malha técnica */
+    .blueprint { background-image:
+        linear-gradient(rgba(185,154,104,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185,154,104,.06) 1px, transparent 1px);
+      background-size: 56px 56px; }
+
+    /* Header */
+    #site-header { background: rgba(9,9,10,.78); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); padding-top: env(safe-area-inset-top); }
+    .nav-link { color: rgba(236,236,238,.82); font-size: .78rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; position: relative; padding: .5rem 0; transition: color .2s; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background: var(--gold); transition: width .3s; }
+    .nav-link:hover { color:#fff; }
+    .nav-link:hover::after { width:100%; }
+    .cta-small { border: 1px solid var(--gold-soft); color: var(--gold); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; font-weight:500; padding:.7rem 1.4rem; transition: all .25s; }
+    .cta-small:hover { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
+
+    .mobile-panel { background: rgba(15,15,17,.98); border: 1px solid var(--line); }
+    .mobile-link { color: var(--text); font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
+    .mobile-panel li + li { border-top: 1px solid var(--line); }
+    .mobile-link:active, .mobile-link:hover { color: var(--gold); }
+
+    /* Hero do artigo */
+    .hero-img { filter: grayscale(.55) contrast(1.08) brightness(.72); }
+    .hero-shade { position:absolute; inset:0; pointer-events:none;
+      background: linear-gradient(95deg, rgba(9,9,10,.96) 0%, rgba(9,9,10,.82) 42%, rgba(9,9,10,.3) 80%, rgba(9,9,10,.15) 100%),
+                  linear-gradient(to top, rgba(9,9,10,.95), transparent 32%); }
+    .hero-grid { position:absolute; inset:0; pointer-events:none; opacity:.9;
+      -webkit-mask-image: linear-gradient(95deg, #000 0%, transparent 70%); mask-image: linear-gradient(95deg, #000 0%, transparent 70%); }
+    .hero-fade { position:absolute; left:0; right:0; bottom:0; height:8rem; pointer-events:none;
+      background: linear-gradient(to bottom, transparent 0%, rgba(9,9,10,.65) 55%, var(--bg) 100%); }
+    .crumbs { font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color: rgba(255,255,255,.55); }
+    .crumbs a { transition: color .2s; }
+    .crumbs a:hover { color: var(--gold); }
+
+    .btn-solid { background: linear-gradient(180deg, #cdb184 0%, #a98a58 100%); color:#0a0a0a; font-size:.75rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: background .25s; }
+    .btn-solid:hover, .btn-solid:active { background: linear-gradient(180deg, #dcc093 0%, #b99a68 100%); }
+    .btn-line { color:#fff; font-size:.75rem; font-weight:500; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; border:1px solid rgba(255,255,255,.28); display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: border-color .25s, color .25s; }
+    .btn-line:hover, .btn-line:active { border-color: var(--gold); color: var(--gold); }
+
+    /* Divisão entre seções: fio dourado central (a transição é o fade ao rolar) */
+    .sec { position:relative; }
+    .sec > * { position:relative; z-index:1; }
+    .sec::after { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(70%, 720px); height:1px; pointer-events:none;
+      background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+
+    /* Tipografia do artigo */
+    .article > * + * { margin-top: 1.25rem; }
+    .article h2 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; color:#fff; margin-top: 3.25rem; letter-spacing: -.005em; }
+    .article h2:first-child { margin-top: 0; }
+    .article h2::after { content:''; display:block; height:1px; width:64px; margin-top:1rem; background: linear-gradient(90deg, var(--gold), transparent); }
+    .article h3 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.15; color: var(--gold); margin-top: 2.25rem; }
+    .article p { line-height: 1.9; color: #c9c9cf; font-size: 1.02rem; }
+    .article strong { font-weight: 500; color:#fff; }
+    .article em { color: #ddd; }
+    .article ul, .article ol { padding-left: 1.4rem; color:#c9c9cf; line-height:1.85; font-size:1.02rem; }
+    .article ul { list-style: disc; }
+    .article ol { list-style: decimal; }
+    .article li + li { margin-top: .5rem; }
+    .article li::marker { color: var(--gold); }
+    .article .small-note { font-size:.88rem; color: var(--muted); }
+
+    /* Caixa de destaque (resumo) */
+    .note { border-left:2px solid var(--gold); background: rgba(185,154,104,.07); padding:1.25rem 1.4rem; }
+    .note p { margin:0; }
+
+    /* Figuras */
+    figure { margin: 2.25rem 0; }
+    .fig-wrap { overflow:hidden; border:1px solid var(--line); }
+    .fig-img { filter: grayscale(.45) brightness(.85); transition: filter .5s; }
+    figure:hover .fig-img { filter: grayscale(.1) brightness(.95); }
+    figcaption { font-size:.88rem; line-height:1.7; color: var(--muted); margin-top:.8rem; }
+    figcaption strong { color:#fff; font-weight:500; }
+
+    /* Referências */
+    .refs h3 { font-size:1.6rem; color:#fff; margin:0; }
+    .refs ul { list-style: none; padding:0; margin:1.25rem 0 0; }
+    .refs li { border-top:1px solid var(--line); padding:.9rem 0; color: var(--muted); font-size:.9rem; line-height:1.7; }
+    .refs li:last-child { border-bottom:1px solid var(--line); }
+    .refs li strong { color:#fff; font-weight:500; }
+
+    /* Fade ao rolar entre seções (ativado só quando o JS roda) */
+    .js-fade .fade-sec { opacity: var(--fo, 1); transform: translate3d(0, calc((1 - var(--fo, 1)) * 28px), 0); will-change: opacity, transform; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fig-img, .btn-solid { transition: none !important; }
     }
-    header.site a{ color:#fff; }
-
-    .prose-custom h2{ @apply text-2xl md:text-3xl font-semibold text-[var(--secondary)] mt-10; }
-    .prose-custom h3{ @apply text-xl md:text-2xl font-semibold text-[var(--secondary)] mt-8; }
-    .prose-custom p { @apply leading-7 text-slate-800; }
-    .prose-custom ul{ @apply list-disc pl-5 space-y-1; }
-    .prose-custom ol{ @apply list-decimal pl-5 space-y-1; }
-    figure{ @apply my-6; }
-    figcaption{ @apply text-sm text-slate-600 mt-2; }
-    blockquote{ @apply border-l-4 border-[var(--primary)] pl-4 italic text-slate-700 bg-white/60 rounded-md; }
   </style>
 </head>
-<body class="antialiased text-slate-800 bg-[var(--light)]">
-  <header class="site">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="flex h-24 items-center justify-between" aria-label="Navegação principal">
-        <a href="../index.html" class="flex items-center gap-3" aria-label="Voltar para a Home">
-          <img src="../assets/img/branding/logo-rda.png" alt="Logo RDA" class="h-20 w-auto">
-        </a>
-        <ul class="hidden md:flex items-center gap-8 font-medium">
-          <li><a href="../index.html" class="hover:text-white/80">Home</a></li>
-          <li><a href="indexblog.html" class="hover:text-white/80">Publicações</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<body class="antialiased">
+  <div class="relative">
 
-  <section class="relative overflow-hidden  pt-20 md:pt-20 bg-gradient-to-b from-black/40 to-black/20">
-    <div class="absolute inset-0 -z-10">
-      <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop" alt="Relatórios e normas técnicas" class="h-full w-full object-cover opacity-60"/>
-    </div>
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-white">
-      <nav class="text-white/80 text-sm"><a href="../index.html" class="hover:text-white">Home</a> <span class="mx-2">/</span> <a href="./index.html" class="hover:text-white">Publicações</a> <span class="mx-2">/</span> Reportagem</nav>
-      <h1 class="mt-3 text-3xl md:text-5xl font-semibold leading-tight">ABNT NBR 14653: princípios para avaliação de imóveis urbanos</h1>
-      <p class="mt-3 text-white/90 max-w-3xl">Entenda como a família de normas NBR 14653 orienta o processo de avaliação imobiliária, garantindo padronização, transparência e credibilidade em laudos e pareceres técnicos.</p>
-      <div class="mt-4 text-white/80 text-sm">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 6–9 min</div>
-    </div>
-  </section>
+    <!-- WhatsApp flutuante -->
+    <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia"
+       target="_blank" rel="noopener noreferrer" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 md:right-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg active:scale-95 transition-transform"
+       style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white" aria-hidden="true">
+        <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+      </svg>
+    </a>
 
-  <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12" style="padding-top: 80px;">
-    <article class="prose-custom space-y-5">
-      <h2>Resumo</h2>
-      <p>Apresentam‑se os princípios, escopo e métodos previstos na ABNT NBR 14653, com ênfase nas partes aplicáveis a <strong>imóveis urbanos</strong>. Destacam‑se fundamentos para a escolha do método, requisitos mínimos de dados e critérios de rastreabilidade, visando laudos com linguagem clara, aplicabilidade comercial e aderentes às expectativas de mercado e de auditoria.</p>
+    <!-- ===== Header ===== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <nav class="flex h-[4.5rem] md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+          <a href="../index.html" class="flex items-center" aria-label="RD Almeida Engenharia – Voltar para a Home">
+            <img src="../assets/img/branding/logo-rda.png" alt="Logo RDA" class="h-12 md:h-[4.5rem] w-auto"
+                 onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-2xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          </a>
 
-      <p><strong>Palavras‑chave:</strong> avaliação de imóveis; valor de mercado; NBR 14653; método comparativo; laudo técnico.</p>
+          <ul class="hidden md:flex items-center gap-10">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../index.html#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="./indexblog.html" class="nav-link">Publicações</a></li>
+            <li><a href="../index.html#contato" class="nav-link">Contato</a></li>
+            <li><a href="../index.html#contato" class="cta-small">Orçamento</a></li>
+          </ul>
 
-      <h2>Introdução</h2>
-      <p>A avaliação de bens imóveis requer um procedimento <em>técnico</em> e <em>documentado</em>. A família de normas <strong>ABNT NBR 14653</strong> estabelece diretrizes para enquadramento, coleta e tratamento dos dados, escolha de métodos e apresentação dos resultados, permitindo comparabilidade entre trabalhos e suporte a decisões (compra, venda, garantias, inventários, disputas, entre outros).</p>
-
-      <figure>
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="Análise comparativa de mercado em avaliação imobiliária" class="w-full h-64 object-cover rounded-lg" />
-        <figcaption><strong>Figura 1 –</strong> Avaliação de mercado exige padronização de dados e rastreabilidade. <em>Fonte:</em> Unsplash.</figcaption>
-      </figure>
-
-      <h2>Fundamentação normativa</h2>
-      <ul>
-        <li><strong>NBR 14653‑1 – Procedimentos gerais</strong>: princípios, definições, documentação mínima, incertezas e apresentação.</li>
-        <li><strong>NBR 14653‑2 – Imóveis urbanos</strong>: regras específicas para coleta de dados, homogeneização e métodos usuais ao segmento urbano.</li>
-      </ul>
-      <p class="text-sm text-slate-600">Nota: Outras partes existem para diferentes classes de bens (ex.: rurais, empreendimentos etc.), utilizadas conforme o objeto da avaliação.</p>
-
-      <h2>Procedimentos e métodos</h2>
-      <h3>1. Definição do problema e do valor</h3>
-      <p>Delimita‑se <em>finalidade</em> (ex.: garantia, partilha), <em>data de referência</em>, <em>bem avaliando</em>, <em>padrões de comparação</em> e o <em>tipo de valor</em> (valor de mercado ou outro definido).</p>
-
-      <h3>2. Coleta e qualificação dos dados</h3>
-      <p>Levantam‑se dados de mercado <em>comprováveis</em> (ofertas, transações), características intrínsecas/extrínsecas e documentação. A norma recomenda critérios de consistência, amostragem mínima, identificação de outliers e registro de fontes.</p>
-
-      <h3>3. Métodos previstos na NBR 14653</h3>
-      <ul>
-        <li><strong>Método comparativo direto de dados de mercado</strong> (preferencial para imóveis urbanos): homogeneização por fatores (localização, padrão, área, estado de conservação etc.) e inferência do valor.</li>
-        <li><strong>Método involutivo</strong>: estimativa por viabilidade de empreendimento (aplicável em terrenos com potencial construtivo).</li>
-        <li><strong>Método da capitalização da renda</strong>: quando há renda regular confiável (aluguéis, por exemplo).</li>
-        <li><strong>Método evolutivo</strong>: composição de valores de terreno e benfeitorias, quando couber.</li>
-      </ul>
-
-      <h3>4. Tratamento e modelo</h3>
-      <p>Aplicam‑se técnicas estatísticas adequadas ao volume e qualidade da amostra. A norma aceita desde homogeneização tradicional até modelos de regressão, desde que justificados, estáveis e com métricas de ajuste apresentadas.</p>
-
-      <h3>5. Conclusão e apresentação</h3>
-      <p>O laudo expõe hipóteses, dados utilizados (identificação e fontes), tratamento adotado, resultados e incerteza associada, além de anexos com evidências (fotos, prints de anúncios, mapas). Recomenda‑se o <strong>registro de ART</strong> e linguagem clara para o público‑alvo (clientes, agentes financeiros e partes interessadas).</p>
-
-      <figure>
-        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop" alt="Documentação e rastreabilidade de laudo" class="w-full h-64 object-cover rounded-lg" />
-        <figcaption><strong>Figura 2 –</strong> Dossiê com evidências e rastreabilidade melhora a credibilidade do trabalho. <em>Fonte:</em> Unsplash.</figcaption>
-      </figure>
-
-      <h2>Boas práticas (visão comercial)</h2>
-      <ul>
-        <li><strong>Transparência e velocidade</strong>: linguagem objetiva, sumário executivo e cronograma de entrega.</li>
-        <li><strong>Rastreabilidade</strong>: anexos completos e organização que facilite auditoria ou revisão.</li>
-        <li><strong>Atualização de mercado</strong>: revalidações quando a data‑base se descola do mercado.</li>
-        <li><strong>Compliance</strong>: aderência às partes aplicáveis da NBR 14653 e registro de ART.</li>
-      </ul>
-
-      <h2>Conclusão</h2>
-      <p>A adoção consistente da NBR 14653 produz <strong>laudos replicáveis e defensáveis</strong>, com linguagem técnica e foco comercial. Para demandas de compra/venda, garantias e disputas, a padronização reduz riscos e confere previsibilidade às decisões.</p>
-
-      <div class="mt-10 flex flex-wrap items-center gap-3">
-        <a href="../index.html#contato" class="inline-flex items-center rounded-xl bg-[var(--primary)] px-5 py-3 font-semibold text-white hover:bg-[var(--primary)]/85">Solicitar proposta de avaliação</a>
-        <a href="indexblog.html" class="inline-flex items-center rounded-xl bg-white px-5 py-3 font-semibold text-[var(--secondary)] border border-slate-200 hover:bg-slate-50">Voltar para Publicações</a>
+          <button id="menu-btn" type="button"
+                  class="md:hidden inline-flex h-12 w-12 items-center justify-center text-white focus:outline-none"
+                  aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-width="1.5" d="M4 8h16M4 16h10" />
+            </svg>
+          </button>
+        </nav>
       </div>
-    </article>
 
-    <hr class="my-12 border-slate-300/70">
+      <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 shadow-2xl">
+          <ul class="p-2">
+            <li><a href="../index.html" class="mobile-link block px-4 py-4">Home</a></li>
+            <li><a href="../index.html#servicos" class="mobile-link block px-4 py-4">Serviços</a></li>
+            <li><a href="./indexblog.html" class="mobile-link block px-4 py-4">Publicações</a></li>
+            <li><a href="../index.html#contato" class="mobile-link block px-4 py-4">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-    <section aria-labelledby="refs" class="text-sm text-slate-700">
-      <h3 id="refs" class="text-base font-semibold text-[var(--secondary)]">Referências (formato ABNT simplificado)</h3>
-      <ul class="list-disc pl-5 mt-2 space-y-1">
-        <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14653‑1: Avaliação de bens – Parte 1: Procedimentos gerais</strong>. Rio de Janeiro: ABNT, s.d.</li>
-        <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14653‑2: Avaliação de bens – Parte 2: Imóveis urbanos</strong>. Rio de Janeiro: ABNT, s.d.</li>
-        <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 15575: Edificações habitacionais – Desempenho</strong>. Rio de Janeiro: ABNT, s.d.</li>
-        <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14037: Manual de operação, uso e manutenção das edificações</strong>. Rio de Janeiro: ABNT, s.d.</li>
-      </ul>
+    <!-- ===== Hero do artigo ===== -->
+    <section class="relative overflow-hidden pt-[4.5rem] md:pt-24">
+      <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop" alt="Relatórios e normas técnicas" class="hero-img h-full w-full object-cover" />
+        <div class="hero-shade"></div>
+        <div class="hero-grid blueprint"></div>
+        <div class="hero-fade"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 lg:px-10 py-16 md:py-28 text-white">
+        <nav class="crumbs" aria-label="Você está em"><a href="../index.html">Home</a> <span class="mx-2">/</span> <a href="./indexblog.html">Publicações</a> <span class="mx-2">/</span> Reportagem</nav>
+        <div class="mt-8 flex items-center gap-4">
+          <span class="rule"></span>
+          <span class="label">Avaliação de imóveis urbanos</span>
+        </div>
+        <h1 class="mt-6 text-[2.4rem] sm:text-5xl lg:text-6xl leading-[1.06] font-medium">ABNT NBR 14653: princípios para <em class="italic text-[var(--gold)]">avaliação de imóveis urbanos</em></h1>
+        <p class="mt-6 text-base sm:text-lg text-white/75 max-w-3xl leading-relaxed">Entenda como a família de normas NBR 14653 orienta o processo de avaliação imobiliária, garantindo padronização, transparência e credibilidade em laudos e pareceres técnicos.</p>
+        <div class="mt-6 text-xs tracking-[.2em] uppercase text-white/55">Por RDA Engenharia • <time datetime="2025-09-06">06 set 2025</time> • Leitura: 6–9 min</div>
+      </div>
     </section>
-  </main>
 
-  <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia" target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
-       class="fixed z-50 right-4 bottom-4 md:right-6 md:bottom-6 flex items-center rounded-full bg-[#b3b5b3] text-white shadow-lg hover:shadow-xl pl-0 pr-4 py-0">
-      <span class="flex items-center justify-center h-12 w-12 rounded-full bg-[#25D366] ring-0 ring-white">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-15 w-15 fill-white">
-          <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
- 
-</svg>
-    </span>
-    <span class="ml-2 font-medium text-sm md:text-base">Fale com a nossa equipe!</span>
-  </a>
+    <!-- ===== Artigo ===== -->
+    <main>
+      <section class="sec py-16 md:py-24 bg-[var(--bg)]">
+        <div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10">
+          <article class="article">
+            <h2>Resumo</h2>
+            <div class="note">
+              <p>Apresentam‑se os princípios, escopo e métodos previstos na ABNT NBR 14653, com ênfase nas partes aplicáveis a <strong>imóveis urbanos</strong>. Destacam‑se fundamentos para a escolha do método, requisitos mínimos de dados e critérios de rastreabilidade, visando laudos com linguagem clara, aplicabilidade comercial e aderentes às expectativas de mercado e de auditoria.</p>
+            </div>
 
-<!-- ===== Footer ===== -->
-<footer class="border-t border-slate-200 bg-[var(--light)]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <p><strong>Palavras‑chave:</strong> avaliação de imóveis; valor de mercado; NBR 14653; método comparativo; laudo técnico.</p>
 
-      <!-- Bloco logo + texto -->
-      <div class="md:col-span-2">
-        <div class="flex items-center">
-          <img src="../assets/img/branding/logo_rodape.png" 
-               alt="Logo RD Almeida Engenharia" 
-               class="h-40 w-auto flex-shrink-0"
-               onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo_rodape.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo_rodape.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
-          
-          <p class="ml-4 text-slate-600 max-w-md">
-            Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos.
-            Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente
-            as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
+            <h2>Introdução</h2>
+            <p>A avaliação de bens imóveis requer um procedimento <em>técnico</em> e <em>documentado</em>. A família de normas <strong>ABNT NBR 14653</strong> estabelece diretrizes para enquadramento, coleta e tratamento dos dados, escolha de métodos e apresentação dos resultados, permitindo comparabilidade entre trabalhos e suporte a decisões (compra, venda, garantias, inventários, disputas, entre outros).</p>
+
+            <figure>
+              <div class="fig-wrap"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="Análise comparativa de mercado em avaliação imobiliária" class="fig-img w-full h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Figura 1 –</strong> Avaliação de mercado exige padronização de dados e rastreabilidade. <em>Fonte:</em> Unsplash.</figcaption>
+            </figure>
+
+            <h2>Fundamentação normativa</h2>
+            <ul>
+              <li><strong>NBR 14653‑1 – Procedimentos gerais</strong>: princípios, definições, documentação mínima, incertezas e apresentação.</li>
+              <li><strong>NBR 14653‑2 – Imóveis urbanos</strong>: regras específicas para coleta de dados, homogeneização e métodos usuais ao segmento urbano.</li>
+            </ul>
+            <p class="small-note">Nota: Outras partes existem para diferentes classes de bens (ex.: rurais, empreendimentos etc.), utilizadas conforme o objeto da avaliação.</p>
+
+            <h2>Procedimentos e métodos</h2>
+            <h3>1. Definição do problema e do valor</h3>
+            <p>Delimita‑se <em>finalidade</em> (ex.: garantia, partilha), <em>data de referência</em>, <em>bem avaliando</em>, <em>padrões de comparação</em> e o <em>tipo de valor</em> (valor de mercado ou outro definido).</p>
+
+            <h3>2. Coleta e qualificação dos dados</h3>
+            <p>Levantam‑se dados de mercado <em>comprováveis</em> (ofertas, transações), características intrínsecas/extrínsecas e documentação. A norma recomenda critérios de consistência, amostragem mínima, identificação de outliers e registro de fontes.</p>
+
+            <h3>3. Métodos previstos na NBR 14653</h3>
+            <ul>
+              <li><strong>Método comparativo direto de dados de mercado</strong> (preferencial para imóveis urbanos): homogeneização por fatores (localização, padrão, área, estado de conservação etc.) e inferência do valor.</li>
+              <li><strong>Método involutivo</strong>: estimativa por viabilidade de empreendimento (aplicável em terrenos com potencial construtivo).</li>
+              <li><strong>Método da capitalização da renda</strong>: quando há renda regular confiável (aluguéis, por exemplo).</li>
+              <li><strong>Método evolutivo</strong>: composição de valores de terreno e benfeitorias, quando couber.</li>
+            </ul>
+
+            <h3>4. Tratamento e modelo</h3>
+            <p>Aplicam‑se técnicas estatísticas adequadas ao volume e qualidade da amostra. A norma aceita desde homogeneização tradicional até modelos de regressão, desde que justificados, estáveis e com métricas de ajuste apresentadas.</p>
+
+            <h3>5. Conclusão e apresentação</h3>
+            <p>O laudo expõe hipóteses, dados utilizados (identificação e fontes), tratamento adotado, resultados e incerteza associada, além de anexos com evidências (fotos, prints de anúncios, mapas). Recomenda‑se o <strong>registro de ART</strong> e linguagem clara para o público‑alvo (clientes, agentes financeiros e partes interessadas).</p>
+
+            <figure>
+              <div class="fig-wrap"><img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop" alt="Documentação e rastreabilidade de laudo" class="fig-img w-full h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Figura 2 –</strong> Dossiê com evidências e rastreabilidade melhora a credibilidade do trabalho. <em>Fonte:</em> Unsplash.</figcaption>
+            </figure>
+
+            <h2>Boas práticas (visão comercial)</h2>
+            <ul>
+              <li><strong>Transparência e velocidade</strong>: linguagem objetiva, sumário executivo e cronograma de entrega.</li>
+              <li><strong>Rastreabilidade</strong>: anexos completos e organização que facilite auditoria ou revisão.</li>
+              <li><strong>Atualização de mercado</strong>: revalidações quando a data‑base se descola do mercado.</li>
+              <li><strong>Compliance</strong>: aderência às partes aplicáveis da NBR 14653 e registro de ART.</li>
+            </ul>
+
+            <h2>Conclusão</h2>
+            <p>A adoção consistente da NBR 14653 produz <strong>laudos replicáveis e defensáveis</strong>, com linguagem técnica e foco comercial. Para demandas de compra/venda, garantias e disputas, a padronização reduz riscos e confere previsibilidade às decisões.</p>
+
+            <div class="!mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+              <a href="../index.html#contato" class="btn-solid">Solicitar proposta de avaliação</a>
+              <a href="./indexblog.html" class="btn-line">Voltar para Publicações</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== Referências ===== -->
+      <section class="sec py-14 md:py-20 bg-[var(--tone-b)]" aria-labelledby="refs">
+        <div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10 refs">
+          <span class="label">Bibliografia</span>
+          <h3 id="refs" class="mt-3">Referências (formato ABNT simplificado)</h3>
+          <ul>
+            <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14653‑1: Avaliação de bens – Parte 1: Procedimentos gerais</strong>. Rio de Janeiro: ABNT, s.d.</li>
+            <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14653‑2: Avaliação de bens – Parte 2: Imóveis urbanos</strong>. Rio de Janeiro: ABNT, s.d.</li>
+            <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 15575: Edificações habitacionais – Desempenho</strong>. Rio de Janeiro: ABNT, s.d.</li>
+            <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <strong>NBR 14037: Manual de operação, uso e manutenção das edificações</strong>. Rio de Janeiro: ABNT, s.d.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="sec bg-[#060607]" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+        <div class="md:col-span-6">
+          <img src="../assets/img/branding/logo_rodape.png" alt="Logo RD Almeida Engenharia" class="h-24 md:h-28 w-auto"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-3xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          <p class="mt-6 text-[var(--muted)] max-w-md leading-relaxed text-[.95rem]">
+            Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos. Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
           </p>
         </div>
-      </div>
 
-      <!-- Navegação -->
-	<div class="ml-auto">
-    		<h4 class="text-sm font-semibold text-[var(--secondary)]">Navegação</h4>
-      		<ul class="mt-3 space-y-2 text-slate-600">
-			<li><a href="../index.html" class="hover:text-[var(--primary)]">Home</a></li>
-    		<li><a href="../index.html#servicos" class="hover:text-[var(--primary)]">Serviços</a></li>
-    		<li><a href="./indexblog.html" class="hover:text-[var(--primary)]">Publicações</a></li>
-    		<li><a href="../index.html#contato" class="hover:text-[var(--primary)]">Contato</a></li>
-      	</ul>
-    	</div>
-    
+        <div class="md:col-span-2 md:col-start-8">
+          <h4 class="label">Navegação</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li><a href="../index.html" class="block py-1.5 hover:text-white">Home</a></li>
+            <li><a href="../index.html#servicos" class="block py-1.5 hover:text-white">Serviços</a></li>
+            <li><a href="./indexblog.html" class="block py-1.5 hover:text-white">Publicações</a></li>
+            <li><a href="../index.html#contato" class="block py-1.5 hover:text-white">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3">
+          <h4 class="label">Contato</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li><a href="mailto:contato@rdalmeida.com.br" class="block py-1.5 hover:text-white break-words">contato@rdalmeida.com.br</a></li>
+            <li><a href="https://wa.me/5511939249310" target="_blank" rel="noopener noreferrer" class="block py-1.5 hover:text-white">(11) 93924-9310 · WhatsApp</a></li>
+            <li><a href="https://www.rdalmeida.com.br" class="block py-1.5 hover:text-white">www.rdalmeida.com.br</a></li>
+          </ul>
         </div>
       </div>
+    </div>
   </footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+
+    /* ===== Menu mobile ===== */
+    (function () {
+      const btn = document.getElementById('menu-btn');
+      const panel = document.getElementById('mobile-menu');
+      if (!btn || !panel) return;
+      let open = false;
+      const set = (state) => {
+        open = state;
+        panel.classList.toggle('opacity-100', open);
+        panel.classList.toggle('opacity-0', !open);
+        panel.classList.toggle('pointer-events-auto', open);
+        panel.classList.toggle('pointer-events-none', !open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+      document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+    })();
+
+    /* ===== Fade ao rolar entre seções ===== */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const els = Array.from(document.querySelectorAll('.sec > *'));
+      if (!els.length) return;
+      document.documentElement.classList.add('js-fade');
+      els.forEach(el => el.classList.add('fade-sec'));
+      const clamp = (v) => Math.min(1, Math.max(0, v));
+      const ease = (t) => t * t * (3 - 2 * t);
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        els.forEach(el => {
+          const r = el.getBoundingClientRect();
+          const fin = clamp((vh * 0.95 - r.top) / (vh * 0.35));
+          const fout = clamp((r.bottom - vh * 0.05) / (vh * 0.30));
+          el.style.setProperty('--fo', ease(Math.min(fin, fout)).toFixed(3));
+        });
+      };
+      const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', req, { passive: true });
+      window.addEventListener('resize', req);
+      window.addEventListener('load', req);
+      update();
+    })();
+
+  });
+  </script>
 </body>
 </html>
