@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- Versão: v2026-10-09 | página de perícia judicial e assistência técnica, no padrão do index v10 -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Perícia Judicial e Assistência Técnica de Engenharia em São Paulo | RD Almeida</title>
+  <meta name="description" content="Perícia judicial e assistência técnica de engenharia civil em processos que envolvem imóveis e obras: laudos, pareceres, quesitos e acompanhamento de diligências. Solicite orçamento.">
+  <meta name="robots" content="index, follow">
+  <!-- AJUSTAR: confirme o endereço final desta página -->
+  <link rel="canonical" href="https://www.rdalmeida.com.br/blog/pericia-judicial.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="RD Almeida Engenharia e Serviços">
+  <meta property="og:title" content="Perícia Judicial e Assistência Técnica de Engenharia | RD Almeida">
+  <meta property="og:description" content="Laudos periciais e pareceres técnicos de engenharia civil para processos judiciais, com imparcialidade, embasamento normativo e acompanhamento junto ao advogado.">
+  <meta property="og:url" content="https://www.rdalmeida.com.br/blog/pericia-judicial.html">
+
+  <!-- Favicon padrão -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo_16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo_32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo_48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/logo_64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/logo_128x128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/logo_256x256.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo_180x180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#09090a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #09090a;
+      --bg2: #0f0f11;
+      --panel: #131316;
+      --line: rgba(255,255,255,.09);
+      --gold: #b99a68;
+      --gold-soft: rgba(185,154,104,.35);
+      --red: #a3121a;
+      --text: #ececee;
+      --muted: #9b9ba3;
+      --header-h: 4.5rem;
+      /* Tons de fundo por seção (diferença discreta para segmentar) */
+      --tone-trust: #111114;
+      --tone-b: #151416;
+      --tone-c: #121114;
+      --tone-d: #0a0a0c;
+    }
+    @media (min-width: 768px) { :root { --header-h: 6rem; } }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; font-weight: 300; overflow-x: hidden; background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; letter-spacing: .005em; margin: 0; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 500; }
+    strong { font-weight: 500; color: #fff; }
+
+    .label { font-size: .72rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); }
+    .rule { height: 1px; width: 64px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .blueprint { background-image:
+        linear-gradient(rgba(185,154,104,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185,154,104,.06) 1px, transparent 1px);
+      background-size: 56px 56px; }
+
+    /* Header */
+    #site-header { background: rgba(9,9,10,.78); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); padding-top: env(safe-area-inset-top); }
+    .nav-link { color: rgba(236,236,238,.82); font-size: .78rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; position: relative; padding: .5rem 0; transition: color .2s; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background: var(--gold); transition: width .3s; }
+    .nav-link:hover { color:#fff; }
+    .nav-link:hover::after { width:100%; }
+    .cta-small { border: 1px solid var(--gold-soft); color: var(--gold); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; font-weight:500; padding:.7rem 1.4rem; transition: all .25s; }
+    .cta-small:hover { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
+
+    .mobile-panel { background: rgba(15,15,17,.98); border: 1px solid var(--line); }
+    .mobile-link { color: var(--text); font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
+    .mobile-panel li + li { border-top: 1px solid var(--line); }
+    .mobile-link:active, .mobile-link:hover { color: var(--gold); }
+
+    /* Hero */
+    .hero-img { filter: grayscale(.55) contrast(1.08) brightness(.72); }
+    .hero-shade { position:absolute; inset:0; pointer-events:none;
+      background: linear-gradient(95deg, rgba(9,9,10,.96) 0%, rgba(9,9,10,.82) 42%, rgba(9,9,10,.3) 80%, rgba(9,9,10,.15) 100%),
+                  linear-gradient(to top, rgba(9,9,10,.95), transparent 32%); }
+    .hero-grid { position:absolute; inset:0; pointer-events:none; opacity:.9;
+      -webkit-mask-image: linear-gradient(95deg, #000 0%, transparent 70%); mask-image: linear-gradient(95deg, #000 0%, transparent 70%); }
+    .hero-fade { position:absolute; left:0; right:0; bottom:0; height:10rem; pointer-events:none;
+      background: linear-gradient(to bottom, transparent 0%, rgba(17,17,20,.65) 55%, var(--tone-trust) 100%); }
+
+    .btn-solid { background: linear-gradient(180deg, #cdb184 0%, #a98a58 100%); color:#0a0a0a; font-size:.75rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: background .25s; }
+    .btn-solid:hover, .btn-solid:active { background: linear-gradient(180deg, #dcc093 0%, #b99a68 100%); }
+    .btn-line { color:#fff; font-size:.75rem; font-weight:500; letter-spacing:.24em; text-transform:uppercase; padding: 1.05rem 2.1rem; border:1px solid rgba(255,255,255,.28); display:inline-flex; align-items:center; justify-content:center; text-align:center; transition: border-color .25s, color .25s; }
+    .btn-line:hover, .btn-line:active { border-color: var(--gold); color: var(--gold); }
+
+    /* Divisão entre seções */
+    .sec { position:relative; }
+    .sec > * { position:relative; z-index:1; }
+    .sec::after { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(70%, 720px); height:1px; pointer-events:none;
+      background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+
+    /* Títulos */
+    .section-title { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.07; color:#fff; letter-spacing: -.005em; margin: 1rem 0 0; }
+    .section-title em { font-style: italic; color: var(--gold); font-weight: 500; }
+    .sec-lead { margin-top: 1.25rem; max-width: 44rem; color: var(--muted); line-height: 1.8; font-size: 1.02rem; }
+
+    /* Faixa de destaques */
+    .trust { background: var(--tone-trust); border-bottom: 1px solid var(--line); }
+    .trust-item { display:flex; align-items:center; gap:1rem; }
+    .trust-item svg { height:2rem; width:2rem; color: var(--gold); flex-shrink:0; }
+    .trust-item span { font-size:.72rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:#fff; line-height:1.5; }
+    @media (min-width:1024px){ .trust-item + .trust-item { border-left:1px solid var(--line); padding-left:2rem; } }
+
+    /* Ícones */
+    .ico { width:1.6rem; height:1.6rem; fill:none; stroke:currentColor; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+    .ico-tile { height:3.25rem; width:3.25rem; flex:0 0 3.25rem; display:grid; place-items:center; border:1px solid var(--gold-soft); color: var(--gold); }
+
+    /* Cartões */
+    .box { position:relative; background: var(--panel); border:1px solid var(--line); padding: 1.75rem 1.5rem; transition: border-color .35s, transform .35s, background .35s; }
+    .box::before { content:''; position:absolute; top:0; left:0; height:2px; width:0; background: var(--gold); transition: width .5s; }
+    .box:hover { border-color: var(--gold-soft); transform: translateY(-4px); background:#17171b; }
+    .box:hover::before { width:100%; }
+    .box h3 { font-size:1.55rem; line-height:1.15; color:#fff; margin:1.25rem 0 .6rem; }
+    .box p { font-size:.93rem; line-height:1.75; color: var(--muted); margin:0; }
+    .box-soft { background: rgba(255,255,255,.025); }
+    .box .tag { display:inline-block; margin-top:1.25rem; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color: var(--gold); border:1px solid var(--gold-soft); padding:.35rem .7rem; }
+
+    /* Chips */
+    .chip { display:flex; align-items:center; gap:.9rem; background: var(--panel); border:1px solid var(--line); border-left:2px solid var(--gold); padding:1rem 1.1rem; font-weight:400; color:#fff; font-size:.95rem; }
+    .chip .ico { color: var(--gold); width:1.4rem; height:1.4rem; flex:0 0 1.4rem; }
+
+    /* Normas */
+    .norm-box { border:1px solid var(--line); padding:1.5rem 1.25rem; text-align:center; transition: border-color .3s; background: rgba(255,255,255,.025); }
+    .norm-box:hover { border-color: var(--gold-soft); }
+    .norm-box .code { font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:#fff; line-height:1; }
+    .norm-box .desc { margin-top:.6rem; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color: var(--muted); }
+
+    /* Aviso */
+    .note { border-left:2px solid var(--gold); background: rgba(185,154,104,.07); padding:1.25rem 1.4rem; color:#cfcfd4; font-size:.95rem; line-height:1.8; }
+
+    /* Passos */
+    .step { display:flex; gap:1.25rem; align-items:flex-start; background: var(--panel); border:1px solid var(--line); padding:1.5rem; transition: border-color .3s; }
+    .step:hover { border-color: var(--gold-soft); }
+    .step-num { height:2.75rem; width:2.75rem; flex:0 0 2.75rem; display:grid; place-items:center; border:1px solid var(--gold-soft); color: var(--gold); font-family:'Cormorant Garamond',serif; font-size:1.5rem; line-height:1; }
+    .step h3 { font-size:1.45rem; line-height:1.15; color:#fff; margin:0; }
+    .step p { margin:.5rem 0 0; font-size:.93rem; line-height:1.75; color: var(--muted); }
+
+    /* Figuras */
+    figure { margin:0; }
+    .fig-img { filter: grayscale(.45) brightness(.85); transition: filter .5s; }
+    figure:hover .fig-img { filter: grayscale(.1) brightness(.95); }
+    figcaption { font-size:.9rem; line-height:1.7; color: var(--muted); margin-top:.9rem; }
+
+    /* FAQ */
+    .faq { border-top:1px solid var(--line); padding:1.5rem 0; }
+    .faq:last-child { border-bottom:1px solid var(--line); }
+    .faq h3 { font-size:1.55rem; line-height:1.2; color:#fff; margin:0 0 .6rem; }
+    .faq p { margin:0; color: var(--muted); line-height:1.8; font-size:.97rem; }
+
+    /* Chamada final */
+    .cta-band { position:relative; background: linear-gradient(100deg, #1a0507 0%, #0d0d0f 70%); border-top:1px solid var(--gold-soft); }
+
+    /* Fade ao rolar entre seções (ativado só quando o JS roda) */
+    .js-fade .fade-sec { opacity: var(--fo, 1); transform: translate3d(0, calc((1 - var(--fo, 1)) * 28px), 0); will-change: opacity, transform; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .box, .step, .fig-img, .btn-solid { transition: none !important; }
+      .box:hover { transform: none; }
+    }
+  </style>
+
+  <!-- Dados estruturados do serviço -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Perícia judicial e assistência técnica de engenharia civil",
+    "name": "Perícia judicial e assistência técnica de engenharia",
+    "description": "Laudos periciais e pareceres técnicos de engenharia civil para processos judiciais envolvendo imóveis e obras, com formulação e análise de quesitos e acompanhamento de diligências.",
+    "provider": {
+      "@type": "Organization",
+      "name": "RD Almeida Engenharia e Serviços",
+      "url": "https://www.rdalmeida.com.br/",
+      "telephone": "+55 11 93924-9310",
+      "email": "contato@rdalmeida.com.br"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "São Paulo" },
+      { "@type": "AdministrativeArea", "name": "Região Metropolitana de São Paulo" }
+    ],
+    "inLanguage": "pt-BR"
+  }
+  </script>
+
+  <!-- FAQPage: o texto abaixo deve ser idêntico ao da seção "Perguntas frequentes" -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre perito judicial e assistente técnico?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O perito é nomeado pelo juiz, atua como auxiliar do juízo e deve ser imparcial. O assistente técnico é indicado e contratado por uma das partes, que é quem o escolhe, para acompanhar a perícia, analisar o laudo e apresentar parecer técnico." }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso de advogado para contratar um assistente técnico?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A indicação do assistente técnico é feita nos autos do processo, em regra por meio do advogado da parte. Por isso, nosso trabalho é sempre alinhado com o advogado responsável pelo caso, que conduz a parte jurídica." }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês prestam assessoria jurídica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não. Atuamos na parte técnica de engenharia: vistoria, análise, laudo e parecer. Orientação jurídica, estratégia processual e peças do processo são responsabilidade do advogado." }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual o prazo para indicar o assistente técnico?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O prazo é definido pelo juiz e costuma ser curto, contado da intimação da nomeação do perito. Por isso, quanto antes você nos chamar, melhor. Confirme o prazo exato do seu processo com o seu advogado." }
+      },
+      {
+        "@type": "Question",
+        "name": "O que preciso enviar para pedir um orçamento?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Informe o número do processo ou a fase em que ele está, o endereço do imóvel e um resumo do que está em discussão. Se possível, envie as principais peças e os prazos já fixados. Com isso, avaliamos a demanda e enviamos a proposta." }
+      },
+      {
+        "@type": "Question",
+        "name": "O laudo ou o parecer garante o resultado do processo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não. O trabalho técnico traz fundamentação e clareza sobre os fatos de engenharia, mas a decisão é sempre do juiz, que avalia todas as provas do processo. Não prometemos resultado." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased">
+
+  <!-- ===== Ícones (sprite) ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6v20h12V8zM14 2v6h6M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h3l2-3h6l2 3h3v13H4zM12 10a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M3 6l1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><path d="M9 3h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3zM9 21v-6h6v6"/></symbol>
+    <symbol id="i-crack" viewBox="0 0 24 24"><path d="M13 2l-3 7 4 3-3 5 3 5"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 8c2-2 4 2 6 0s4 2 6 0 4 2 6 0M3 14c2-2 4 2 6 0s4 2 6 0 4 2 6 0"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 21h20zM12 10v5M12 18h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12zM12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></symbol>
+    <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 4v6M9 6v4M15 6v4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-3v19M12 9l8 3v9M2 21h20M8 8h.01M8 12h.01M8 16h.01M16 16h.01"/></symbol>
+    <symbol id="i-hammer" viewBox="0 0 24 24"><path d="M14 4l6 6M12 6l6 6-3 3-6-6zM9 12l-7 7 3 3 7-7"/></symbol>
+  </svg>
+
+  <div class="relative">
+
+    <!-- WhatsApp flutuante -->
+    <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia"
+       target="_blank" rel="noopener noreferrer" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 md:right-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg active:scale-95 transition-transform"
+       style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white" aria-hidden="true">
+        <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+      </svg>
+    </a>
+
+    <!-- ===== Header ===== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <nav class="flex h-[4.5rem] md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+          <a href="../index.html" class="flex items-center" aria-label="RD Almeida Engenharia – Voltar para a Home">
+            <img src="../assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-12 md:h-[4.5rem] w-auto"
+                 onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-2xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          </a>
+
+          <ul class="hidden md:flex items-center gap-10">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../index.html#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="./indexblog.html" class="nav-link">Publicações</a></li>
+            <li><a href="../index.html#contato" class="nav-link">Contato</a></li>
+            <li><a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20per%C3%ADcia%20judicial%20ou%20assist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer" class="cta-small">Orçamento</a></li>
+          </ul>
+
+          <button id="menu-btn" type="button"
+                  class="md:hidden inline-flex h-12 w-12 items-center justify-center text-white focus:outline-none"
+                  aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-width="1.5" d="M4 8h16M4 16h10" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 shadow-2xl">
+          <ul class="p-2">
+            <li><a href="../index.html" class="mobile-link block px-4 py-4">Home</a></li>
+            <li><a href="../index.html#servicos" class="mobile-link block px-4 py-4">Serviços</a></li>
+            <li><a href="./indexblog.html" class="mobile-link block px-4 py-4">Publicações</a></li>
+            <li><a href="../index.html#contato" class="mobile-link block px-4 py-4">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="relative overflow-hidden pt-[4.5rem] md:pt-24">
+      <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1694521787193-9293daeddbaa?q=80&w=1800&auto=format&fit=crop" alt="Profissionais de engenharia medindo uma parede em obra para análise técnica" class="hero-img h-full w-full object-cover">
+        <div class="hero-shade"></div>
+        <div class="hero-grid blueprint"></div>
+        <div class="hero-fade"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 md:py-28 text-white">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-4">
+            <span class="rule"></span>
+            <span class="label">Engenharia e processos judiciais</span>
+          </div>
+          <h1 class="mt-6 text-[2.6rem] sm:text-6xl lg:text-7xl leading-[1.04] font-medium">Perícia judicial e <em class="italic text-[var(--gold)]">assistência técnica</em></h1>
+          <p class="mt-6 text-base sm:text-lg text-white/75 max-w-xl leading-relaxed">Laudos e pareceres de engenharia civil para processos que envolvem imóveis e obras, com imparcialidade, embasamento normativo e acompanhamento junto ao advogado.</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20per%C3%ADcia%20judicial%20ou%20assist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer" class="btn-solid">Solicite um orçamento</a>
+            <a href="#modalidades" class="btn-line">Conheça as modalidades</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Faixa de destaques ===== -->
+    <section class="trust" aria-label="Destaques">
+      <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-0">
+        <div class="trust-item"><svg class="ico"><use href="#i-scale"/></svg><span>Imparcialidade técnica</span></div>
+        <div class="trust-item"><svg class="ico"><use href="#i-file"/></svg><span>Fundamentação nas normas ABNT</span></div>
+        <div class="trust-item"><svg class="ico"><use href="#i-users"/></svg><span>Atuação alinhada ao advogado</span></div>
+      </div>
+    </section>
+
+    <main>
+
+      <!-- ===== O serviço ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">O serviço</span>
+          <h2 class="section-title">Engenharia a serviço da <em>prova técnica</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Em muitos processos, a decisão depende de entender fatos de engenharia: por que uma obra apresenta defeitos, quanto vale um imóvel, se uma reforma foi executada corretamente. A perícia e a assistência técnica transformam esses fatos em <strong>documentos claros, fundamentados e verificáveis</strong>, que ajudam o juiz e as partes a decidir com base técnica.</p>
+        </div>
+      </section>
+
+      <!-- ===== Modalidades ===== -->
+      <section id="modalidades" class="sec py-20 md:py-28 bg-[var(--tone-b)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Modalidades</span>
+          <h2 class="section-title">Duas formas de <em>atuação</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Os papéis são distintos e cada um segue regras próprias no processo.</p>
+          <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-scale"/></svg></span>
+              <h3>Perícia judicial</h3>
+              <p>Quando nomeado pelo juízo, o perito atua como auxiliar da Justiça. Realiza a vistoria, analisa os documentos, responde aos quesitos das partes e do juiz e apresenta o laudo pericial, com <strong>independência e imparcialidade</strong>.</p>
+              <span class="tag">Nomeação pelo juiz</span>
+            </div>
+            <div class="box box-soft">
+              <span class="ico-tile"><svg class="ico"><use href="#i-users"/></svg></span>
+              <h3>Assistência técnica</h3>
+              <p>Contratado por uma das partes, o assistente técnico acompanha a perícia, formula quesitos, analisa o laudo do perito e elabora <strong>parecer técnico</strong> para subsidiar o advogado, com foco em dar clareza técnica à parte que o contratou.</p>
+              <span class="tag">Indicação pela parte</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Quando é necessária ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Aplicações</span>
+          <h2 class="section-title">Em quais casos <em>atuamos</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Processos que envolvem imóveis e obras, entre eles:</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="chip"><svg class="ico"><use href="#i-crack"/></svg>Vícios construtivos e defeitos de obra</div>
+            <div class="chip"><svg class="ico"><use href="#i-wave"/></svg>Infiltrações e patologias em edificações</div>
+            <div class="chip"><svg class="ico"><use href="#i-chart"/></svg>Avaliação de imóveis em inventários e partilhas</div>
+            <div class="chip"><svg class="ico"><use href="#i-building"/></svg>Desapropriações e indenizações</div>
+            <div class="chip"><svg class="ico"><use href="#i-home"/></svg>Revisão de aluguel e locações</div>
+            <div class="chip"><svg class="ico"><use href="#i-hammer"/></svg>Reformas e serviços mal executados</div>
+            <div class="chip"><svg class="ico"><use href="#i-alert"/></svg>Danos em imóveis vizinhos</div>
+            <div class="chip"><svg class="ico"><use href="#i-camera"/></svg>Vistoria para produção antecipada de prova</div>
+            <div class="chip"><svg class="ico"><use href="#i-clip"/></svg>Entrega de imóvel em desacordo com o contrato</div>
+          </div>
+          <div class="note mt-8"><strong>Cada caso é único.</strong><br>A viabilidade e o alcance do trabalho dependem do que está em discussão no processo e do que pode ser verificado tecnicamente. Conte-nos o seu caso e dizemos com franqueza se e como podemos ajudar.</div>
+        </div>
+      </section>
+
+      <!-- ===== O que entregamos ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-c)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Entregáveis</span>
+          <h2 class="section-title">O que <em>entregamos</em></h2>
+          <div class="rule mt-6"></div>
+          <p class="sec-lead">Material técnico objetivo, organizado e pronto para ser usado nos autos.</p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-file"/></svg></span><h3>Laudo pericial</h3><p>Quando nomeados pelo juízo, com metodologia, constatações e respostas aos quesitos.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-clip"/></svg></span><h3>Parecer técnico</h3><p>Análise do laudo do perito, com pontos de concordância e divergência técnica fundamentados.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-list"/></svg></span><h3>Quesitos</h3><p>Formulação de perguntas técnicas para o perito e análise das apresentadas pela outra parte.</p></div>
+            <div class="box"><span class="ico-tile"><svg class="ico"><use href="#i-camera"/></svg></span><h3>Acompanhamento da diligência</h3><p>Presença na vistoria pericial, com registro fotográfico e anotações técnicas.</p></div>
+          </div>
+          <!-- INSERIR AQUI o prazo de entrega de laudos e pareceres, se quiser divulgar -->
+        </div>
+      </section>
+
+      <!-- ===== Como funciona ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Passo a passo</span>
+          <h2 class="section-title">Como <em>funciona</em></h2>
+          <div class="rule mt-6"></div>
+          <ol class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
+            <li class="step"><span class="step-num">1</span><div><h3>Você (ou seu advogado) entra em contato</h3><p>Informe o número do processo ou a fase, o endereço do imóvel, um resumo do que está em discussão e os prazos já fixados.</p></div></li>
+            <li class="step"><span class="step-num">2</span><div><h3>Analisamos o caso</h3><p>Avaliamos a demanda e a documentação disponível e enviamos uma proposta com o escopo e as condições, sem compromisso.</p></div></li>
+            <li class="step"><span class="step-num">3</span><div><h3>Vistoria e estudo técnico</h3><p>Realizamos a vistoria, o levantamento de dados e a análise segundo as normas aplicáveis e a metodologia adequada ao caso.</p></div></li>
+            <li class="step"><span class="step-num">4</span><div><h3>Laudo ou parecer e acompanhamento</h3><p>Entregamos o documento técnico e acompanhamos os desdobramentos, como pedidos de esclarecimento, junto ao advogado.</p></div></li>
+          </ol>
+          <p class="mt-8 text-sm text-[var(--muted)] max-w-3xl leading-relaxed"><strong>Dica:</strong> os prazos processuais costumam ser curtos. Se você já sabe que haverá perícia, chame a gente assim que possível.</p>
+        </div>
+      </section>
+
+      <!-- ===== Base normativa ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-b)]" aria-label="Base normativa">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-5">
+              <span class="label">Base técnica</span>
+              <h2 class="section-title !text-[2.4rem] sm:!text-5xl">Trabalho pautado pelas <em>normas ABNT</em></h2>
+              <p class="mt-5 text-[var(--muted)] leading-relaxed">Os laudos e pareceres seguem as normas técnicas aplicáveis a cada objeto, e o enquadramento depende do caso.</p>
+            </div>
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="norm-box"><div class="code">NBR 14653</div><div class="desc">Avaliação de bens</div></div>
+              <div class="norm-box"><div class="code">NBR 16747</div><div class="desc">Inspeção predial</div></div>
+              <div class="norm-box"><div class="code">NBR 15575</div><div class="desc">Desempenho de edificações</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Imagens de apoio ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--tone-d)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Em campo</span>
+          <h2 class="section-title">Análise <em>com método</em></h2>
+          <div class="rule mt-6"></div>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <figure>
+              <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1714647212027-2a0ad30cb4f1?q=80&w=1400&auto=format&fit=crop" alt="Vistoria técnica no interior de um imóvel" class="fig-img w-full h-56 sm:h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Vistoria:</strong> a constatação dos fatos no local é a base de qualquer laudo ou parecer, com registro fotográfico e anotações técnicas.</figcaption>
+            </figure>
+            <figure>
+              <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1659353586512-bcc4c7182d01?q=80&w=1400&auto=format&fit=crop" alt="Engenheiro de capacete registrando a vistoria em tablet" class="fig-img w-full h-56 sm:h-64 object-cover" loading="lazy" decoding="async" /></div>
+              <figcaption><strong>Documentação:</strong> dados, fotos e evidências organizados para que o trabalho seja claro, rastreável e passível de revisão.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Limites e atendimento ===== -->
+      <section class="sec py-20 md:py-28 bg-[var(--bg)]">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="box">
+              <span class="ico-tile"><svg class="ico"><use href="#i-shield"/></svg></span>
+              <h3>Parte técnica, com transparência</h3>
+              <p>Atuamos na engenharia: vistoria, análise, laudo e parecer. A estratégia e as peças do processo são do advogado, e a decisão é sempre do juiz. Não prometemos resultado e o nosso compromisso é com a qualidade técnica.</p>
+            </div>
+            <div class="box">
+              <span class="ico-tile"><svg class="ico"><use href="#i-pin"/></svg></span>
+              <h3>Onde atendemos</h3>
+              <p>Cidade de São Paulo e região metropolitana. Informe a comarca do processo e o endereço do imóvel e confirmamos a disponibilidade.</p>
+              <!-- INSERIR AQUI uma faixa de preço, se a empresa quiser divulgar -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Perguntas frequentes ===== -->
+      <section id="faq" class="sec py-20 md:py-28 bg-[var(--tone-c)]">
+        <div class="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10">
+          <span class="label">Dúvidas</span>
+          <h2 class="section-title">Perguntas <em>frequentes</em></h2>
+          <div class="rule mt-6"></div>
+          <div class="mt-10">
+            <div class="faq">
+              <h3>Qual a diferença entre perito judicial e assistente técnico?</h3>
+              <p>O perito é nomeado pelo juiz, atua como auxiliar do juízo e deve ser imparcial. O assistente técnico é indicado e contratado por uma das partes, que é quem o escolhe, para acompanhar a perícia, analisar o laudo e apresentar parecer técnico.</p>
+            </div>
+            <div class="faq">
+              <h3>Preciso de advogado para contratar um assistente técnico?</h3>
+              <p>A indicação do assistente técnico é feita nos autos do processo, em regra por meio do advogado da parte. Por isso, nosso trabalho é sempre alinhado com o advogado responsável pelo caso, que conduz a parte jurídica.</p>
+            </div>
+            <div class="faq">
+              <h3>Vocês prestam assessoria jurídica?</h3>
+              <p>Não. Atuamos na parte técnica de engenharia: vistoria, análise, laudo e parecer. Orientação jurídica, estratégia processual e peças do processo são responsabilidade do advogado.</p>
+            </div>
+            <div class="faq">
+              <h3>Qual o prazo para indicar o assistente técnico?</h3>
+              <p>O prazo é definido pelo juiz e costuma ser curto, contado da intimação da nomeação do perito. Por isso, quanto antes você nos chamar, melhor. Confirme o prazo exato do seu processo com o seu advogado.</p>
+            </div>
+            <div class="faq">
+              <h3>O que preciso enviar para pedir um orçamento?</h3>
+              <p>Informe o número do processo ou a fase em que ele está, o endereço do imóvel e um resumo do que está em discussão. Se possível, envie as principais peças e os prazos já fixados. Com isso, avaliamos a demanda e enviamos a proposta.</p>
+            </div>
+            <div class="faq">
+              <h3>O laudo ou o parecer garante o resultado do processo?</h3>
+              <p>Não. O trabalho técnico traz fundamentação e clareza sobre os fatos de engenharia, mas a decisão é sempre do juiz, que avalia todas as provas do processo. Não prometemos resultado.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Chamada final ===== -->
+      <section class="sec cta-band py-16 md:py-20">
+        <div class="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10 text-center">
+          <h2 class="serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">Seu processo depende de uma questão técnica?<br class="hidden sm:block"> <em class="italic text-[var(--gold)]">Fale com um engenheiro.</em></h2>
+          <p class="mt-5 text-[var(--muted)] max-w-xl mx-auto leading-relaxed">Conte o seu caso e receba uma proposta da RD Almeida, sem compromisso.</p>
+          <div class="mt-9 flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4">
+            <a href="https://wa.me/5511939249310?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20per%C3%ADcia%20judicial%20ou%20assist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer" class="btn-solid">Chamar no WhatsApp</a>
+            <a href="../index.html#contato" class="btn-line">Outras formas de contato</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="sec bg-[#060607]" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+        <div class="md:col-span-6">
+          <img src="../assets/img/branding/logo_rodape.png" alt="Logo RD Almeida Engenharia" class="h-24 md:h-28 w-auto"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'serif text-3xl text-white tracking-widest',innerText:'RD ALMEIDA'}));">
+          <p class="mt-6 text-[var(--muted)] max-w-md leading-relaxed text-[.95rem]">
+            Reformas, adequações, vistorias técnicas e laudos de avaliação de imóveis urbanos. Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
+          </p>
+        </div>
+
+        <div class="md:col-span-2 md:col-start-8">
+          <h4 class="label">Navegação</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li><a href="../index.html" class="block py-1.5 hover:text-white">Home</a></li>
+            <li><a href="../index.html#servicos" class="block py-1.5 hover:text-white">Serviços</a></li>
+            <li><a href="./indexblog.html" class="block py-1.5 hover:text-white">Publicações</a></li>
+            <li><a href="../index.html#contato" class="block py-1.5 hover:text-white">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3">
+          <h4 class="label">Contato</h4>
+          <ul class="mt-4 space-y-1 text-[var(--muted)] text-sm">
+            <li class="py-1.5">São Paulo e região metropolitana</li>
+            <li><a href="mailto:contato@rdalmeida.com.br" class="block py-1.5 hover:text-white break-words">contato@rdalmeida.com.br</a></li>
+            <li><a href="https://wa.me/5511939249310" target="_blank" rel="noopener noreferrer" class="block py-1.5 hover:text-white">(11) 93924-9310 · WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-[var(--line)] text-xs tracking-wide text-[var(--muted)] leading-relaxed max-w-3xl">
+        O trabalho técnico não substitui a orientação jurídica de um advogado, e a decisão final do processo cabe ao juiz. O escopo de cada serviço é definido na contratação.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+
+    /* ===== Menu mobile ===== */
+    (function () {
+      const btn = document.getElementById('menu-btn');
+      const panel = document.getElementById('mobile-menu');
+      if (!btn || !panel) return;
+      let open = false;
+      const set = (state) => {
+        open = state;
+        panel.classList.toggle('opacity-100', open);
+        panel.classList.toggle('opacity-0', !open);
+        panel.classList.toggle('pointer-events-auto', open);
+        panel.classList.toggle('pointer-events-none', !open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+      document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+    })();
+
+    /* ===== Fade ao rolar entre seções ===== */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const els = Array.from(document.querySelectorAll('.sec > *, .trust > *'));
+      if (!els.length) return;
+      document.documentElement.classList.add('js-fade');
+      els.forEach(el => el.classList.add('fade-sec'));
+      const clamp = (v) => Math.min(1, Math.max(0, v));
+      const ease = (t) => t * t * (3 - 2 * t);
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        els.forEach(el => {
+          const r = el.getBoundingClientRect();
+          const fin = clamp((vh * 0.95 - r.top) / (vh * 0.35));
+          const fout = clamp((r.bottom - vh * 0.05) / (vh * 0.30));
+          el.style.setProperty('--fo', ease(Math.min(fin, fout)).toFixed(3));
+        });
+      };
+      const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', req, { passive: true });
+      window.addEventListener('resize', req);
+      window.addEventListener('load', req);
+      update();
+    })();
+
+  });
+  </script>
+</body>
+</html>
