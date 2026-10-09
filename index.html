@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- Versão: v2025-09-06-02-mobile | Otimizada para celular em orientação vertical (retrato) -->
+<head>
+  <meta charset="utf-8" />
+  <!-- viewport-fit=cover permite usar as áreas seguras (notch / barra de gestos) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>RD Almeida Engenharia • Reformas, Vistorias e Avaliação de imóveis urbanos</title>
+  <meta name="description" content="RD Almeida Engenharia – Avaliações de imóveis urbanos, vistorias técnicas e consultoria em engenharia." />
+
+  <!-- Favicon padrão -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Ícones em PNG para navegadores modernos -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo_16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo_32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo_48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/logo_64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/logo_128x128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/logo_256x256.png">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo_180x180.png">
+
+  <!-- Manifesto (Android/PWA) -->
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary: #8B0000;      /* vinho (da logo) */
+      --primary2: #8b0000a4;   /* vinho translúcido */
+      --secondary: #2e0505;    /* marrom escuro */
+      --light: #D4D4D4;
+      --header-h: 4rem;        /* altura do header no celular */
+    }
+    @media (min-width: 768px) { :root { --header-h: 6rem; } }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-h);   /* âncoras não ficam escondidas atrás do header fixo */
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;                    /* evita rolagem horizontal */
+      -webkit-tap-highlight-color: transparent;
+    }
+    h2 { font-family: "Times New Roman", Times, serif; }
+
+    /* === Header branco que fica progressivamente transparente === */
+    #site-header { background: rgba(255,255,255,var(--header-alpha,1)); backdrop-filter: saturate(180%) blur(8px); -webkit-backdrop-filter: saturate(180%) blur(8px); padding-top: env(safe-area-inset-top); }
+    #site-header .nav-link { color: var(--secondary); transition: color .3s ease; }
+    #site-header.on-hero .nav-link { color:#fff; }
+    #menu-btn .menu-icon { color: var(--secondary); transition: color .3s ease; }
+    #site-header.on-hero #menu-btn .menu-icon { color:#fff; }
+
+    /* Menu mobile: fundo sólido e texto de alto contraste */
+    .mobile-panel { background: #2e0505; border: 1px solid rgba(255,255,255,.15); }
+    .mobile-panel ul { padding: .5rem; }
+    .mobile-panel li + li { border-top: 1px solid rgba(255,255,255,.12); }
+    .mobile-link { color: #fff; }
+    .mobile-link:active, .mobile-link:hover { background: #8B0000; }
+
+    /* Hero ocupa a tela toda, considerando a barra dinâmica do navegador móvel */
+    #home { height: 100vh; height: 100svh; min-height: 520px; }
+
+    /* Bolinhas do carrossel com área de toque de 24px */
+    .carousel-dot { position: relative; height: 24px; width: 24px; background: none; border: 0; padding: 0; }
+    .carousel-dot::after { content:''; position:absolute; inset:7px; border-radius:9999px; background: rgba(255,255,255,.5); transition: background .3s, transform .3s; }
+    .carousel-dot[aria-selected="true"]::after { background: var(--primary); box-shadow: 0 0 0 1.5px #fff; transform: scale(1.15); }
+
+    /* Campos do formulário: 16px evita o zoom automático do iOS ao focar */
+    .field { display:block; width:100%; margin-top:.25rem; border:1px solid #cbd5e1; border-radius:.75rem; background:#fff; padding:.75rem .875rem; font-size:16px; line-height:1.4; }
+    .field:focus { outline:none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(139,0,0,.2); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .carousel-slide { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="antialiased text-slate-800 bg-[var(--light)]">
+  <div class="relative">
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia"
+       target="_blank" rel="noopener" aria-label="Fale com nossa equipe no WhatsApp"
+       class="fixed z-50 right-4 md:right-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg active:scale-95 transition-transform"
+       style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7 fill-white" aria-hidden="true">
+        <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+      </svg>
+    </a>
+
+    <!-- ===== Header ===== -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-colors duration-500">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav class="flex h-16 md:h-24 items-center justify-between" role="navigation" aria-label="Navegação principal">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-3" aria-label="RD Almeida Engenharia – Início">
+            <img src="./assets/img/branding/logo-rda.png" alt="Logo RD Almeida Engenharia" class="h-12 md:h-20 w-auto"
+                 onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo-02.png';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='logo 02.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
+          </a>
+
+          <!-- Menu Desktop -->
+          <ul class="hidden md:flex items-center gap-8 font-medium">
+            <li><a href="#home" class="nav-link hover:text-[var(--primary)]">Home</a></li>
+            <li><a href="#servicos" class="nav-link hover:text-[var(--primary)]">Serviços</a></li>
+            <li><a href="./blog/indexblog.html" class="nav-link hover:text-[var(--primary)]">Publicações</a></li>
+            <li><a href="#contato" class="nav-link hover:text-[var(--primary)]">Contato</a></li>
+          </ul>
+
+          <!-- Menu Mobile: botão (área de toque 48x48) -->
+          <button id="menu-btn" type="button"
+                  class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-lg text-[var(--secondary)] active:bg-[var(--primary)]/20 focus:outline-none"
+                  aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+            <svg class="menu-icon h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu (overlay) -->
+      <div id="mobile-menu" class="md:hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="mobile-panel absolute inset-x-0 top-full mx-4 mt-2 rounded-2xl shadow-2xl">
+          <ul class="p-3 space-y-1">
+            <li><a href="#home" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Home</a></li>
+            <li><a href="#servicos" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Serviços</a></li>
+            <li><a href="#publicacoes" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Publicações</a></li>
+            <li><a href="#contato" class="mobile-link block rounded-lg px-4 py-4 text-lg font-medium">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero / Carrossel ===== -->
+    <section id="home" class="relative">
+      <div id="carousel" class="h-full w-full relative overflow-hidden" style="touch-action: pan-y;">
+        <div class="carousel-track h-full w-full">
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop" alt="Engenharia – estrutura em aço" class="h-full w-full object-cover" />
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Canteiro de obras" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="https://images.pexels.com/photos/7937319/pexels-photo-7937319.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Imagem 3 do carrossel" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0">
+            <img src="./assets/img/hero/hero-04.png" alt="Descrição da imagem 4" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          </div>
+        </div>
+
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+
+        <!-- Conteúdo -->
+        <div class="absolute inset-0 flex items-end md:items-center pt-16 md:pt-24 pb-20 md:pb-14">
+          <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8 text-white">
+            <div class="max-w-2xl">
+              <h1 class="text-[1.75rem] sm:text-5xl font-semibold leading-tight drop-shadow">Reformas, vistorias técnicas e laudos de avaliação de imóveis urbanos.</h1>
+              <p class="mt-4 text-base sm:text-lg text-white/90 drop-shadow">As melhores práticas de engenharia, com foco em organização e eficiência.</p>
+              <!-- No celular os botões empilham e ocupam toda a largura -->
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#contato" class="inline-flex items-center justify-center rounded-xl bg-[var(--primary)] px-5 py-3.5 font-semibold text-white active:bg-[var(--primary)]/80 hover:bg-[var(--primary)]/80">Fale com a nossa equipe</a>
+                <a href="#servicos" class="inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3.5 font-semibold text-white ring-1 ring-inset ring-white/30 active:bg-white/20 hover:bg-white/20">Ver serviços</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles (um botão por slide, gerado pelo script) -->
+        <div id="carousel-dots" class="absolute inset-x-0 flex items-center justify-center gap-1" style="bottom: calc(1rem + env(safe-area-inset-bottom));"></div>
+      </div>
+    </section>
+
+    <!-- ===== Serviços ===== -->
+    <section id="servicos" class="py-12 md:py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-8 md:mb-10">
+          <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">Serviços</h2>
+          <p class="mt-2 text-slate-600">Reformas, vistorias, avaliações e consultoria com rigor técnico e conformidade normativa.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+          <a href="./blog/vistoria-entrega-de-chaves.html" class="group rounded-2xl border border-slate-200 p-5 sm:p-6 hover:shadow-lg active:shadow-lg transition-shadow bg-white">
+            <div class="min-h-10 w-full rounded-lg bg-[var(--primary)] px-3 py-2 text-center text-sm sm:text-base text-white grid place-items-center font-semibold">VISTORIA TÉCNICA</div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Entrega de Chaves e recebimento de obras.</h3>
+            <p class="mt-2 text-slate-600 leading-relaxed">Vistorias técnicas em imóveis novos no momento da entrega das chaves, garantindo que a obra esteja em conformidade com os padrões de qualidade, normas técnicas e especificações contratadas. Nossos relatórios apontam eventuais não conformidades, defeitos aparentes ou acabamentos inadequados, oferecendo ao proprietário segurança e respaldo técnico para solicitar os devidos ajustes junto à construtora.</p>
+          </a>
+
+          <a href="./blog/abnt-nbr-14653.html" class="group rounded-2xl border border-slate-200 p-5 sm:p-6 hover:shadow-lg active:shadow-lg transition-shadow bg-white">
+            <div class="min-h-10 w-full rounded-lg bg-[var(--primary)] px-3 py-2 text-center text-sm sm:text-base text-white grid place-items-center font-semibold">AVALIAÇÃO DE IMÓVEIS</div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--secondary)]">Perícia Judicial e Assistência técnica Jurídica.</h3>
+            <p class="mt-2 text-slate-600 leading-relaxed">Laudos de avaliação de imóveis urbanos conforme as normas ABNT NBR 14653-1 e 14653-2, garantindo precisão e credibilidade. Nossos laudos asseguram o valor de mercado justo do imóvel em situações como compra e venda, financiamentos, inventários, divórcios e desapropriações.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Publicações ===== -->
+    <section id="publicacoes" class="py-12 md:py-16 bg-[var(--light)]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-8 md:mb-10 flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-[var(--secondary)]">Nas Publicações</h2>
+            <p class="mt-2 text-slate-600">Conteúdo técnico sobre avaliações, normas e mercado imobiliário.</p>
+          </div>
+          <a href="blog/index.html" class="hidden sm:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-white border border-slate-200 hover:bg-slate-50">Ver todos</a>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="blog/abnt-nbr-14653.html" class="block">
+              <img class="h-44 sm:h-40 w-full object-cover" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop" alt="Mesa com documentos técnicos"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Avaliação de Imóveis Urbanos</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">ABNT NBR 14653: princípios para avaliação</h3>
+              </div>
+            </a>
+          </article>
+
+          <article class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+            <a href="blog/vistoria-entrega-de-chaves.html" class="block">
+              <img class="h-44 sm:h-40 w-full object-cover" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" alt="Entrega de chaves e checklist de vistoria"/>
+              <div class="p-5">
+                <span class="text-xs font-medium uppercase tracking-wide text-[var(--primary)]">Vistoria</span>
+                <h3 class="mt-1 text-lg font-semibold text-[var(--secondary)]">Vistoria na entrega de chaves: o que verificar</h3>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <!-- Link ver todos (mobile) -->
+        <div class="mt-6 sm:hidden">
+          <a href="blog/index.html" class="inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-medium bg-white border border-slate-200 active:bg-slate-50">Ver todos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contato ===== -->
+    <section id="contato" class="py-10 md:py-12 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <header class="text-center mb-8 md:mb-12">
+          <span class="text-xs font-medium uppercase tracking-wide text-slate-400">Contato</span>
+          <div class="h-0.5 w-10 bg-[var(--primary)] mx-auto mt-0.5 rounded-full"></div>
+
+          <h2 class="mt-5 text-3xl sm:text-5xl font-semibold text-slate-600">Fale Conosco</h2>
+          <p class="mt-4 max-w-3xl mx-auto text-base sm:text-xl leading-relaxed text-slate-600">
+            Preencha o formulário abaixo para entrar em contato com a nossa equipe.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+          <!-- Lista de contatos -->
+          <div class="space-y-5 md:space-y-7">
+
+            <!-- E-mail -->
+            <a href="mailto:contato@rdalmeida.com.br" class="flex items-center gap-4 md:gap-5">
+              <span class="grid h-12 w-12 md:h-14 md:w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--primary2)] to-[var(--primary)] text-white shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5L4 8V6l8 5 8-5z"/>
+                </svg>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-lg md:text-xl font-semibold text-slate-700">E-mail</span>
+                <span class="block mt-0.5 text-slate-600 break-words">contato@rdalmeida.com.br</span>
+              </span>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5511939249310?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20RDA%20Engenharia." target="_blank" rel="noopener" class="flex items-center gap-4 md:gap-5">
+              <span class="grid h-12 w-12 md:h-14 md:w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--primary2)] to-[var(--primary)] text-white shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-6 w-6 md:h-7 md:w-7 fill-white" aria-hidden="true">
+                  <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.54 2.13 7.96L.5 31.5l7.73-2.1A15.46 15.46 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28c-2.57 0-5.08-.67-7.27-1.94l-.52-.3-4.59 1.24 1.23-4.48-.34-.55A12.96 12.96 0 0 1 3 16c0-7.17 5.83-13 13-13s13 5.83 13 13-5.83 13-13 13zm7.14-9.49c-.39-.2-2.3-1.14-2.66-1.28-.36-.13-.62-.2-.89.2s-1.02 1.28-1.25 1.55c-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.03-1.94-2.3-2.17-2.68-.23-.39-.02-.6.17-.79.17-.17.39-.46.58-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.14-1.22-2.93-.32-.79-.65-.68-.89-.69h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.42 3.82 1.62 4.08c.2.26 2.8 4.26 6.77 5.97.95.41 1.69.66 2.27.85.95.3 1.82.26 2.51.16.77-.12 2.3-.94 2.62-1.85.32-.91.32-1.69.23-1.85-.1-.16-.36-.26-.76-.46z"/>
+                </svg>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-lg md:text-xl font-semibold text-slate-700">WhatsApp</span>
+                <span class="block mt-0.5 text-slate-600">(11) 93924-9310</span>
+              </span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/rdalmeida.eng/" target="_blank" rel="noopener" class="flex items-center gap-4 md:gap-5">
+              <span class="grid h-12 w-12 md:h-14 md:w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--primary2)] to-[var(--primary)] text-white shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5m0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5M18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8"/>
+                </svg>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-lg md:text-xl font-semibold text-slate-700">Instagram</span>
+                <span class="block mt-0.5 text-slate-600">rdalmeida.eng</span>
+              </span>
+            </a>
+
+            <!-- Localização -->
+            <div class="flex items-center gap-4 md:gap-5">
+              <span class="grid h-12 w-12 md:h-14 md:w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--primary2)] to-[var(--primary)] text-white shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7m0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/>
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <span class="block text-lg md:text-xl font-semibold text-slate-700">Localização</span>
+                <span class="block mt-0.5 text-slate-600">São Paulo – SP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulário -->
+          <div class="w-full rounded-2xl bg-[var(--light)]/60 p-4 sm:p-6">
+            <form id="contact-form" action="https://formspree.io/f/mblapded" method="POST" data-endpoint="https://formspree.io/f/mblapded" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="nome" class="block text-sm font-medium text-[var(--secondary)]">Nome</label>
+                  <input id="nome" name="name" required type="text" autocomplete="name" autocapitalize="words" class="field" placeholder="Seu nome" />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-[var(--secondary)]">E-mail</label>
+                  <input id="email" name="email" required type="email" inputmode="email" autocomplete="email" autocapitalize="none" class="field" placeholder="voce@exemplo.com" />
+                </div>
+              </div>
+              <div class="mt-4">
+                <label for="mensagem" class="block text-sm font-medium text-[var(--secondary)]">Mensagem</label>
+                <textarea id="mensagem" name="message" required rows="5" class="field" placeholder="Descreva sua necessidade"></textarea>
+              </div>
+              <div class="mt-5">
+                <button id="contact-submit" type="submit" class="inline-flex w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--primary)] px-6 py-3.5 font-semibold text-white active:bg-[var(--primary)]/80 hover:bg-[var(--primary)]/80">Enviar</button>
+                <p id="contact-feedback" class="mt-3 text-sm hidden" role="status"></p>
+                <input type="text" name="_gotcha" class="hidden" style="display:none!important" tabindex="-1" autocomplete="off">
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div><!-- fecha .relative -->
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-slate-200 bg-[var(--primary)]" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Logo + texto: empilhados no celular, lado a lado no desktop -->
+        <div class="md:col-span-2">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <img src="./assets/img/branding/logo_rodape.png"
+                 alt="Logo RD Almeida Engenharia"
+                 class="h-24 md:h-40 w-auto shrink-0"
+                 onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='logo_rodape.png';}else{this.replaceWith(Object.assign(document.createElement('div'),{className:'h-10 w-10 rounded bg-[var(--secondary)] text-white grid place-items-center font-bold',innerText:'RDA'}));}">
+
+            <p class="text-slate-100 max-w-md leading-relaxed">
+              Vistorias técnicas e laudos de avaliação de imóveis urbanos.
+              Nosso trabalho é pautado pelas melhores práticas da engenharia, seguindo rigorosamente
+              as normas da ABNT NBR, garantindo a qualidade e segurança do seu projeto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Navegação -->
+        <div class="md:ml-auto">
+          <h4 class="text-sm font-semibold text-white">Navegação</h4>
+          <ul class="mt-3 space-y-1 text-slate-100/90">
+            <li><a href="#home" class="block py-2 hover:text-white">Home</a></li>
+            <li><a href="#servicos" class="block py-2 hover:text-white">Serviços</a></li>
+            <li><a href="#publicacoes" class="block py-2 hover:text-white">Publicações</a></li>
+            <li><a href="#contato" class="block py-2 hover:text-white">Contato</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 border-t border-white/20 pt-6 text-center md:text-left text-sm text-white/90">
+        <p>&copy; 2025 RD Almeida Engenharia. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+
+    /* ===== Header: 40% de opacidade no início, fica sólido ao fim do hero ===== */
+    const header = document.getElementById('site-header');
+    const hero = document.getElementById('home');
+    if (header && hero) {
+      const apply = (alpha) => {
+        const a = Math.max(0, Math.min(1, alpha));
+        header.style.setProperty('--header-alpha', a.toFixed(3));
+      };
+      const update = () => {
+        const h = Math.max(hero.offsetHeight || window.innerHeight, 1);
+        const y = window.scrollY || window.pageYOffset || 0;
+        const threshold = Math.max(h - 1, 1);
+        if (y < threshold) {
+          const t = Math.min(Math.max(y / threshold, 0), 1);
+          header.classList.remove('is-solid');
+          header.classList.add('on-hero');
+          apply(0.4 * (1 - t));
+        } else {
+          header.classList.add('is-solid');
+          header.classList.remove('on-hero');
+          apply(0);
+        }
+      };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+    }
+
+    /* ===== Menu mobile ===== */
+    (function () {
+      const btn = document.getElementById('menu-btn');
+      const panel = document.getElementById('mobile-menu');
+      if (!btn || !panel) return;
+      let open = false;
+      const set = (state) => {
+        open = state;
+        panel.classList.toggle('opacity-100', open);
+        panel.classList.toggle('opacity-0', !open);
+        panel.classList.toggle('pointer-events-auto', open);
+        panel.classList.toggle('pointer-events-none', !open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', (e) => { e.stopPropagation(); set(!open); });
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+      // fecha ao tocar fora do menu ou ao pressionar Esc
+      document.addEventListener('click', (e) => { if (open && !panel.contains(e.target)) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 768) set(false); });
+    })();
+
+    /* ===== Carrossel (dots gerados conforme o nº de slides + swipe) ===== */
+    (function () {
+      const root = document.getElementById('carousel');
+      const dotsBox = document.getElementById('carousel-dots');
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      if (!root || !dotsBox || slides.length === 0) return;
+
+      const dots = slides.map((_, k) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'carousel-dot';
+        b.setAttribute('aria-label', 'Ir ao slide ' + (k + 1));
+        b.setAttribute('aria-selected', 'false');
+        dotsBox.appendChild(b);
+        return b;
+      });
+
+      let idx = 0, timer;
+      const go = (i) => {
+        idx = (i + slides.length) % slides.length;
+        slides.forEach((s, k) => s.style.opacity = (k === idx ? '1' : '0'));
+        dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === idx)));
+      };
+      const stop = () => { if (timer) clearInterval(timer); };
+      const play = () => { stop(); timer = setInterval(() => go(idx + 1), 5000); };
+
+      dots.forEach((d, k) => d.addEventListener('click', () => { go(k); play(); }));
+
+      // Pausa com o mouse (desktop)
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', play);
+
+      // Swipe horizontal (celular)
+      let x0 = null, y0 = null;
+      root.addEventListener('touchstart', (e) => {
+        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; stop();
+      }, { passive: true });
+      root.addEventListener('touchend', (e) => {
+        if (x0 !== null) {
+          const dx = e.changedTouches[0].clientX - x0;
+          const dy = e.changedTouches[0].clientY - y0;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(idx + (dx < 0 ? 1 : -1));
+        }
+        x0 = y0 = null; play();
+      }, { passive: true });
+
+      // Pausa quando a aba não está visível
+      document.addEventListener('visibilitychange', () => { document.hidden ? stop() : play(); });
+
+      go(0);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+    })();
+
+    /* ===== Formulário de contato (Formspree, com fallback para mailto) ===== */
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const btn = document.getElementById('contact-submit');
+      const fb = document.getElementById('contact-feedback');
+      const emailDestino = 'contato@rdalmeida.com.br';
+
+      const endpointAtivo = () => {
+        const ep = form.dataset.endpoint || form.getAttribute('action') || '';
+        return { url: ep, valido: ep && !/XXXXXXXX/i.test(ep) };
+      };
+
+      const show = (msg, ok = true) => {
+        if (!fb) return;
+        fb.textContent = msg;
+        fb.classList.remove('hidden');
+        fb.classList.toggle('text-green-700', ok);
+        fb.classList.toggle('text-red-700', !ok);
+      };
+
+      const mailtoFallback = () => {
+        const nome = (document.getElementById('nome')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const msg = (document.getElementById('mensagem')?.value || '').trim();
+        const subject = encodeURIComponent('Novo contato – RD Almeida Engenharia');
+        const body = encodeURIComponent('Nome: ' + nome + '\nE-mail: ' + email + '\n\nMensagem:\n' + msg);
+        window.location.href = 'mailto:' + emailDestino + '?subject=' + subject + '&body=' + body;
+        show('Abrindo seu aplicativo de e-mail...', true);
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+        if (fb) fb.classList.add('hidden');
+
+        const { url, valido } = endpointAtivo();
+        try {
+          const data = new FormData(form);
+          data.append('_subject', 'Novo contato – RD Almeida Engenharia');
+          if (valido) {
+            const resp = await fetch(url, {
+              method: 'POST', headers: { 'Accept': 'application/json' },
+              body: data, mode: 'cors', redirect: 'follow'
+            });
+            if (resp.ok) {
+              form.reset();
+              show('Mensagem enviada com sucesso. Retornaremos em até 1 dia útil.');
+            } else {
+              show('Não foi possível enviar agora. Abriremos seu e-mail para envio direto.', false);
+              mailtoFallback();
+            }
+          } else {
+            mailtoFallback();
+          }
+        } catch (err) {
+          show('Falha de conexão. Abriremos seu e-mail para envio direto.', false);
+          mailtoFallback();
+        } finally {
+          if (btn) { btn.disabled = false; btn.textContent = 'Enviar'; }
+        }
+      });
+    })();
+  });
+  </script>
+</body>
+</html>
